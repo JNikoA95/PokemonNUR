@@ -32,4 +32,30 @@ public class UsuarioBRL
         UserDSTableAdapters.UsuariosTableAdapter adapter = new UserDSTableAdapters.UsuariosTableAdapter();
         adapter.Delete(codigo_id);
     }
+
+    public static Usuario getUsuarioByNick(string nick) {
+        if (string.IsNullOrEmpty(nick))
+        {
+            throw new ArgumentException("El nombre de usuario no puede ser nulo");
+
+        }
+        UserDSTableAdapters.UsuarioRegTableAdapter adapter = new UserDSTableAdapters.UsuarioRegTableAdapter();
+        UserDS.UsuarioRegDataTable table = adapter.get_usuarioByNickName(nick);
+
+        Usuario user = null;
+        //Deberia dar como resulado 1
+        if (table.Rows.Count == 1)
+        {
+            UserDS.UsuarioRegRow row = table[0];
+            user = new Usuario()
+            {
+                Codigo_id = row.codigo_id,
+                Nombre = row.nombre,
+                NickName = row.nickName,
+                Correo = row.correo,
+                Password = row.password
+            };
+        }
+        return user;
+    }
 }
