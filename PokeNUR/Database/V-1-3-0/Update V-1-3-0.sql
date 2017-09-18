@@ -37,10 +37,10 @@ BEGIN
 END
 
 
-IF @intVersionMayor IS NULL OR @intVersionMenor IS NULL OR NOT (@intVersionMayor = 1 AND @intVersionMenor = 1)
+IF @intVersionMayor IS NULL OR @intVersionMenor IS NULL OR NOT (@intVersionMayor = 1 AND @intVersionMenor = 2)
 BEGIN
 	
-	RAISERROR('La base de datos no esta en la version 1.1. Este script solamente se aplica a la version 1.1',16,127)
+	RAISERROR('La base de datos no esta en la version 1.2. Este script solamente se aplica a la version 1.2',16,127)
 	RETURN;
 
 END
