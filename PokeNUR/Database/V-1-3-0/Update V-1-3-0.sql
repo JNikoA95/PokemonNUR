@@ -50,25 +50,7 @@ BEGIN
 	PRINT 'Version OK'
 
 END
-
-
-/****** Object:  StoredProcedure [dbo].[get_usuarioByNickName]    Script Date: 09/17/2017 22:24:59 ******/
-SET ANSI_NULLS ON
 GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-SET ANSI_PADDING ON
-GO
-
-IF  NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[get_usuarioByNickName] ') AND type in (N'U'))
-BEGIN
-
-	SET ANSI_NULLS ON;
-
-
-	SET QUOTED_IDENTIFIER ON;
 
 
 -- =============================================
@@ -97,7 +79,6 @@ BEGIN
 	
 END
 GO
-
 
 
 DELETE FROM [dbo].[tbl_Version]
