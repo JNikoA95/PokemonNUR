@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="Pages_login" %>
+﻿
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="Pages_login" %>
 
 <!DOCTYPE html>
 
@@ -25,7 +26,7 @@
                 <asp:Button ID="BtnLogin" runat="server"  Text="Entrar" OnClick="BtnLogin_Click"/>
                  <br />
                 <br />
-                <a href="#">Recuperar mi contraseña</a>
+                <a href="RecuperarContraseña.aspx">Recuperar mi contraseña</a>
                  <a href="Registro.aspx">Registrarme</a>
 
         </div>
