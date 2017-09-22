@@ -91,6 +91,6 @@ INSERT INTO [dbo].[tbl_Version]
            ,[patch])
      VALUES
            (1
-           ,4
+           ,5
            ,0)
 GO
