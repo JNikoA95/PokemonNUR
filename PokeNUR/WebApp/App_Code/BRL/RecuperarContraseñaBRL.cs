@@ -43,6 +43,24 @@ public class RecuperarContraseñaBRL
         return diferencia.Value;
     }
 
+    public static int ExisteCodigo(string correo, string codigo)
+    {
+        int? salida = 0;
+        RecuperarContraseñaTableAdapters.CodRecuperacionTableAdapter adapter = new RecuperarContraseñaTableAdapters.CodRecuperacionTableAdapter();
+        adapter.getExistCodigo_tblUsuarios(correo, codigo, ref salida);
+
+        return salida.Value;
+    }
+
+    public static int ExisteCorreo(string correo)
+    {
+        int? salida = 0;
+        RecuperarContraseñaTableAdapters.CodRecuperacionTableAdapter adapter = new RecuperarContraseñaTableAdapters.CodRecuperacionTableAdapter();
+        adapter.getExistCorreo_tblUsuarios(correo, ref salida);
+
+        return salida.Value;
+    }
+
     public static void cambiarContraseña(string correo, string nuevaContraseña)
     {
         int? salida = 0;
