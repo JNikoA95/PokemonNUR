@@ -58,4 +58,27 @@ public class UsuarioBRL
         }
         return user;
     }
+
+    public static Usuario getUserData(string correo, string nickName)
+    {
+        Usuario user = null;
+
+        UserDSTableAdapters.UsuarioByCorre_nickNameTableAdapter adapter = new UserDSTableAdapters.UsuarioByCorre_nickNameTableAdapter();
+        UserDS.UsuarioByCorre_nickNameDataTable table = adapter.GetUser(correo, nickName);
+
+        if (table.Rows.Count == 1)
+        {
+            UserDS.UsuarioByCorre_nickNameRow row = table[0];
+            user = new Usuario()
+            {
+                Codigo_id = row.codigo_id,
+                Nombre = row.nombre,
+                NickName = row.nickName,
+                Correo = row.correo,
+                Password = row.password
+            };
+        }
+
+        return user;
+    }
 }

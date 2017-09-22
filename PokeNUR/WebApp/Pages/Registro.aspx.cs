@@ -17,16 +17,27 @@ public partial class Pages_Registro : System.Web.UI.Page
 
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
-        Usuario nuevo = new Usuario()
+        Usuario usuarioData = UsuarioBRL.getUserData(txtCorreo.Text, txtNickName.Text);
+
+        if (usuarioData == null)
         {
-            Nombre = txtNombre.Text,
-            NickName = txtNickName.Text,
-            Correo = txtCorreo.Text,
-            Password = txtPassword.Text
-        };
+            Usuario nuevo = new Usuario()
+            {
+                Nombre = txtNombre.Text,
+                NickName = txtNickName.Text,
+                Correo = txtCorreo.Text,
+                Password = txtPassword.Text
+            };
 
-        UsuarioBRL.insrtUsuario(nuevo);
+            UsuarioBRL.insrtUsuario(nuevo);
 
-        Response.Redirect("Registro.aspx");
+            Response.Redirect("Registro.aspx");
+        }
+        else
+        {
+            lbMensajeNickName.Visible = true;
+            lbMensajeCorreo.Visible = true;
+        }
+
     }
 }
