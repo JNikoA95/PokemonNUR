@@ -9,19 +9,19 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div runat ="server" id="campoCorreo">
         <asp:TextBox runat="server" ID="txtCorreo" placeholder="Correo Electronico"></asp:TextBox>
         <asp:Button runat="server" Text="Enviame el codigo" OnClick="Unnamed1_Click"/>
     </div>
 
-    <div id="codigoValido">
+    <div runat ="server" id="codigoValido" visible="false">
         <asp:TextBox runat="server" ID="codigoR" placeholder="Codigo de Recuperacion"></asp:TextBox>
         <asp:Button runat="server" Text="Enviar el codigo" OnClick="Unnamed2_Click" ID="codigo"/>
     </div>
 
-    <div id="NuevaContraseña">
+    <div runat ="server" id="contr" visible="false">
         <asp:TextBox runat="server" type="password" ID="contraseñaNueva" placeholder="Ingrese Nueva Contraseña"></asp:TextBox>
-        <asp:Button runat="server" Text="Enviame el codigo" OnClick="Unnamed3_Click" Enabled="false" ID="nueva"/>
+        <asp:Button runat="server" Text="Enviame el codigo" OnClick="Unnamed3_Click" ID="nueva"/>
     </div>
     </form>
 </body>
