@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="System.Data.OleDb" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="System.Data.OleDb" />
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="PokeNUR_DBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PokeNUR_DBConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.PokeNUR_DBConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
@@ -107,7 +107,7 @@
   <xs:element name="RecuperarContraseña" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="RecuperarContraseña" msprop:Generator_UserDSName="RecuperarContraseña">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="CodRecuperacion" msprop:Generator_TableClassName="CodRecuperacionDataTable" msprop:Generator_TableVarName="tableCodRecuperacion" msprop:Generator_RowChangedName="CodRecuperacionRowChanged" msprop:Generator_TablePropName="CodRecuperacion" msprop:Generator_RowDeletingName="CodRecuperacionRowDeleting" msprop:Generator_RowChangingName="CodRecuperacionRowChanging" msprop:Generator_RowEvHandlerName="CodRecuperacionRowChangeEventHandler" msprop:Generator_RowDeletedName="CodRecuperacionRowDeleted" msprop:Generator_RowClassName="CodRecuperacionRow" msprop:Generator_UserTableName="CodRecuperacion" msprop:Generator_RowEvArgName="CodRecuperacionRowChangeEvent">
+        <xs:element name="CodRecuperacion" msprop:Generator_TableClassName="CodRecuperacionDataTable" msprop:Generator_TableVarName="tableCodRecuperacion" msprop:Generator_TablePropName="CodRecuperacion" msprop:Generator_RowDeletingName="CodRecuperacionRowDeleting" msprop:Generator_RowChangingName="CodRecuperacionRowChanging" msprop:Generator_RowEvHandlerName="CodRecuperacionRowChangeEventHandler" msprop:Generator_RowDeletedName="CodRecuperacionRowDeleted" msprop:Generator_UserTableName="CodRecuperacion" msprop:Generator_RowChangedName="CodRecuperacionRowChanged" msprop:Generator_RowEvArgName="CodRecuperacionRowChangeEvent" msprop:Generator_RowClassName="CodRecuperacionRow">
           <xs:complexType>
           </xs:complexType>
         </xs:element>

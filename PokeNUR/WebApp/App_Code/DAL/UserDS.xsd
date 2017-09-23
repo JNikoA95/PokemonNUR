@@ -5,7 +5,7 @@
       <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="PokeNUR_DBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PokeNUR_DBConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.PokeNUR_DBConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
-          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="System.Data.OleDb" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="System.Data.OleDb" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="UsuariosTableAdapter" GeneratorDataComponentClassName="UsuariosTableAdapter" Name="Usuarios" UserDataComponentName="UsuariosTableAdapter">
@@ -63,7 +63,7 @@
               <Mapping SourceColumn="password" DataSetColumn="password" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.mk_tblPokemonUsuario" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="mk_tblPokemonUsuario" Modifier="Public" Name="mk_tblPokemonUsuario" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="mk_tblPokemonUsuario">
+              <DbSource ConnectionRef="PokeNUR_DBConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.mk_tblPokemonUsuario" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="mk_tblPokemonUsuario" Modifier="Public" Name="mk_tblPokemonUsuario" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="mk_tblPokemonUsuario">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.mk_tblPokemonUsuario</CommandText>
@@ -79,7 +79,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="UsuarioRegTableAdapter" GeneratorDataComponentClassName="UsuarioRegTableAdapter" Name="UsuarioReg" UserDataComponentName="UsuarioRegTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.get_usuarioByNickName" DbObjectType="StoredProcedure" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="get_usuarioByNickName" GetMethodModifier="Public" GetMethodName="get_usuarioByNickName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="get_usuarioByNickName" UserSourceName="get_usuarioByNickName">
+              <DbSource ConnectionRef="PokeNUR_DBConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.get_usuarioByNickName" DbObjectType="StoredProcedure" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="get_usuarioByNickName" GetMethodModifier="Public" GetMethodName="get_usuarioByNickName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="get_usuarioByNickName" UserSourceName="get_usuarioByNickName">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.get_usuarioByNickName</CommandText>
@@ -102,7 +102,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="UsuarioByCorre_nickNameTableAdapter" GeneratorDataComponentClassName="UsuarioByCorre_nickNameTableAdapter" Name="UsuarioByCorre_nickName" UserDataComponentName="UsuarioByCorre_nickNameTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.get_tblUsuarioByCorre_nickName" DbObjectType="StoredProcedure" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetUser" GetMethodModifier="Public" GetMethodName="GetUser" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetUser" UserSourceName="GetUser">
+              <DbSource ConnectionRef="PokeNUR_DBConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.get_tblUsuarioByCorre_nickName" DbObjectType="StoredProcedure" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetUser" GetMethodModifier="Public" GetMethodName="GetUser" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetUser" UserSourceName="GetUser">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.get_tblUsuarioByCorre_nickName</CommandText>
@@ -132,7 +132,7 @@
   <xs:element name="UserDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="UserDS" msprop:Generator_UserDSName="UserDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Usuarios" msprop:Generator_TableClassName="UsuariosDataTable" msprop:Generator_TableVarName="tableUsuarios" msprop:Generator_RowChangedName="UsuariosRowChanged" msprop:Generator_TablePropName="Usuarios" msprop:Generator_RowDeletingName="UsuariosRowDeleting" msprop:Generator_RowChangingName="UsuariosRowChanging" msprop:Generator_RowEvHandlerName="UsuariosRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosRowDeleted" msprop:Generator_RowClassName="UsuariosRow" msprop:Generator_UserTableName="Usuarios" msprop:Generator_RowEvArgName="UsuariosRowChangeEvent">
+        <xs:element name="Usuarios" msprop:Generator_TableClassName="UsuariosDataTable" msprop:Generator_TableVarName="tableUsuarios" msprop:Generator_TablePropName="Usuarios" msprop:Generator_RowDeletingName="UsuariosRowDeleting" msprop:Generator_RowChangingName="UsuariosRowChanging" msprop:Generator_RowEvHandlerName="UsuariosRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosRowDeleted" msprop:Generator_UserTableName="Usuarios" msprop:Generator_RowChangedName="UsuariosRowChanged" msprop:Generator_RowEvArgName="UsuariosRowChangeEvent" msprop:Generator_RowClassName="UsuariosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="codigo_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncodigo_id" msprop:Generator_ColumnPropNameInRow="codigo_id" msprop:Generator_ColumnPropNameInTable="codigo_idColumn" msprop:Generator_UserColumnName="codigo_id" type="xs:int" />
@@ -167,7 +167,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="UsuarioReg" msprop:Generator_TableClassName="UsuarioRegDataTable" msprop:Generator_TableVarName="tableUsuarioReg" msprop:Generator_TablePropName="UsuarioReg" msprop:Generator_RowDeletingName="UsuarioRegRowDeleting" msprop:Generator_RowChangingName="UsuarioRegRowChanging" msprop:Generator_RowEvHandlerName="UsuarioRegRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuarioRegRowDeleted" msprop:Generator_UserTableName="UsuarioReg" msprop:Generator_RowChangedName="UsuarioRegRowChanged" msprop:Generator_RowEvArgName="UsuarioRegRowChangeEvent" msprop:Generator_RowClassName="UsuarioRegRow">
+        <xs:element name="UsuarioReg" msprop:Generator_TableClassName="UsuarioRegDataTable" msprop:Generator_TableVarName="tableUsuarioReg" msprop:Generator_RowChangedName="UsuarioRegRowChanged" msprop:Generator_TablePropName="UsuarioReg" msprop:Generator_RowDeletingName="UsuarioRegRowDeleting" msprop:Generator_RowChangingName="UsuarioRegRowChanging" msprop:Generator_RowEvHandlerName="UsuarioRegRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuarioRegRowDeleted" msprop:Generator_RowClassName="UsuarioRegRow" msprop:Generator_UserTableName="UsuarioReg" msprop:Generator_RowEvArgName="UsuarioRegRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="codigo_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncodigo_id" msprop:Generator_ColumnPropNameInRow="codigo_id" msprop:Generator_ColumnPropNameInTable="codigo_idColumn" msprop:Generator_UserColumnName="codigo_id" type="xs:int" />
@@ -202,7 +202,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="UsuarioByCorre_nickName" msprop:Generator_TableClassName="UsuarioByCorre_nickNameDataTable" msprop:Generator_TableVarName="tableUsuarioByCorre_nickName" msprop:Generator_RowChangedName="UsuarioByCorre_nickNameRowChanged" msprop:Generator_TablePropName="UsuarioByCorre_nickName" msprop:Generator_RowDeletingName="UsuarioByCorre_nickNameRowDeleting" msprop:Generator_RowChangingName="UsuarioByCorre_nickNameRowChanging" msprop:Generator_RowEvHandlerName="UsuarioByCorre_nickNameRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuarioByCorre_nickNameRowDeleted" msprop:Generator_RowClassName="UsuarioByCorre_nickNameRow" msprop:Generator_UserTableName="UsuarioByCorre_nickName" msprop:Generator_RowEvArgName="UsuarioByCorre_nickNameRowChangeEvent">
+        <xs:element name="UsuarioByCorre_nickName" msprop:Generator_TableClassName="UsuarioByCorre_nickNameDataTable" msprop:Generator_TableVarName="tableUsuarioByCorre_nickName" msprop:Generator_TablePropName="UsuarioByCorre_nickName" msprop:Generator_RowDeletingName="UsuarioByCorre_nickNameRowDeleting" msprop:Generator_RowChangingName="UsuarioByCorre_nickNameRowChanging" msprop:Generator_RowEvHandlerName="UsuarioByCorre_nickNameRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuarioByCorre_nickNameRowDeleted" msprop:Generator_UserTableName="UsuarioByCorre_nickName" msprop:Generator_RowChangedName="UsuarioByCorre_nickNameRowChanged" msprop:Generator_RowEvArgName="UsuarioByCorre_nickNameRowChangeEvent" msprop:Generator_RowClassName="UsuarioByCorre_nickNameRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="codigo_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncodigo_id" msprop:Generator_ColumnPropNameInRow="codigo_id" msprop:Generator_ColumnPropNameInTable="codigo_idColumn" msprop:Generator_UserColumnName="codigo_id" type="xs:int" />
