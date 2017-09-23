@@ -5,8 +5,7 @@
 <html>
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>PokeNUR
-    </title>
+    <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -14,8 +13,7 @@
     <form id="form1" runat="server">
     <div>
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-            <asp:LinkButton ID="Registrarse" runat="server">Registrarme</asp:LinkButton>
-            <asp:LinkButton ID="btnSalir" runat="server" OnClick="btnSalir_Click">Salir</asp:LinkButton>
+        
         </asp:ContentPlaceHolder>
     </div>
     </form>

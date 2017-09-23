@@ -11,4 +11,27 @@ public partial class Pages_Seleccion : System.Web.UI.Page
     {
 
     }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        // fuego agua planta
+        string pokemon = RadioButtonList1.SelectedValue;
+
+        if (pokemon.Equals("Fuego"))
+
+
+            PokemonUsuarioBRL.insrtUsuarioPokemon(2, 1);
+
+
+        if (pokemon.Equals("Agua"))
+
+
+            PokemonUsuarioBRL.insrtUsuarioPokemon(2, 2);
+
+
+        if (pokemon.Equals("Planta"))
+
+
+            PokemonUsuarioBRL.insrtUsuarioPokemon(2, 3);
+    }
 }

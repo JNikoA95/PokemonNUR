@@ -73,6 +73,8 @@ public partial class Pages_RecuperarContraseña : System.Web.UI.Page
             return;
         }
         RecuperarContraseñaBRL.cambiarContraseña(txtCorreo.Text, contraseñaNueva.Text);
+        Response.Write("<script>window.alert('Cambio Exitoso!!');</script>");
+
         Response.Redirect("login.aspx");
     }
 }
