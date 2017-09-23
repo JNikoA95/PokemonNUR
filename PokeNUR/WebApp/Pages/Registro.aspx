@@ -15,11 +15,11 @@
             <br />
             <asp:Label ID="lbNickName" runat="server" Text="Nombre de Usuario"></asp:Label>
             <asp:TextBox ID="txtNickName" runat="server"></asp:TextBox>
-            <asp:Label ID="lbMensajeNickName" runat="server" Text="El nombre de usuario ya esta ocupado" Visible="false"></asp:Label>
+            <asp:Label ID="lbMensajeNickName" runat="server" Text="El nombre de usuario ya esta ocupado" Visible="false" ForeColor="Red"></asp:Label>
             <br />
             <asp:Label ID="lbCorreo" runat="server" Text="Correo Electronico"></asp:Label>
             <asp:TextBox ID="txtCorreo" runat="server"></asp:TextBox>
-            <asp:Label ID="lbMensajeCorreo" runat="server" Text="El ya esta registrado" Visible="false"></asp:Label>
+            <asp:Label ID="lbMensajeCorreo" runat="server" Text="El ya esta registrado" Visible="false" ForeColor="Red"></asp:Label>
             <br />
             <asp:Label ID="lbPassword" runat="server" Text="Password"></asp:Label>
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>

@@ -26,6 +26,6 @@ public partial class Pages_login : System.Web.UI.Page
         }
 
         Seguridad.SetUserInSession(objUsuario);
-        Response.Redirect(url:"Default.aspx");
+        Response.Redirect("Default.aspx");
     }
 }
