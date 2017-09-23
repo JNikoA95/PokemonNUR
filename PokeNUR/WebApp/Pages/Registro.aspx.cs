@@ -17,9 +17,9 @@ public partial class Pages_Registro : System.Web.UI.Page
 
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
-        Usuario usuarioData = UsuarioBRL.getUserData(txtCorreo.Text, txtNickName.Text);
+        Usuario userData = UsuarioBRL.getUserData(txtCorreo.Text, txtNickName.Text);
 
-        if (usuarioData == null)
+        if (userData == null)
         {
             Usuario nuevo = new Usuario()
             {
@@ -36,8 +36,13 @@ public partial class Pages_Registro : System.Web.UI.Page
         else
         {
             lbMensajeNickName.Visible = true;
-            lbMensajeCorreo.Visible = true;
-        }
 
+
+
+            lbMensajeCorreo.Visible = true;
+
+
+
+        }
     }
 }

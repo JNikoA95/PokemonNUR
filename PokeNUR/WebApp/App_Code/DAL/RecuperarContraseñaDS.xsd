@@ -2,14 +2,15 @@
 <xs:schema id="RecuperarContraseña" targetNamespace="http://tempuri.org/RecuperarContraseña.xsd" xmlns:mstns="http://tempuri.org/RecuperarContraseña.xsd" xmlns="http://tempuri.org/RecuperarContraseña.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="System.Data.OleDb" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="PokeNUR_DBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PokeNUR_DBConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.PokeNUR_DBConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CodRecuperacionTableAdapter" GeneratorDataComponentClassName="CodRecuperacionTableAdapter" Name="CodRecuperacion" UserDataComponentName="CodRecuperacionTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.mk_tblCodRecuperacion" DbObjectType="StoredProcedure" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="pCodigosRec" GetMethodModifier="Public" GetMethodName="pCodigosRec" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="pCodigosRec" UserSourceName="pCodigosRec">
+              <DbSource ConnectionRef="PokeNUR_DBConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.mk_tblCodRecuperacion" DbObjectType="StoredProcedure" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="pCodigosRec" GetMethodModifier="Public" GetMethodName="pCodigosRec" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="pCodigosRec" UserSourceName="pCodigosRec">
                 <InsertCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.mk_tblCodRecuperacion</CommandText>
@@ -34,7 +35,7 @@
             </MainSource>
             <Mappings />
             <Sources>
-              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.getExistCodigo_tblUsuarios" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="getExistCodigo_tblUsuarios" Modifier="Public" Name="getExistCodigo_tblUsuarios" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="getExistCodigo_tblUsuarios">
+              <DbSource ConnectionRef="PokeNUR_DBConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.getExistCodigo_tblUsuarios" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="getExistCodigo_tblUsuarios" Modifier="Public" Name="getExistCodigo_tblUsuarios" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="getExistCodigo_tblUsuarios">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.getExistCodigo_tblUsuarios</CommandText>
@@ -47,7 +48,7 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.getExistCorreo_tblUsuarios" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="getExistCorreo_tblUsuarios" Modifier="Public" Name="getExistCorreo_tblUsuarios" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="getExistCorreo_tblUsuarios">
+              <DbSource ConnectionRef="PokeNUR_DBConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.getExistCorreo_tblUsuarios" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="getExistCorreo_tblUsuarios" Modifier="Public" Name="getExistCorreo_tblUsuarios" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="getExistCorreo_tblUsuarios">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.getExistCorreo_tblUsuarios</CommandText>
@@ -59,7 +60,7 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.getIdByCorreo_tblUsuarios" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="getIdByCorreo_tblUsuarios" Modifier="Public" Name="getIdByCorreo_tblUsuarios" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="getIdByCorreo_tblUsuarios">
+              <DbSource ConnectionRef="PokeNUR_DBConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.getIdByCorreo_tblUsuarios" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="getIdByCorreo_tblUsuarios" Modifier="Public" Name="getIdByCorreo_tblUsuarios" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="getIdByCorreo_tblUsuarios">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.getIdByCorreo_tblUsuarios</CommandText>
@@ -71,7 +72,7 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.upd_password_tblUsuarios" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="upd_password_tblUsuarios" Modifier="Public" Name="upd_password_tblUsuarios" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="upd_password_tblUsuarios">
+              <DbSource ConnectionRef="PokeNUR_DBConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.upd_password_tblUsuarios" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="upd_password_tblUsuarios" Modifier="Public" Name="upd_password_tblUsuarios" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="upd_password_tblUsuarios">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.upd_password_tblUsuarios</CommandText>
@@ -83,7 +84,7 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.val_CodRecuperacion" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="val_CodRecuperacion" Modifier="Public" Name="val_CodRecuperacion" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="val_CodRecuperacion">
+              <DbSource ConnectionRef="PokeNUR_DBConnectionString (Web.config)" DbObjectName="PokeNUR_DB.dbo.val_CodRecuperacion" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="val_CodRecuperacion" Modifier="Public" Name="val_CodRecuperacion" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="val_CodRecuperacion">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.val_CodRecuperacion</CommandText>
