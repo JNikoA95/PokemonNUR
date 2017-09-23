@@ -37,12 +37,7 @@ public partial class Pages_Registro : System.Web.UI.Page
         {
             lbMensajeNickName.Visible = true;
 
-
-
             lbMensajeCorreo.Visible = true;
-
-
-
         }
     }
 }

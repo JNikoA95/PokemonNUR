@@ -66,7 +66,7 @@ public class UsuarioBRL
         UserDSTableAdapters.UsuarioByCorre_nickNameTableAdapter adapter = new UserDSTableAdapters.UsuarioByCorre_nickNameTableAdapter();
         UserDS.UsuarioByCorre_nickNameDataTable table = adapter.GetUser(correo, nickName);
 
-        if (table.Rows.Count != 1)
+        if (table.Rows.Count == 1)
         {
             UserDS.UsuarioByCorre_nickNameRow row = table[0];
             user = new Usuario()
