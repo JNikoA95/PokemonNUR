@@ -14,7 +14,7 @@
 
                 <h2 class="form-signin-heading">Login</h2>
                 <asp:Label runat="server" AssociatedControlID="txtUsuario" class="sr-only">Nombre de Usuario</asp:Label>
-                <asp:TextBox runat="server" ID="txtUsuario" CssClass="form-control" placeholder="Nombre o Nick" autofocus="autofocus"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtUsuario" CssClass="form-control" placeholder="Nick" autofocus="autofocus"></asp:TextBox>
                 <br />
                 <br />
                 <asp:Label runat="server" AssociatedControlID="txtPassword" class="sr-only">Contraseña</asp:Label>

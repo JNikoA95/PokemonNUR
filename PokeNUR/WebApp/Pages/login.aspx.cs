@@ -9,12 +9,13 @@ public partial class Pages_login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Seguridad.ThereAreUserInSession())
+            Response.Redirect("Seleccion.aspx");
     }
     protected void BtnLogin_Click(object sender, EventArgs e)
     {
         MsgLabel.Visible = false;
-        string usuario = txtPassword.Text;
+        string usuario = txtUsuario.Text;
         string password = txtPassword.Text;
 
         Usuario objUsuario = Seguridad.IsUserValid(usuario, password);

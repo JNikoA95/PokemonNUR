@@ -4,6 +4,7 @@
     Seleccion de pokemon
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:LinkButton ID="BtnLogout" runat="server" OnClick="BtnLogout_Click">Salir</asp:LinkButton>
             Elija un PokeHuevo
         <div class="fuego">
             <asp:Image ID="fuego" runat="server" />

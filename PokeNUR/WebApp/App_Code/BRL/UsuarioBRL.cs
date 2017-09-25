@@ -33,14 +33,14 @@ public class UsuarioBRL
         adapter.Delete(codigo_id);
     }
 
-    public static Usuario getUsuarioByNick(string nick) {
-        if (string.IsNullOrEmpty(nick))
+    public static Usuario getUsuarioByNick(string nick, string pass) {
+        if (string.IsNullOrEmpty(nick) || string.IsNullOrEmpty(pass))
         {
-            throw new ArgumentException("El nombre de usuario no puede ser nulo");
+            throw new ArgumentException("No puede existir campos nulo");
 
         }
         UserDSTableAdapters.UsuarioRegTableAdapter adapter = new UserDSTableAdapters.UsuarioRegTableAdapter();
-        UserDS.UsuarioRegDataTable table = adapter.get_usuarioByNickName(nick);
+        UserDS.UsuarioRegDataTable table = adapter.get_usuarioByNickName(nick, pass);
 
         Usuario user = null;
         //Deberia dar como resulado 1

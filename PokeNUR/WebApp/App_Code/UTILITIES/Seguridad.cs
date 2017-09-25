@@ -15,14 +15,14 @@ public class Seguridad
 		//
 	}
 
-    public static Usuario IsUserValid(string nick, string password)
+    public static Usuario IsUserValid(string nick, string pass)
     {
          
         try
         {
-           Usuario usr = UsuarioBRL.getUsuarioByNick(nick);
+           Usuario usr = UsuarioBRL.getUsuarioByNick(nick,pass);
             //dice que no son iguales y se sale
-           if (usr != null && usr.Password == password)
+           if (usr != null )
            {
                return usr;
            }

@@ -34,4 +34,12 @@ public partial class Pages_Seleccion : System.Web.UI.Page
 
             PokemonUsuarioBRL.insrtUsuarioPokemon(2, 3);
     }
+
+   
+
+    protected void BtnLogout_Click(object sender, EventArgs e)
+    {
+        Seguridad.Logout();
+        Response.Redirect("login.aspx");
+    }
 }
