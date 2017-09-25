@@ -31,18 +31,13 @@ public partial class Pages_Registro : System.Web.UI.Page
 
             UsuarioBRL.insrtUsuario(nuevo);
 
-            Response.Redirect("Registro.aspx");
+            Response.Redirect("login.aspx");
         }
         else
         {
             lbMensajeNickName.Visible = true;
 
-
-
             lbMensajeCorreo.Visible = true;
-
-
-
         }
     }
 }

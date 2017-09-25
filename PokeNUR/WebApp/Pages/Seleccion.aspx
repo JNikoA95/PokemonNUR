@@ -20,6 +20,6 @@
             <asp:ListItem>Planta</asp:ListItem>
         </asp:RadioButtonList>
         
-        <asp:Button CssClass="btnSeleccion" ID="Button1" runat="server" Text="Hecho" />
+        <asp:Button CssClass="btnSeleccion" ID="Button1" runat="server" Text="Hecho" OnClick="Button1_Click" />
 </asp:Content>
 
