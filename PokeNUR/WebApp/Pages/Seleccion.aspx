@@ -1,26 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.master" AutoEventWireup="true" CodeFile="Seleccion.aspx.cs" Inherits="Pages_Seleccion" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    Seleccion de pokemon
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:LinkButton ID="BtnLogout" runat="server" OnClick="BtnLogout_Click">Salir</asp:LinkButton>
-            Elija un PokeHuevo
-        <div class="fuego">
-            <asp:Image ID="fuego" runat="server" />
-        </div>
-        <div class="agua">
-            <asp:Image ID="Image2" runat="server" />
-        </div>
-        <div class="planta">
-            <asp:Image ID="Image3" runat="server" />
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <h1 class="title">Seleccion de pokemon </h1>
+    <div class="container">
+        <asp:LinkButton CssClass="links" ID="BtnLogout" runat="server" OnClick="BtnLogout_Click">Salir</asp:LinkButton>
+        <br><br>Elija un PokeHuevo
+        <div class="huevo">
+            <img class="img-huevo" src="../App_Themes/Style/img/aaahuevo.png" />
         </div>
         <asp:RadioButtonList CssClass="cbox" ID="RadioButtonList1" runat="server" Height="64px" Width="104px">
-            <asp:ListItem>Fuego</asp:ListItem>
-            <asp:ListItem>Agua</asp:ListItem>
-            <asp:ListItem>Planta</asp:ListItem>
+            <asp:ListItem Value="1" Selected="True">Fuego</asp:ListItem>
+            <asp:ListItem Value="2">Agua</asp:ListItem>
+            <asp:ListItem Value="3">Planta</asp:ListItem>
         </asp:RadioButtonList>
-        
-        <asp:Button CssClass="btnSeleccion" ID="Button1" runat="server" Text="Hecho" OnClick="Button1_Click" />
+
+        <asp:Button CssClass="boton" ID="Button1" runat="server" Text="Hecho" OnClick="Button1_Click" />
+    </div>
 </asp:Content>
 

@@ -9,8 +9,16 @@ public partial class Pages_login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Seguridad.ThereAreUserInSession())
-            Response.Redirect("Seleccion.aspx");
+        if (Seguridad.ThereAreUserInSession()) {
+            if(PokemonUsuarioBRL.getUsuarioPokemon(Seguridad.GetUserInSession().NickName, Seguridad.GetUserInSession().Password) == 0) { 
+                Response.Redirect("Seleccion.aspx");
+            }
+            else
+            {
+                Response.Redirect("Default.aspx");
+            }
+        }
+            
     }
     protected void BtnLogin_Click(object sender, EventArgs e)
     {
@@ -27,6 +35,15 @@ public partial class Pages_login : System.Web.UI.Page
         }
 
         Seguridad.SetUserInSession(objUsuario);
-        Response.Redirect("Seleccion.aspx");
-    }
+
+        if (PokemonUsuarioBRL.getUsuarioPokemon(Seguridad.GetUserInSession().NickName, Seguridad.GetUserInSession().Password) == 0)
+        {
+
+            Response.Redirect("Seleccion.aspx");
+        }
+        else
+        {
+            Response.Redirect("Default.aspx");
+        }
+        }
 }

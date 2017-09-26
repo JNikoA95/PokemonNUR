@@ -1,14 +1,15 @@
-﻿*{
+﻿* {
     padding: 0px;
     margin: 0px;
 }
-body{
+
+body {
     font-family: sans-serif;
     padding-bottom: 5px;
     background-color: #192d36;
 }
 
-.head{
+.head {
     background-color: #283b6d;
     padding: 15px;
     color: #192d36;
@@ -17,26 +18,20 @@ body{
     -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 55px 0px rgba(0, 0, 0, 0.5);
 }
-.title{
+
+.title {
     text-align: center;
     font-family: Conv_Pokemon;
     font-weight: 100;
     color: yellow;
     font-size: 90px;
-    float: left;
-    margin-left: 40%;
     margin-bottom: 40px;
     margin-top: 0px;
-    position: relative;
     z-index: 1;
-    text-shadow:
-        -2px -1px 0 #000000,
-        2px -1px 0 #000000,
-        -2px 1px 0 #000000,
-        2px 1px 0 #000000;
+    text-shadow: -2px -1px 0 #000000, 2px -1px 0 #000000, -2px 1px 0 #000000, 2px 1px 0 #000000;
 }
 
-.subtitle{
+.subtitle {
     text-align: center;
     font-family: Conv_Pokemon;
     font-weight: 100;
@@ -46,13 +41,10 @@ body{
     margin-left: 46%;
     margin-top: 90px;
     z-index: 0;
-    text-shadow:
-        -1px -1px 0 #000000,
-        1px -1px 0 #000000,
-        -1px 1px 0 #000000,
-        1px 1px 0 #000000;
+    text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
 }
-.desc{
+
+.desc {
     font-weight: normal;
     margin-left: auto;
     margin-right: auto;
@@ -66,7 +58,98 @@ body{
     -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.74);
 }
-.container1{
+
+.imputs {
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    border-width: 0px;
+    padding: 5px;
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.25);
+}
+
+.boton-container {
+    width: 100%;
+    text-align: center;
+}
+
+#ContentPlaceHolder1_RadioButtonList1_0:checked + img-huevo{
+    background-color: red;
+}
+
+#ContentPlaceHolder1_RadioButtonList1_1:checked + img-huevo{
+    background-color: blue;
+}
+
+#ContentPlaceHolder1_RadioButtonList1_2:checked + img-huevo{
+    background-color: green;
+}
+
+.cbox {
+
+}
+
+.img-huevo {
+    width: 100px;
+    margin: 20px;
+}
+
+.boton {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: Conv_Pokemon;
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    margin: auto;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background: #192d36;
+    color: white;
+    border-width: 0px;
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.boton1 {
+    font-size: 20px;
+    text-transform: CAPITALIZE;
+    font-family: Conv_Pokemon;
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+    margin: auto;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background: #192d36;
+    color: white;
+    border-width: 0px;
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.links {
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.container {
+    text-align: center;
+    margin: auto;
+    width: 25%;
+    margin-top: 50px;
+    padding: 20px;
+    background: darkcyan;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.74);
+}
+
+.container1 {
     overflow: hidden;
     width: 250px;
     height: 500px;
@@ -83,7 +166,7 @@ body{
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.74);
 }
 
-.img{
+.img {
     height: 160px;
     width: 150px;
     padding: 20px;
@@ -95,58 +178,62 @@ body{
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-
-}
-.img img{
-
-    width: 100%;
-    height: 80%;
-    border-radius: 50%;
 }
 
-.feat{
+    .img img {
+        width: 100%;
+        height: 80%;
+        border-radius: 50%;
+    }
+
+.feat {
     background-color: black;
 }
-.pie img{
+
+.pie img {
     margin-bottom: 18px;
 }
-.cont-feat{
+
+.cont-feat {
     margin-left: auto;
     margin-right: auto;
-    text-align:center;
+    text-align: center;
     width: 200px;
     padding: 10px;
 }
 
-.dir{
+.dir {
     text-decoration: none;
     color: #fff;
 }
 
-.user{
+.user {
     margin-left: auto;
     margin-right: auto;
     width: 95%;
 }
 
-.info{
+.info {
     margin-top: 25px;
     margin-bottom: 15px;
 }
 
-.info h2{
-    margin-bottom: 10px;
+    .info h2 {
+        margin-bottom: 10px;
+    }
+
+.block1 {
+    background-color: #9d1515;
 }
 
-.block1{
-    background-color: #9d1515;
-}
-.block2{
+.block2 {
     background-color: #f1441c;
 }
-.block3{
+
+.block3 {
     background-color: #9d1515;
 }
-.block4{
+
+.block4 {
     background-color: #f1441c;
 }

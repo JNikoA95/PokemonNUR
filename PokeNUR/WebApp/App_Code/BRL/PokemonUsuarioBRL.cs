@@ -21,5 +21,13 @@ public class PokemonUsuarioBRL
         adapter.mk_tblPokemonUsuario(idUsuario, idPokemon);
     }
 
-    
+    public static int getUsuarioPokemon(string nick, string pass)
+    {
+        UserDSTableAdapters.PokemonByUserTableAdapter adapter = new UserDSTableAdapters.PokemonByUserTableAdapter();
+        UserDS.PokemonByUserDataTable table = adapter.GetDataPokemonUser(nick, pass);
+        
+        int? total = table.Rows.Count;
+
+        return total.Value;
+    }
 }

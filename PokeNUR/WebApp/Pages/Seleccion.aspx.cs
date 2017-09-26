@@ -18,24 +18,18 @@ public partial class Pages_Seleccion : System.Web.UI.Page
         string pokemon = RadioButtonList1.SelectedValue;
 
         if (pokemon.Equals("Fuego"))
-
-
-            PokemonUsuarioBRL.insrtUsuarioPokemon(2, 1);
+            PokemonUsuarioBRL.insrtUsuarioPokemon(Seguridad.GetUserInSession().Codigo_id, 1);
 
 
         if (pokemon.Equals("Agua"))
-
-
-            PokemonUsuarioBRL.insrtUsuarioPokemon(2, 2);
+            PokemonUsuarioBRL.insrtUsuarioPokemon(Seguridad.GetUserInSession().Codigo_id, 2);
 
 
         if (pokemon.Equals("Planta"))
+            PokemonUsuarioBRL.insrtUsuarioPokemon(Seguridad.GetUserInSession().Codigo_id, 3);
 
-
-            PokemonUsuarioBRL.insrtUsuarioPokemon(2, 3);
+        Response.Redirect("Default.aspx");
     }
-
-   
 
     protected void BtnLogout_Click(object sender, EventArgs e)
     {

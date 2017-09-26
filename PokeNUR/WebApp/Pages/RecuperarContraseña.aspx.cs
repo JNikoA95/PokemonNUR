@@ -14,9 +14,9 @@ public partial class Pages_RecuperarContraseña : System.Web.UI.Page
 
     protected void Unnamed1_Click(object sender, EventArgs e)
     {
-        if (txtCorreo.Text.Trim().Equals(""))
+        if (txtCorreo.Text.Trim().Equals("") || txtCorreo.Text.Trim().Length > 150)
         {
-            Response.Write("<script>window.alert('Campos vacios encontrados. Ingrese la informacion necesaria');</script>");
+            Response.Write("<script>window.alert('Ingrese la informacion necesaria correctamente');</script>");
             return;
         }
 
@@ -28,7 +28,8 @@ public partial class Pages_RecuperarContraseña : System.Web.UI.Page
         }
         else {
             
-            RecuperarContraseñaBRL.insesrtCodigo(txtCorreo.Text);
+            RecuperarContraseñaBRL.insesrtCodigo(txtCorreo.Text.Trim());
+            
             codigoValido.Visible = true;
             campoCorreo.Visible = true;
         }
@@ -37,9 +38,9 @@ public partial class Pages_RecuperarContraseña : System.Web.UI.Page
 
     protected void Unnamed2_Click(object sender, EventArgs e)
     {
-        if (txtCorreo.Text.Trim().Equals("") || codigoR.Text.Trim().Equals(""))
+        if (txtCorreo.Text.Trim().Equals("") || codigoR.Text.Trim().Equals("") || codigoR.Text.Trim().Length > 20 || txtCorreo.Text.Trim().Length > 150)
         {
-            Response.Write("<script>window.alert('Campos vacios encontrados. Ingrese la informacion necesaria');</script>");
+            Response.Write("<script>window.alert('Ingrese la informacion necesaria correctamente');</script>");
             return;
         }
 
@@ -67,12 +68,12 @@ public partial class Pages_RecuperarContraseña : System.Web.UI.Page
 
     protected void Unnamed3_Click(object sender, EventArgs e)
     {
-        if (nueva.Text.Trim().Equals(""))
+        if (nueva.Text.Trim().Equals("") || nueva.Text.Trim().Length > 50)
         {
-            Response.Write("<script>window.alert('Campos vacios encontrados. Ingrese la informacion necesaria');</script>");
+            Response.Write("<script>window.alert('Ingrese la informacion necesaria correctamente.');</script>");
             return;
         }
-        RecuperarContraseñaBRL.cambiarContraseña(txtCorreo.Text, contraseñaNueva.Text);
+        RecuperarContraseñaBRL.cambiarContraseña(txtCorreo.Text.Trim(), contraseñaNueva.Text.Trim());
         Response.Write("<script>window.alert('Cambio Exitoso!!');</script>");
 
         Response.Redirect("login.aspx");

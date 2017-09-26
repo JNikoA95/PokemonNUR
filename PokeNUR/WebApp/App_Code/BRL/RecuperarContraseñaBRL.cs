@@ -18,9 +18,9 @@ public class RecuperarContraseñaBRL
     public static void insesrtCodigo(string correo)
     {
         int? salida = 0;
-        string codigo = System.Web.Security.Membership.GeneratePassword(10, 0);
-        CorreoM mail = new CorreoM(correo.ToString()+"", "PokeNUR - Tu Codigo de Recuperacion", "Este es el codigo que debe ingresar para hacer posible su cambio de contraseña : " + codigo +
-            "."+ "\n\nEl codigo sera valido solo por 10min. ");
+        string codigo =  System.Web.Security.Membership.GeneratePassword(10, 0);
+        
+        CorreoM mail = new CorreoM(correo.ToString()+"", "PokeNUR - Tu Codigo de Recuperacion", "Este es el codigo que debe ingresar para hacer posible su cambio de contraseña:   " + codigo);
 
         if (!mail.Estado)
         {

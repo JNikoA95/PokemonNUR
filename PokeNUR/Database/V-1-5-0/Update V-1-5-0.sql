@@ -8,7 +8,7 @@ GO
 USE [PokeNUR_DB]
 GO
 
-PRINT 'Actualizando a la version 1.3.0'
+PRINT 'Actualizando a la version 1.5.0'
 
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_VERSION_GetVersion]') AND type in (N'P', N'PC'))
 BEGIN
@@ -37,10 +37,10 @@ BEGIN
 END
 
 
-IF @intVersionMayor IS NULL OR @intVersionMenor IS NULL OR NOT (@intVersionMayor = 1 AND @intVersionMenor = 2)
+IF @intVersionMayor IS NULL OR @intVersionMenor IS NULL OR NOT (@intVersionMayor = 1 AND @intVersionMenor = 4)
 BEGIN
 	
-	RAISERROR('La base de datos no esta en la version 1.2. Este script solamente se aplica a la version 1.2',16,127)
+	RAISERROR('La base de datos no esta en la version 1.4. Este script solamente se aplica a la version 1.4',16,127)
 	RETURN;
 
 END
