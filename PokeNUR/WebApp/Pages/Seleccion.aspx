@@ -11,9 +11,9 @@
             <img class="img-huevo" src="../App_Themes/Style/img/aaahuevo.png" />
         </div>
         <asp:RadioButtonList CssClass="cbox" ID="RadioButtonList1" runat="server" Height="64px" Width="104px">
-            <asp:ListItem Value="1" Selected="True">Fuego</asp:ListItem>
-            <asp:ListItem Value="2">Agua</asp:ListItem>
-            <asp:ListItem Value="3">Planta</asp:ListItem>
+            <asp:ListItem Selected="True">Fuego</asp:ListItem>
+            <asp:ListItem>Agua</asp:ListItem>
+            <asp:ListItem>Planta</asp:ListItem>
         </asp:RadioButtonList>
 
         <asp:Button CssClass="boton" ID="Button1" runat="server" Text="Hecho" OnClick="Button1_Click" />
