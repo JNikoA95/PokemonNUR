@@ -1,45 +1,33 @@
-DO
-$do$
-BEGIN
-   IF EXISTS (SELECT 1 FROM pg_database WHERE datname = 'PokeNUR_DB') THEN
-      RAISE NOTICE 'Database already exists'; 
-   ELSE
-      PERFORM dblink_exec('dbname=' || current_database()  -- current db
-                        , 'CREATE DATABASE PokeNUR_DB');
-   END IF;
-END
-$do$;
-
 -- Creacion de Tablas
 
 CREATE TABLE tblUsuarios(
 	codigo_id bigint PRIMARY KEY NOT NULL,
     username text NOT NULL,
     contraseña text NOT NULL
-)
+);
 
 CREATE TABLE tblPokemones(
 	codigo_id bigint PRIMARY KEY NOT NULL,
     nombre text NOT NULL
-)
+);
 
 CREATE TABLE tblItems(
 	codigo_id bigint PRIMARY KEY NOT NULL,
     nombreItem text NOT NULL,
     precio bigint NOT NULL
-)
+);
 
 CREATE TABLE tblTipo(
 	codigo_id bigint PRIMARY KEY NOT NULL,
     nombreTipo text NOT NULL
-)
+);
 
 CREATE TABLE tblAtaques(
 	codigo_id bigint PRIMARY KEY NOT NULL,
     nombre text NOT NULL,
     tipo_id bigint NOT NULL,
     FOREIGN KEY (tipo_id) REFERENCES tblTipo(codigo_id)
-)
+);
 
 CREATE TABLE tblBatallas(
 	codigo_id bigint PRIMARY KEY NOT NULL,
@@ -47,7 +35,7 @@ CREATE TABLE tblBatallas(
     jugador2_id bigint NOT NULL,
     FOREIGN KEY (jugador1_id) REFERENCES tblUsuarios(codigo_id),
     FOREIGN KEY (jugador2_id) REFERENCES tblUsuarios(codigo_id)
-)
+);
 
 CREATE TABLE tblPokemonAtaque(
     codigo_id bigint NOT NULL PRIMARY KEY,
@@ -55,7 +43,7 @@ CREATE TABLE tblPokemonAtaque(
     ataque_id bigint NOT NULL,
     FOREIGN KEY (pokemon_id) REFERENCES tblPokemones(codigo_id),
     FOREIGN KEY (ataque_id) REFERENCES tblAtaques(codigo_id)
-)
+);
 
 CREATE TABLE tblItemsUsuario(
     codigo_id bigint NOT NULL PRIMARY KEY,
@@ -64,7 +52,7 @@ CREATE TABLE tblItemsUsuario(
     cantidad int NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES tblUsuarios(codigo_id),
     FOREIGN KEY (item_id) REFERENCES tblItems(codigo_id)
-)
+);
 
 CREATE TABLE tblTipoPokemon(
     codigo_id bigint NOT NULL PRIMARY KEY,
@@ -72,7 +60,7 @@ CREATE TABLE tblTipoPokemon(
     tipo_id bigint NOT NULL,
     FOREIGN KEY (pokemon_id) REFERENCES tblPokemones(codigo_id),
     FOREIGN KEY (tipo_id) REFERENCES tblTipo(codigo_id)
-)
+);
 
 
 CREATE TABLE tblTipoAtaque(
@@ -81,7 +69,7 @@ CREATE TABLE tblTipoAtaque(
     tipo_id bigint NOT NULL,
     FOREIGN KEY (ataque_id) REFERENCES tblataques(codigo_id),
     FOREIGN KEY (tipo_id) REFERENCES tblTipo(codigo_id)
-)
+);
 
 CREATE TABLE tblUsuarioPokemon(
     codigo_id bigint NOT NULL PRIMARY KEY,
@@ -89,7 +77,13 @@ CREATE TABLE tblUsuarioPokemon(
     pokemon_id bigint NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES tblUsuarios(codigo_id),
     FOREIGN KEY (pokemon_id) REFERENCES tblPokemones(codigo_id)
-)
+);
+
+CREATE TABLE tblVersiones(
+	versionMayor int,
+    versionMenor int,
+    patch int
+);
 
 -- Creacion de Procedimientos
 
@@ -101,10 +95,6 @@ CREATE OR REPLACE FUNCTION public.mk_tblataques(
 	p_tipo_id bigint)
     RETURNS integer
     LANGUAGE 'plpgsql'
-
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
 DECLARE keyp INT;  BEGIN IF p_codigo_id=0 THEN INSERT INTO public.tblataques(nombre,tipo_id) VALUES (p_nombre,p_tipo_id) ;  keyp:=CURRVAL('tblataques_codigo_id_seq');RETURN keyp; ELSE UPDATE public.tblataques SET nombre = p_nombre,tipo_id = p_tipo_id WHERE codigo_id = p_codigo_id; RETURN p_codigo_id; END IF; END; 
 $BODY$;
@@ -118,9 +108,6 @@ CREATE OR REPLACE FUNCTION public.mk_tblbatallas(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
 DECLARE keyp INT;  BEGIN IF p_codigo_id=0 THEN INSERT INTO public.tblbatallas(jugador1_id,jugador2_id) VALUES (p_jugador1_id,p_jugador2_id) ;  keyp:=CURRVAL('tblbatallas_codigo_id_seq');RETURN keyp; ELSE UPDATE public.tblbatallas SET jugador1_id = p_jugador1_id,jugador2_id = p_jugador2_id WHERE codigo_id = p_codigo_id; RETURN p_codigo_id; END IF; END; 
 $BODY$;
@@ -134,9 +121,6 @@ CREATE OR REPLACE FUNCTION public.mk_tblitems(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
 DECLARE keyp INT;  BEGIN IF p_codigo_id=0 THEN INSERT INTO public.tblitems(nombreitem,precio) VALUES (p_nombreitem,p_precio) ;  keyp:=CURRVAL('tblitems_codigo_id_seq');RETURN keyp; ELSE UPDATE public.tblitems SET nombreitem = p_nombreitem,precio = p_precio WHERE codigo_id = p_codigo_id; RETURN p_codigo_id; END IF; END; 
 $BODY$;
@@ -151,9 +135,6 @@ CREATE OR REPLACE FUNCTION public.mk_tblitemsusuario(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
 DECLARE keyp INT;  BEGIN IF p_codigo_id=0 THEN INSERT INTO public.tblitemsusuario(usuario_id,item_id,cantidad) VALUES (p_usuario_id,p_item_id,p_cantidad) ;  keyp:=CURRVAL('tblitemsusuario_codigo_id_seq');RETURN keyp; ELSE UPDATE public.tblitemsusuario SET usuario_id = p_usuario_id,item_id = p_item_id,cantidad = p_cantidad WHERE codigo_id = p_codigo_id; RETURN p_codigo_id; END IF; END; 
 $BODY$;
@@ -167,9 +148,6 @@ CREATE OR REPLACE FUNCTION public.mk_tblpokemonataque(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
 DECLARE keyp INT;  BEGIN IF p_codigo_id=0 THEN INSERT INTO public.tblpokemonataque(pokemon_id,ataque_id) VALUES (p_pokemon_id,p_ataque_id) ;  keyp:=CURRVAL('tblpokemonataque_codigo_id_seq');RETURN keyp; ELSE UPDATE public.tblpokemonataque SET pokemon_id = p_pokemon_id,ataque_id = p_ataque_id WHERE codigo_id = p_codigo_id; RETURN p_codigo_id; END IF; END; 
 $BODY$;
@@ -182,9 +160,6 @@ CREATE OR REPLACE FUNCTION public.mk_tblpokemones(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
 DECLARE keyp INT;  BEGIN IF p_codigo_id=0 THEN INSERT INTO public.tblpokemones(nombre) VALUES (p_nombre) ;  keyp:=CURRVAL('tblpokemones_codigo_id_seq');RETURN keyp; ELSE UPDATE public.tblpokemones SET nombre = p_nombre WHERE codigo_id = p_codigo_id; RETURN p_codigo_id; END IF; END; 
 $BODY$;
@@ -197,9 +172,6 @@ CREATE OR REPLACE FUNCTION public.mk_tbltipo(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
 DECLARE keyp INT;  BEGIN IF p_codigo_id=0 THEN INSERT INTO public.tbltipo(nombretipo) VALUES (p_nombretipo) ;  keyp:=CURRVAL('tbltipo_codigo_id_seq');RETURN keyp; ELSE UPDATE public.tbltipo SET nombretipo = p_nombretipo WHERE codigo_id = p_codigo_id; RETURN p_codigo_id; END IF; END; 
 $BODY$;
@@ -213,9 +185,6 @@ CREATE OR REPLACE FUNCTION public.mk_tbltipoataque(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
 DECLARE keyp INT;  BEGIN IF p_codigo_id=0 THEN INSERT INTO public.tbltipoataque(ataque_id,tipo_id) VALUES (p_ataque_id,p_tipo_id) ;  keyp:=CURRVAL('tbltipoataque_codigo_id_seq');RETURN keyp; ELSE UPDATE public.tbltipoataque SET ataque_id = p_ataque_id,tipo_id = p_tipo_id WHERE codigo_id = p_codigo_id; RETURN p_codigo_id; END IF; END; 
 $BODY$;
@@ -229,9 +198,6 @@ CREATE OR REPLACE FUNCTION public.mk_tbltipopokemon(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
 DECLARE keyp INT;  BEGIN IF p_codigo_id=0 THEN INSERT INTO public.tbltipopokemon(pokemon_id,tipo_id) VALUES (p_pokemon_id,p_tipo_id) ;  keyp:=CURRVAL('tbltipopokemon_codigo_id_seq');RETURN keyp; ELSE UPDATE public.tbltipopokemon SET pokemon_id = p_pokemon_id,tipo_id = p_tipo_id WHERE codigo_id = p_codigo_id; RETURN p_codigo_id; END IF; END; 
 $BODY$;
@@ -245,9 +211,6 @@ CREATE OR REPLACE FUNCTION public.mk_tblusuariopokemon(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
 DECLARE keyp INT;  BEGIN IF p_codigo_id=0 THEN INSERT INTO public.tblusuariopokemon(usuario_id,pokemon_id) VALUES (p_usuario_id,p_pokemon_id) ;  keyp:=CURRVAL('tblusuariopokemon_codigo_id_seq');RETURN keyp; ELSE UPDATE public.tblusuariopokemon SET usuario_id = p_usuario_id,pokemon_id = p_pokemon_id WHERE codigo_id = p_codigo_id; RETURN p_codigo_id; END IF; END; 
 $BODY$;
@@ -261,9 +224,6 @@ CREATE OR REPLACE FUNCTION public.mk_tblusuarios(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
 DECLARE keyp INT;  BEGIN IF p_codigo_id=0 THEN INSERT INTO public.tblusuarios(username,contraseña) VALUES (p_username,p_contraseña) ;  keyp:=CURRVAL('tblusuarios_codigo_id_seq');RETURN keyp; ELSE UPDATE public.tblusuarios SET username = p_username,contraseña = p_contraseña WHERE codigo_id = p_codigo_id; RETURN p_codigo_id; END IF; END; 
 $BODY$;
@@ -275,9 +235,6 @@ CREATE OR REPLACE FUNCTION public.del_tblataques(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
   BEGIN DELETE FROM public.tblataques WHERE codigo_id=p_codigo_id; RETURN 1; END; 
 $BODY$;
@@ -289,9 +246,6 @@ CREATE OR REPLACE FUNCTION public.del_tblbatallas(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
   BEGIN DELETE FROM public.tblbatallas WHERE codigo_id=p_codigo_id; RETURN 1; END; 
 $BODY$;
@@ -303,9 +257,6 @@ CREATE OR REPLACE FUNCTION public.del_tblitems(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
   BEGIN DELETE FROM public.tblitems WHERE codigo_id=p_codigo_id; RETURN 1; END; 
 $BODY$;
@@ -317,9 +268,6 @@ CREATE OR REPLACE FUNCTION public.del_tblitemsusuario(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
   BEGIN DELETE FROM public.tblitemsusuario WHERE codigo_id=p_codigo_id; RETURN 1; END; 
 $BODY$;
@@ -331,9 +279,6 @@ CREATE OR REPLACE FUNCTION public.del_tblpokemonataque(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
   BEGIN DELETE FROM public.tblpokemonataque WHERE codigo_id=p_codigo_id; RETURN 1; END; 
 $BODY$;
@@ -345,9 +290,6 @@ CREATE OR REPLACE FUNCTION public.del_tblpokemones(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
   BEGIN DELETE FROM public.tblpokemones WHERE codigo_id=p_codigo_id; RETURN 1; END; 
 $BODY$;
@@ -359,9 +301,6 @@ CREATE OR REPLACE FUNCTION public.del_tbltipo(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
   BEGIN DELETE FROM public.tbltipo WHERE codigo_id=p_codigo_id; RETURN 1; END; 
 $BODY$;
@@ -373,9 +312,6 @@ CREATE OR REPLACE FUNCTION public.del_tbltipoataque(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
   BEGIN DELETE FROM public.tbltipoataque WHERE codigo_id=p_codigo_id; RETURN 1; END; 
 $BODY$;
@@ -387,9 +323,6 @@ CREATE OR REPLACE FUNCTION public.del_tbltipopokemon(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
   BEGIN DELETE FROM public.tbltipopokemon WHERE codigo_id=p_codigo_id; RETURN 1; END; 
 $BODY$;
@@ -401,9 +334,6 @@ CREATE OR REPLACE FUNCTION public.del_tblusuariopokemon(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
   BEGIN DELETE FROM public.tblusuariopokemon WHERE codigo_id=p_codigo_id; RETURN 1; END; 
 $BODY$;
@@ -415,9 +345,6 @@ CREATE OR REPLACE FUNCTION public.del_tblusuarios(
     RETURNS integer
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 0
 AS $BODY$
   BEGIN DELETE FROM public.tblusuarios WHERE codigo_id=p_codigo_id; RETURN 1; END; 
 $BODY$;
@@ -429,9 +356,6 @@ CREATE OR REPLACE FUNCTION public.get_tblataques(
     RETURNS SETOF tblataques 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblataques; END; 
 $BODY$;
@@ -443,9 +367,6 @@ CREATE OR REPLACE FUNCTION public.get_tblataques(
     RETURNS SETOF tblataques 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblataques WHERE codigo_id = p_Agn;  END; 
 $BODY$;
@@ -457,9 +378,6 @@ CREATE OR REPLACE FUNCTION public.get_tblbatallas(
     RETURNS SETOF tblbatallas 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblbatallas; END; 
 $BODY$;
@@ -471,9 +389,6 @@ CREATE OR REPLACE FUNCTION public.get_tblbatallas(
     RETURNS SETOF tblbatallas 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblbatallas WHERE codigo_id = p_Agn;  END; 
 $BODY$;
@@ -484,10 +399,6 @@ CREATE OR REPLACE FUNCTION public.get_tblitems(
 	)
     RETURNS SETOF tblitems 
     LANGUAGE 'plpgsql'
-
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblitems; END; 
 $BODY$;
@@ -498,10 +409,6 @@ CREATE OR REPLACE FUNCTION public.get_tblitems(
 	p_agn bigint)
     RETURNS SETOF tblitems 
     LANGUAGE 'plpgsql'
-
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblitems WHERE codigo_id = p_Agn;  END; 
 $BODY$;
@@ -512,10 +419,6 @@ CREATE OR REPLACE FUNCTION public.get_tblitemsusuario(
 	)
     RETURNS SETOF tblitemsusuario 
     LANGUAGE 'plpgsql'
-
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblitemsusuario; END; 
 $BODY$;
@@ -527,9 +430,6 @@ CREATE OR REPLACE FUNCTION public.get_tblitemsusuario(
     RETURNS SETOF tblitemsusuario 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblitemsusuario WHERE codigo_id = p_Agn;  END; 
 $BODY$;
@@ -541,9 +441,6 @@ CREATE OR REPLACE FUNCTION public.get_tblpokemonataque(
     RETURNS SETOF tblpokemonataque 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblpokemonataque; END; 
 $BODY$;
@@ -555,9 +452,6 @@ CREATE OR REPLACE FUNCTION public.get_tblpokemonataque(
     RETURNS SETOF tblpokemonataque 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblpokemonataque WHERE codigo_id = p_Agn;  END; 
 $BODY$;
@@ -569,9 +463,6 @@ CREATE OR REPLACE FUNCTION public.get_tblpokemones(
     RETURNS SETOF tblpokemones 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblpokemones; END; 
 $BODY$;
@@ -583,9 +474,6 @@ CREATE OR REPLACE FUNCTION public.get_tblpokemones(
     RETURNS SETOF tblpokemones 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblpokemones WHERE codigo_id = p_Agn;  END; 
 $BODY$;
@@ -597,9 +485,6 @@ CREATE OR REPLACE FUNCTION public.get_tbltipo(
     RETURNS SETOF tbltipo 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tbltipo; END; 
 $BODY$;
@@ -611,9 +496,6 @@ CREATE OR REPLACE FUNCTION public.get_tbltipo(
     RETURNS SETOF tbltipo 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tbltipo WHERE codigo_id = p_Agn;  END; 
 $BODY$;
@@ -625,9 +507,6 @@ CREATE OR REPLACE FUNCTION public.get_tbltipoataque(
     RETURNS SETOF tbltipoataque 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tbltipoataque; END; 
 $BODY$;
@@ -639,9 +518,6 @@ CREATE OR REPLACE FUNCTION public.get_tbltipoataque(
     RETURNS SETOF tbltipoataque 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tbltipoataque WHERE codigo_id = p_Agn;  END; 
 $BODY$;
@@ -653,9 +529,6 @@ CREATE OR REPLACE FUNCTION public.get_tbltipopokemon(
     RETURNS SETOF tbltipopokemon 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tbltipopokemon; END; 
 $BODY$;
@@ -667,9 +540,6 @@ CREATE OR REPLACE FUNCTION public.get_tbltipopokemon(
     RETURNS SETOF tbltipopokemon 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tbltipopokemon WHERE codigo_id = p_Agn;  END; 
 $BODY$;
@@ -681,9 +551,6 @@ CREATE OR REPLACE FUNCTION public.get_tblusuariopokemon(
     RETURNS SETOF tblusuariopokemon 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblusuariopokemon; END; 
 $BODY$;
@@ -695,9 +562,6 @@ CREATE OR REPLACE FUNCTION public.get_tblusuariopokemon(
     RETURNS SETOF tblusuariopokemon 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblusuariopokemon WHERE codigo_id = p_Agn;  END; 
 $BODY$;
@@ -709,9 +573,6 @@ CREATE OR REPLACE FUNCTION public.get_tblusuarios(
     RETURNS SETOF tblusuarios 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblusuarios; END; 
 $BODY$;
@@ -723,9 +584,12 @@ CREATE OR REPLACE FUNCTION public.get_tblusuarios(
     RETURNS SETOF tblusuarios 
     LANGUAGE 'plpgsql'
 
-    COST 100
-    VOLATILE 
-    ROWS 1000
 AS $BODY$
  BEGIN  RETURN QUERY SELECT * FROM public.tblusuarios WHERE codigo_id = p_Agn;  END; 
 $BODY$;
+
+DELETE FROM tblVersiones;
+
+INSERT INTO public.tblversiones(
+	versionmayor, versionmenor, patch)
+	VALUES (2, 0, 0);
