@@ -5,10 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * DAO - FIDES
- * @author BlueFox - SD
- */
-public class Batallas implements IDAO {
+ * @author NIKOLAS-PC
+ */public class Batallas implements IDAO {
 // <editor-fold defaultstate="collapsed" desc="Atributos"> 
     private long codigo_id;
     private long jugador1_id;

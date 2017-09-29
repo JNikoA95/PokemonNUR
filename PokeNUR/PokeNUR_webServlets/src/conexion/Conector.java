@@ -7,7 +7,7 @@ package conexion;
 
 /**
  *
- * @author Moncho
+ * @author NIKOLAS-PC
  */
 public class Conector {
 

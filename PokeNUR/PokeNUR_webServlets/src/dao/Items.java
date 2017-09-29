@@ -5,10 +5,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * DAO - FIDES
- * @author BlueFox - SD
+ * @author NIKOLAS-PC
  */
-public class Items implements IDAO {
+ public class Items implements IDAO {
 // <editor-fold defaultstate="collapsed" desc="Atributos"> 
     private long codigo_id;
     private String nombreitem;

@@ -5,8 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * DAO - FIDES
- * @author BlueFox - SD
+ * @author NIKOLAS-PC
  */
 public class Tipo implements IDAO {
 // <editor-fold defaultstate="collapsed" desc="Atributos"> 

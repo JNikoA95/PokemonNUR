@@ -1,3 +1,5 @@
+CREATE DATABASE PokeNUR_DB;
+
 -- Creacion de Tablas
 
 CREATE TABLE tblUsuarios(
