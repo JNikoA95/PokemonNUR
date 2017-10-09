@@ -18,11 +18,11 @@ Route::get('/', function () {
 Route::group(['as'=> 'admin::'],function () {
     Route::get('dashboard',['as' => 'dashboard', function () {
         // Uses first & second Middleware
-    });
+    }]);
 
     Route::get('user/profile', function () {
         // Uses first & second Middleware
-    }]);
+    });
 });
 
 Route::post('/iniciarSesion', 'AuthenticateController@authenticate');

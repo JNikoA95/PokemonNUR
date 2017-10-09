@@ -4,6 +4,8 @@ CREATE DATABASE PokeNUR_DB;
 
 CREATE TABLE tblUsuarios(
 	codigo_id bigint PRIMARY KEY NOT NULL,
+	nombre text NOT NULL,
+	correo text NOT NULL,
     username text NOT NULL,
     contraseña text NOT NULL
 );
