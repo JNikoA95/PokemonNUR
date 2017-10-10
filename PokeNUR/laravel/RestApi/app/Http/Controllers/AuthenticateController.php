@@ -1,12 +1,27 @@
 <?php
 
+
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+
 
 class AuthenticateController extends Controller
 {
     //
+
+    public function __construct(){
+        $this->middleware('jwt.auth', ['except'=> ['authenticate']]);
+    }
+
+    public function index(){
+        return 'ESTO ES EL INDEX';
+    }
 
     public function authenticate(Request $request)
     {

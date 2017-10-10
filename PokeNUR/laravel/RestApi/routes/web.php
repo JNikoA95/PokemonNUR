@@ -15,14 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['as'=> 'admin::'],function () {
-    Route::get('dashboard',['as' => 'dashboard', function () {
-        // Uses first & second Middleware
-    }]);
 
-    Route::get('user/profile', function () {
-        // Uses first & second Middleware
-    });
-});
-
-Route::post('/iniciarSesion', 'AuthenticateController@authenticate');
+	Route::get('usuario', 'AuthenticateController@index');
+	Route::post('iniciarSesion', 'AuthenticateController@authenticate');    
