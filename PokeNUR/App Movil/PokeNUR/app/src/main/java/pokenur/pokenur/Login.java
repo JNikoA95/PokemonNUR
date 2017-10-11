@@ -32,7 +32,7 @@ public class Login extends AppCompatActivity {
 
     JsonObjectRequest array;
     RequestQueue mRequestQueue;
-    private final String url = "http://192.168.43.63:8000/iniciarSesion";
+    private final String url = "http://192.168.43.28:8000/iniciarSesion";
     private final String TAG = "PRUEBITA";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +46,12 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 mRequestQueue = VolleySingleton.getInstance().getmRequestQueue();
                 pbprogreso.setVisibility(View.VISIBLE);
-                StringRequest  request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>(){
+                StringRequest  request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>(){
                         @Override
                         public void onResponse(String response){
                             String token = response;
                             pbprogreso.setVisibility(View.INVISIBLE);
-                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "hola", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), Principal.class));
 
                     }
