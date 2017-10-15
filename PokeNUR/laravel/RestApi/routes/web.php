@@ -17,4 +17,4 @@ Route::get('/', function () {
 
 
 	Route::get('usuario', 'AuthenticateController@index');
-	Route::get('iniciarSesion', 'AuthenticateController@authenticate');
+	Route::post('iniciarSesion', 'AuthenticateController@authenticate');

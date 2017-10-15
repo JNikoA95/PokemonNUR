@@ -34,24 +34,41 @@
         android:id="@+id/btningresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/txtpassword"
-        android:layout_alignRight="@+id/txtpassword"
-        android:layout_below="@+id/txtpassword"
-        android:layout_marginEnd="61dp"
         android:layout_marginRight="61dp"
-        android:layout_marginTop="86dp"
-        android:text="Button" />
+        android:text="Ingresar"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/btnRegistrar"
+        android:layout_alignEnd="@+id/btnRegistrar" />
 
     <ProgressBar
         android:id="@+id/pbprogreso"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btningresar"
-        android:layout_alignRight="@+id/btningresar"
-        android:layout_below="@+id/btningresar"
-        android:layout_marginEnd="18dp"
+        android:layout_marginEnd="19dp"
         android:layout_marginRight="18dp"
-        android:layout_marginTop="45dp" />
+        android:layout_below="@+id/btnRecContraseña"
+        android:layout_alignEnd="@+id/btningresar"
+        android:layout_marginTop="39dp" />
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btnRecContraseña"
+        android:layout_alignStart="@+id/btnRecContraseña"
+        android:layout_below="@+id/btningresar"
+        android:onClick="ejecutar_Registro"
+        android:text="Registrate" />
+
+    <Button
+        android:id="@+id/btnRecContraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/txtpassword"
+        android:layout_below="@+id/btnRegistrar"
+        android:layout_marginEnd="11dp"
+        android:onClick="ejecutar_Recuperacion"
+        android:text="Olvide mi Contraseña" />
 
 </RelativeLayout>

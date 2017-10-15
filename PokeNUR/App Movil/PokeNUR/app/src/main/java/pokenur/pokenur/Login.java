@@ -29,10 +29,12 @@ public class Login extends AppCompatActivity {
     EditText txtpassword;
     ProgressBar pbprogreso;
     Button btningresar;
+    Button btnRegistrar;
+    Button btnRecuperar;
 
     JsonObjectRequest array;
     RequestQueue mRequestQueue;
-    private final String url = "http://192.168.43.28:8000/iniciarSesion";
+    private final String url = "http://192.168.43.63:8000/iniciarSesion";
     private final String TAG = "PRUEBITA";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +45,17 @@ public class Login extends AppCompatActivity {
         pbprogreso.setVisibility(View.INVISIBLE);
         btningresar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 mRequestQueue = VolleySingleton.getInstance().getmRequestQueue();
                 pbprogreso.setVisibility(View.VISIBLE);
-                StringRequest  request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>(){
+
+                StringRequest  request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>(){
                         @Override
                         public void onResponse(String response){
                             String token = response;
                             pbprogreso.setVisibility(View.INVISIBLE);
-                            Toast.makeText(getApplicationContext(), "hola", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+
                             startActivity(new Intent(getApplicationContext(), Principal.class));
 
                     }
@@ -95,6 +99,7 @@ public class Login extends AppCompatActivity {
                     }
                 };
                 mRequestQueue.add(request);
+
             }
         });
     }
@@ -104,5 +109,22 @@ public class Login extends AppCompatActivity {
         txtpassword = (EditText) findViewById(R.id.txtpassword);
         pbprogreso = (ProgressBar) findViewById(R.id.pbprogreso);
         btningresar = (Button) findViewById(R.id.btningresar);
+        btnRegistrar = (Button) findViewById(R.id.btnRegistrar);
+        btnRecuperar = (Button) findViewById(R.id.btnRecContraseña);
+    }
+
+    public void ejecutar_Login(View view){
+        Intent principal = new Intent(this, Principal.class);
+        startActivity(principal);
+    }
+
+    public void ejecutar_Registro(View view){
+        Intent registro = new Intent(this, Registrar.class);
+        startActivity(registro);
+    }
+
+    public void ejecutar_Recuperacion(View view){
+        Intent recuperar = new Intent(this, Recuperar.class);
+        startActivity(recuperar);
     }
 }
