@@ -36,7 +36,8 @@ public class Login extends AppCompatActivity {
 
     JsonObjectRequest array;
     RequestQueue mRequestQueue;
-    private final String url = "http://192.168.43.63:8000/iniciarSesion";
+    private final String url = "http://192.168.43.63:8081/RestApi/public/iniciarSesion";
+    //private final String url = "http://192.168.43.63:8000/iniciarSesion";
     private final String TAG = "PRUEBITA";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,8 +105,7 @@ public class Login extends AppCompatActivity {
             }
         };
         mRequestQueue.add(request);
-        Toast.makeText(getApplicationContext(), "Mensaje de Error", Toast.LENGTH_LONG).show();
-
+        Toast.makeText(getApplicationContext(), request.toString(), Toast.LENGTH_LONG).show();
 
     }
 
