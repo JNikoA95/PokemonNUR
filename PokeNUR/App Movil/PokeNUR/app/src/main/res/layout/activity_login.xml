@@ -34,11 +34,12 @@
         android:id="@+id/btningresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="61dp"
-        android:text="Ingresar"
-        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/btnRegistrar"
         android:layout_alignStart="@+id/btnRegistrar"
-        android:layout_alignEnd="@+id/btnRegistrar" />
+        android:layout_centerVertical="true"
+        android:layout_marginRight="61dp"
+        android:onClick="ejecutar_Login"
+        android:text="Ingresar" />
 
     <ProgressBar
         android:id="@+id/pbprogreso"

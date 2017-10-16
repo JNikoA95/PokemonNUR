@@ -25,6 +25,8 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
+    String token;
+
     EditText txtemail;
     EditText txtpassword;
     ProgressBar pbprogreso;
@@ -43,65 +45,7 @@ public class Login extends AppCompatActivity {
 
         iniciarControles();
         pbprogreso.setVisibility(View.INVISIBLE);
-        btningresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                mRequestQueue = VolleySingleton.getInstance().getmRequestQueue();
-                pbprogreso.setVisibility(View.VISIBLE);
 
-                StringRequest  request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>(){
-                        @Override
-                        public void onResponse(String response){
-                            String token = response;
-                            pbprogreso.setVisibility(View.INVISIBLE);
-                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
-
-                            startActivity(new Intent(getApplicationContext(), Principal.class));
-
-                    }
-                }, new Response.ErrorListener(){
-                        @Override
-                        public void onErrorResponse(VolleyError error){
-                            pbprogreso.setVisibility(View.INVISIBLE);
-
-                            if(error.networkResponse != null ){
-                                if(error.networkResponse.statusCode == 401){
-                                    Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                            Log.d("TAG", error.toString());
-
-                        }
-                })
-                {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> map = new HashMap<String, String>();
-                        map.put("email",txtemail.getText().toString());
-                        map.put("password",txtpassword.getText().toString());
-                        return map;
-                    }
-
-                    @Override
-                    public Map<String, String> getHeaders()throws AuthFailureError{
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("Content-Type", "application/x-www-form-urlencoded");
-                        return params;
-                    }
-
-                    @Override
-                    public RetryPolicy getRetryPolicy() {
-                        return new DefaultRetryPolicy(
-                                5000,
-                                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
-                        );
-                    }
-                };
-                mRequestQueue.add(request);
-
-            }
-        });
     }
 
     private void iniciarControles(){
@@ -114,8 +58,55 @@ public class Login extends AppCompatActivity {
     }
 
     public void ejecutar_Login(View view){
-        Intent principal = new Intent(this, Principal.class);
-        startActivity(principal);
+
+        mRequestQueue = VolleySingleton.getInstance().getmRequestQueue();
+        pbprogreso.setVisibility(View.VISIBLE);
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String token = response;
+                pbprogreso.setVisibility(View.INVISIBLE);
+                Toast.makeText(getApplicationContext(), "Token = " + token, Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getApplicationContext(), Principal.class));
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                pbprogreso.setVisibility(View.INVISIBLE);
+                Log.d("TAG", error.toString());
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("email", txtemail.getText().toString());
+                map.put("password", txtpassword.getText().toString());
+
+                return map;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+
+            @Override
+            public RetryPolicy getRetryPolicy() {
+                return new DefaultRetryPolicy(
+                5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+            }
+        };
+        mRequestQueue.add(request);
+        Toast.makeText(getApplicationContext(), "Mensaje de Error", Toast.LENGTH_LONG).show();
+
+
     }
 
     public void ejecutar_Registro(View view){
