@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+	Route::get('registrar', 'RegisterController@getRegister');
+	Route::post('registrar', 'RegisterController@postRegister');
 
 	Route::get('usuario', 'AuthenticateController@index');
 	Route::post('iniciarSesion', 'AuthenticateController@authenticate');
+	
