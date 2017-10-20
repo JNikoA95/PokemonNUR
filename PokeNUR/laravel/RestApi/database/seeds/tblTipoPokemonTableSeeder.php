@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UsersTableSeeder extends Seeder
+class tblTipoPokemonTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-		
+        //
+		DB::table('tbltipopokemon')->insert([
+			'pokemon_id'=> '',
+			'tipo_id'=> '',
+		]);
     }
 }

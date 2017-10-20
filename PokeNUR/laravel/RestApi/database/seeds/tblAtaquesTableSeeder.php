@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UsersTableSeeder extends Seeder
+class tblAtaquesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-		
+        //
+		DB::table('tblataques')->insert([
+			'nombre'=> '',
+			'tipo_id'=> '',
+			'daño'=> '',
+		]);
     }
 }

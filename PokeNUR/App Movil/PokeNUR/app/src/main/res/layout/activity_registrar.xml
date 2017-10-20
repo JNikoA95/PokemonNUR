@@ -15,7 +15,6 @@
         android:hint="Nombre Completo"
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="56dp"
-        android:layout_below="@+id/linearLayout"
         android:layout_marginTop="71dp"
         android:layout_alignParentEnd="true" />
 
