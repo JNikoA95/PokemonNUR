@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
     JsonObjectRequest array;
     RequestQueue mRequestQueue;
 //    private final String url = "http://192.168.43.28:8080/RestApi/public/iniciarSesion";
-    private final String url = "http://192.168.43.63:8081/RestApi/public/iniciarSesion";
+    private final String url = "http://192.168.1.134:8080/RestApi/public/iniciarSesion";
     private final String TAG = "PRUEBITA";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,15 @@ public class Login extends AppCompatActivity {
 
     public void ejecutar_Login(View view){
 
+        if(txtemail.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "el email no puede esta en blanco para ingresar.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(txtpassword.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "la contraseña es obligatoria para poder entrar", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         mRequestQueue = VolleySingleton.getInstance().getmRequestQueue();
         pbprogreso.setVisibility(View.VISIBLE);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -67,7 +76,7 @@ public class Login extends AppCompatActivity {
             public void onResponse(String response) {
                 String token = response;
                 pbprogreso.setVisibility(View.INVISIBLE);
-                Toast.makeText(getApplicationContext(), "Token = " + token, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "Token = " + token, Toast.LENGTH_LONG).show();
                 startActivity(new Intent(getApplicationContext(), Principal.class));
 
             }
@@ -76,7 +85,7 @@ public class Login extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 pbprogreso.setVisibility(View.INVISIBLE);
                 Log.d("TAG", error.toString());
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
             }
         })
         {
@@ -105,7 +114,7 @@ public class Login extends AppCompatActivity {
             }
         };
         mRequestQueue.add(request);
-        Toast.makeText(getApplicationContext(), request.toString(), Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(), request.toString(), Toast.LENGTH_LONG).show();
 
     }
 

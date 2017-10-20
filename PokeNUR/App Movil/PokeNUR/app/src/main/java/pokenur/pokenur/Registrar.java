@@ -33,7 +33,7 @@ public class Registrar extends AppCompatActivity {
 
     RequestQueue mRequestQueue;
     //    private final String url = "http://192.168.43.28:8080/RestApi/public/iniciarSesion";
-    private final String url = "http://192.168.43.63:8081/RestApi/public/registrar";
+    private final String url = "http://192.168.1.134:8080/RestApi/public/registrar";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,12 @@ public class Registrar extends AppCompatActivity {
 
     public void ejecutar_REgistro(View view){
 
+        if(txtEmail.getText().toString().equals("") || txtNombre.getText().toString().equals("") ||
+                txtNombreUsuario.getText().toString().equals("") || txtPassword.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "Falta rellenar algun campo, por favor verfique que todos los campos han sido llenados", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         mRequestQueue = VolleySingleton.getInstance().getmRequestQueue();
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -67,7 +73,7 @@ public class Registrar extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("TAG", error.toString());
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "hubo alguna falla, intente nuevamente", Toast.LENGTH_LONG).show();
             }
         })
         {
