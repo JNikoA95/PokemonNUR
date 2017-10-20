@@ -1,9 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="pokenur.pokenur.Principal">
 
-</android.support.constraint.ConstraintLayout>
+    <RadioButton
+        android:id="@+id/rbFuego"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fuego"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="72dp" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <RadioButton
+        android:id="@+id/rbAgua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agua"
+        android:checked="true"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="130dp" />
+
+    <RadioButton
+        android:id="@+id/rbPlanta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Planta"
+        tools:layout_editor_absoluteY="189dp"
+        tools:layout_editor_absoluteX="66dp" />
+
+    <Button
+        android:id="@+id/btnSeleccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar Seleccion"
+	   android:onClick="ejecutar_Seleccion"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="349dp" />
+    </RadioGroup>
+</RelativeLayout>
