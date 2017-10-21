@@ -29,12 +29,14 @@ public class Principal extends AppCompatActivity {
 
     String ataques;
 
-    Bundle datos = getIntent().getExtras();
-    int variable = datos.getInt("token");
+//    Bundle datos = this.getIntent().getExtras();
+//    int variable = datos.getInt("token");
+
+    String token;
 
     RequestQueue mRequestQueue;
-    //    private final String url = "http://192.168.43.28:8080/RestApi/public/iniciarSesion";
-    private final String url = "http://192.168.43.63:8081/RestApi/public/seleccionarPokemon";
+        private final String url = "http://192.168.43.28:8080/RestApi/public/seleccionarPokemon";
+//    private final String url = "http://192.168.1.134:8080/RestApi/public/seleccionarPokemon";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class Principal extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
 
         iniciarControles();
+        token = getIntent().getStringExtra("token");
     }
 
     public void iniciarControles(){
@@ -74,7 +77,7 @@ public class Principal extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map = new HashMap<String, String>();
 
-                    map.put("usuario_id", variable+"");
+                    map.put("usuario_id", token);
 
                 if(rbFuego.isChecked()){
                     map.put("pokemon_id", "1");

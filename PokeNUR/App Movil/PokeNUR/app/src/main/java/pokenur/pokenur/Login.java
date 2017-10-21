@@ -36,8 +36,8 @@ public class Login extends AppCompatActivity {
 
     JsonObjectRequest array;
     RequestQueue mRequestQueue;
-//    private final String url = "http://192.168.43.28:8080/RestApi/public/iniciarSesion";
-    private final String url = "http://192.168.1.134:8080/RestApi/public/iniciarSesion";
+    private final String url = "http://192.168.43.28:8080/RestApi/public/iniciarSesion";
+//    private final String url = "http://192.168.1.134:8080/RestApi/public/iniciarSesion";
     private final String TAG = "PRUEBITA";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +76,11 @@ public class Login extends AppCompatActivity {
             public void onResponse(String response) {
                 String token = response;
                 pbprogreso.setVisibility(View.INVISIBLE);
-//                Toast.makeText(getApplicationContext(), "Token = " + token, Toast.LENGTH_LONG).show();
-                startActivity(new Intent(getApplicationContext(), Principal.class));
+                Toast.makeText(getApplicationContext(), "Token = " + token, Toast.LENGTH_LONG).show();
+//                startActivity(new Intent(getApplicationContext(), Principal.class));
+                Intent i = new Intent(getApplicationContext(), Principal.class);
+                i.putExtra("token", token);
+                startActivity(i);
 
             }
         }, new Response.ErrorListener() {
