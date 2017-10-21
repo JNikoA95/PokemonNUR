@@ -330,7 +330,10 @@ class ComposerStaticInitacae1c9873170a8c7a6d2c866ecb6e52
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\AuthenticateController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthenticateController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegisterController.php',
+        'App\\Http\\Controllers\\SeleccionController' => __DIR__ . '/../..' . '/app/Http/Controllers/SeleccionController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -3646,6 +3649,13 @@ class ComposerStaticInitacae1c9873170a8c7a6d2c866ecb6e52
         'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
+        'tblAtaquesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/tblAtaquesTableSeeder.php',
+        'tblPokemonAtaqueTableSeeder' => __DIR__ . '/../..' . '/database/seeds/tblPokemonAtaqueTableSeeder.php',
+        'tblPokemonesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/tblPokemonesTableSeeder.php',
+        'tblTipoAtaqueTableSeeder' => __DIR__ . '/../..' . '/database/seeds/tblTipoAtaqueTableSeeder.php',
+        'tblTipoPokemonTableSeeder' => __DIR__ . '/../..' . '/database/seeds/tblTipoPokemonTableSeeder.php',
+        'tblTipoTableSeeder' => __DIR__ . '/../..' . '/database/seeds/tblTipoTableSeeder.php',
+        'tblUsuarioPokemonTableSeeder' => __DIR__ . '/../..' . '/database/seeds/tblUsuarioPokemonTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
