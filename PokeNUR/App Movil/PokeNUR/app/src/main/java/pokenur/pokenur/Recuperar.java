@@ -33,7 +33,7 @@ public class Recuperar extends AppCompatActivity {
     RequestQueue mRequestQueue;
     //    private final String url = "http://192.168.43.28:8080/RestApi/public/iniciarSesion";
     // private final String url = "http://192.168.1.134:8080/RestApi/public/registrar";
-    private final String url = "http://192.168.42.226:8081/RestApi/public/password/email";
+    private final String url = "http://192.168.43.63:8081/RestApi/public/mail";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +51,11 @@ public class Recuperar extends AppCompatActivity {
     public void ejecutar_recuperacion(View view){
 
         mRequestQueue = VolleySingleton.getInstance().getmRequestQueue();
-        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                String token = response;
                 Toast.makeText(getApplicationContext(), "Envio de correo exitoso", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(getApplicationContext(), Login.class));
+                startActivity(new Intent(getApplicationContext(), Confirmar.class));
 
             }
         }, new Response.ErrorListener() {
@@ -78,6 +77,7 @@ public class Recuperar extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+                params.put("Accept", "application/json");
                 params.put("Content-Type", "application/x-www-form-urlencoded");
                 return params;
             }

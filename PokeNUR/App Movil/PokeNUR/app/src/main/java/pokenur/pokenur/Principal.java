@@ -35,7 +35,7 @@ public class Principal extends AppCompatActivity {
     String token;
 
     RequestQueue mRequestQueue;
-        private final String url = "http://192.168.43.28:8080/RestApi/public/seleccionarPokemon";
+        private final String url = "http://192.168.43.63:8081/RestApi/public/seleccionarPokemon";
 //    private final String url = "http://192.168.1.134:8080/RestApi/public/seleccionarPokemon";
 
     @Override
@@ -60,7 +60,7 @@ public class Principal extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                String token = response;
+                //String token = response;
                 Toast.makeText(getApplicationContext(), "Seleccion Exitosa! Cuentas cono los sgtes. ataques : " + ataques, Toast.LENGTH_LONG).show();
 //                startActivity(new Intent(getApplicationContext(), Login.class));
 
@@ -77,7 +77,7 @@ public class Principal extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map = new HashMap<String, String>();
 
-                    map.put("usuario_id", token);
+                    //map.put("usuario_id", token);
 
                 if(rbFuego.isChecked()){
                     map.put("pokemon_id", "1");

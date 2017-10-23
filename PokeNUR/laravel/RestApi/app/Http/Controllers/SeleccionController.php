@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 use App\tblusuariopokemon;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests;
+
+
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class SeleccionController extends Controller
 {
     //
-	
-	public function index(){
+    public function index(){
         return 'ESTO ES EL INDEX';
     }
 	
@@ -17,7 +19,8 @@ class SeleccionController extends Controller
 	{
 		
 		$nota = new tblusuariopokemon;
-        $nota->usuario_id = $request->usuario_id;
+		$id = Auth::user()->id;
+        $nota->usuario_id = $id;
         $nota->pokemon_id = $request->pokemon_id;
 
         $nota->save();

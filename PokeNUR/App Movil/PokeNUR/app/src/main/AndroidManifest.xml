@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".Principal" />
         <activity android:name=".Registrar" />
-        <activity android:name=".Recuperar"></activity>
+        <activity android:name=".Recuperar"/>
+        <activity android:name=".Confirmar"/>
     </application>
 
 </manifest>
