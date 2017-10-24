@@ -1,5 +1,5 @@
 <?php
-
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,8 +45,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('usuario', 'AuthenticateController@index');
 	Route::post('iniciarSesion', 'AuthenticateController@authenticate');
 	
-	Route::get('seleccionarPokemon', 'SeleccionController@index');
-	Route::post('seleccionarPokemon', 'SeleccionController@Seleccionar');
+	//Route::get('seleccionarPokemon', 'SeleccionController@index');
+	Route::get('seleccionarPokemon', 'SeleccionController@Seleccionar');
 
     //Route::get('mail', 'MailController@index');
     //Route::post('mail', 'MailController@store');
