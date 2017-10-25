@@ -35,7 +35,7 @@ public class Principal extends AppCompatActivity {
     String token;
 
     RequestQueue mRequestQueue;
-        private final String url = "http://192.168.43.63:8081/RestApi/public/seleccionarPokemon";
+        private final String url = MyApplication.SERVER_URL + "seleccionarPokemon";
 //    private final String url = "http://192.168.1.134:8080/RestApi/public/seleccionarPokemon";
 
     @Override

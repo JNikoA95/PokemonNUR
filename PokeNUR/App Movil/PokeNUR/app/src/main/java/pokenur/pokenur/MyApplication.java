@@ -12,6 +12,9 @@ public class MyApplication extends Application {
     private static MyApplication mInstance;
     private static Context mAppContext;
 
+
+    public static final String SERVER_URL = "http://192.168.43.28:8080/RestApi/public/";
+
     @Override
     public void onCreate() {
         super.onCreate();

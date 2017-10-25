@@ -28,12 +28,13 @@ public class Recuperar extends AppCompatActivity {
     EditText txtEmail;
     Button btnEnviar;
 
+
     Button btnOnSaveUser;
 
     RequestQueue mRequestQueue;
     //    private final String url = "http://192.168.43.28:8080/RestApi/public/iniciarSesion";
     // private final String url = "http://192.168.1.134:8080/RestApi/public/registrar";
-    private final String url = "http://192.168.43.63:8081/RestApi/public/mail";
+    private final String url =  MyApplication.SERVER_URL + "mail";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
