@@ -4,7 +4,6 @@
 }
 
 body {
-    font-family: sans-serif;
     padding-bottom: 5px;
     background-color: #192d36;
 }
@@ -21,7 +20,6 @@ body {
 
 .title {
     text-align: center;
-    font-family: Conv_Pokemon;
     font-weight: 100;
     color: yellow;
     font-size: 90px;
@@ -29,6 +27,8 @@ body {
     margin-top: 0px;
     z-index: 1;
     text-shadow: -2px -1px 0 #000000, 2px -1px 0 #000000, -2px 1px 0 #000000, 2px 1px 0 #000000;
+    font-family: Conv_Pokemon;
+    text-transform: capitalize;
 }
 
 .subtitle {
@@ -251,13 +251,16 @@ body {
 .main-menu {
     float: left;
     position: fixed;
+    margin: 5px;
+    margin-top: 20px;
 }
 
     .main-menu li:hover {
-        background: #ef3224;
+        background: rgba(174, 185, 253, 0.76);
     }
 
     .main-menu li {
+        padding: 5px;
         margin-bottom: 5px;
         text-align: center;
         display: none;
@@ -276,18 +279,28 @@ body {
     }
 
     .main-menu span {
+        text-align: left;
         display: block;
-        color: #a5a5a5;
+        color: #469198;
+        text-shadow: -2px -1px 0 #000000, 2px -1px 0 #000000, -2px 1px 0 #000000, 2px 1px 0 #000000;
+        text-transform: uppercase;
+        font-size: 25px;
+        font-weight:700;
     }
 
     .main-menu li:first-child span {
         display: inline-block;
+        text-align: center;
         width: 200px;
     }
 
     .main-menu li:first-child .fa-bars {
         display: inline-block;
         margin-right: 10px;
+    }
+
+    .main-menu li i {
+        font-size: 30px;
     }
 
 .notificacionAmigos {
@@ -303,13 +316,5 @@ body {
 }
 
 #menu-switch {
-    display: none;
-}
-
-#notificacion:checked + .notificacionAmigos {
-    display: block;
-}
-
-#notificacion {
     display: none;
 }
