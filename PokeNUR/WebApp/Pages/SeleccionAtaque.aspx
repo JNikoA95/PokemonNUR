@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1 class="title">Seleccionar Ataques</h1>
-    <div class="contenedor">
+    <div class="contenedor"> 
         <div class="misPokemones">
             <asp:GridView CssClass="listaPoke" ID="GridViewPokemones" runat="server"></asp:GridView>
         </div>

@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1 class="title">Mi Informacion</h1>
-    <div class="contenedor">
+    <div class="contenedor"> 
         <div class="usuario">
             <img src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
             <asp:Label ID="Nombre" runat="server" Text="Nombre"></asp:Label>

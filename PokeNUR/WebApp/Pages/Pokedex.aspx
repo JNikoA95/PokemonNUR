@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <h1 class="titleRed">Pokedex</h1>
+    <h1 class="titleRed">Pokedex</h1> 
     <div class="contenedor">
         <div class="pokemon">
             <img src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
