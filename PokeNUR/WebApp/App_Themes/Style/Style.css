@@ -31,6 +31,19 @@ body {
     text-transform: capitalize;
 }
 
+.titleRed {
+    text-align: center;
+    font-weight: 100;
+    color: rgb(232, 13, 13);
+    font-size: 90px;
+    margin-bottom: 40px;
+    margin-top: 0px;
+    z-index: 1;
+    text-shadow: -2px -1px 0 #000000, 2px -1px 0 #000000, -2px 1px 0 #000000, 2px 1px 0 #000000;
+    font-family: Conv_Pokemon;
+    text-transform: capitalize;
+}
+
 .subtitle {
     text-align: center;
     font-family: Conv_Pokemon;
@@ -75,17 +88,29 @@ body {
     text-align: center;
 }
 
-#ContentPlaceHolder1_RadioButtonList1_0:checked + img-huevo {
+input[value="Fuego"]:checked, .img-huevo {
+    background-color: rgba(245, 61, 61, 0.49);
+}
+
+input[value="Agua"]:checked, .img-huevo {
+    background-color: rgba(0, 89, 255, 0.23);
+}
+
+input[value="Planta"]:checked, .img-huevo {
+    background-color: rgba(0, 128, 0, 0.28);
+}
+
+/*#ContentPlaceHolder1_RadioButtonList1_0:checked, .img-huevo {
     background-color: red;
+
+}
+#ContentPlaceHolder1_RadioButtonList1_1:checked, .img-huevo {
+    background-color: rgba(0, 89, 255, 0.23);
 }
 
-#ContentPlaceHolder1_RadioButtonList1_1:checked + img-huevo {
-    background-color: blue;
-}
-
-#ContentPlaceHolder1_RadioButtonList1_2:checked + img-huevo {
-    background-color: green;
-}
+#ContentPlaceHolder1_RadioButtonList1_2:checked, .img-huevo {
+    background-color: rgba(0, 128, 0, 0.28);
+}*/
 
 .cbox {
     text-align: left;
@@ -97,6 +122,8 @@ body {
 .img-huevo {
     width: 100px;
     margin: 20px;
+    padding: 10px;
+    border-radius: 50%;
 }
 
 .boton {
@@ -130,6 +157,42 @@ body {
     margin-left: auto;
     margin-right: auto;
     background: #192d36;
+    color: white;
+    border-width: 0px;
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.botonRed {
+    font-size: 20px;
+    text-transform: CAPITALIZE;
+    font-family: Conv_Pokemon;
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+    margin: auto;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background: Red;
+    color: white;
+    border-width: 0px;
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.botonGreen {
+    font-size: 20px;
+    text-transform: CAPITALIZE;
+    font-family: Conv_Pokemon;
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+    margin: auto;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background: Green;
     color: white;
     border-width: 0px;
     box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.5);
@@ -264,7 +327,7 @@ body {
         margin-bottom: 5px;
         text-align: center;
         display: none;
-        width: 200px;
+        width: 250px;
     }
 
         .main-menu li:first-child {
@@ -285,7 +348,7 @@ body {
         text-shadow: -2px -1px 0 #000000, 2px -1px 0 #000000, -2px 1px 0 #000000, 2px 1px 0 #000000;
         text-transform: uppercase;
         font-size: 25px;
-        font-weight:700;
+        font-weight: 700;
     }
 
     .main-menu li:first-child span {
@@ -317,4 +380,85 @@ body {
 
 #menu-switch {
     display: none;
+}
+
+.contenedor {
+    text-align: center;
+}
+
+.barras {
+    display: inline-flex;
+    text-align: center;
+}
+
+.local {
+    text-align: left;
+}
+
+.LifeBar {
+    background: Green;
+    width: 400px;
+    height: 15px;
+    border: solid 0.5px;
+}
+
+.ExperienceBar {
+    background: Blue;
+    width: 400px;
+    height: 15px;
+    border: solid 0.5px;
+}
+
+.visita {
+    text-align: right;
+}
+
+.vs {
+    text-align: center;
+    font-family: Conv_Pokemon;
+    font-weight: 100;
+    color: cornflowerblue;
+    font-size: 60px;
+    text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+    margin-top: -20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.pokemonBatalla {
+    width: 900px;
+    height: 300px;
+    border: solid 0.5px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pokemonLocal {
+    float: left;
+    margin-left: 50px;
+    margin-top: 130px;
+}
+
+.pokemonVisita {
+    float: right;
+    margin-right: 50px;
+    margin-top: 30px;
+}
+
+.opciones {
+    width: 900px;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+}
+
+.ataquesBatalla {
+    text-align:center;
+}
+
+.menuBatalla {
+    text-align:center;
 }
