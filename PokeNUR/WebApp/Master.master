@@ -23,20 +23,17 @@
                 </label>
             </li>
             <li>
-                <a href="#">
-
+                <a href="Usuario.aspx">
                     <span>Usuario</span>
                 </a>
             </li>
             <li>
-                <a href="#">
-
+                <a href="Notificaciones.aspx">
                     <span>Notificaciones</span>
                 </a>
             </li>
             <li>
                 <a href="#">
-
                     <span>Salir</span>
                 </a>
             </li>
