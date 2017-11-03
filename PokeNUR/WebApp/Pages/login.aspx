@@ -13,24 +13,22 @@
 
 
             <h2 class="title">Login</h2>
-            
+
             <asp:TextBox runat="server" ID="txtUsuario" CssClass="imputs" placeholder="Nick" autofocus="autofocus"></asp:TextBox>
-            <br />
-            <br />
-            
+
+
             <asp:TextBox runat="server" ID="txtPassword" CssClass="imputs" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
 
             <asp:Label ID="MsgLabel" runat="server" Visible="false" Text="El Nombre de Usuario y/o Contraseña son invalidos" ForeColor="Red"></asp:Label>
-            <br />
-            <br />
+
             <div class="boton-container">
                 <asp:Button CssClass="boton" ID="BtnLogin" runat="server" Text="Entrar" OnClick="BtnLogin_Click" />
             </div>
-            <br />
-            <br />
-            <a class="links" href="RecuperarContraseña.aspx">Recuperar mi contraseña</a>
-            <a class="links" href="Registro.aspx">Registrarme</a>
 
+            <div class="linksContainer">
+                <a class="links" href="Registro.aspx">Registrarme</a>
+                <a class="links" href="RecuperarContraseña.aspx">Recuperar mi contraseña</a>
+            </div>
         </div>
         <!-- /container -->
     </form>
