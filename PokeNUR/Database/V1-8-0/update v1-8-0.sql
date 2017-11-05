@@ -58,7 +58,7 @@ ALTER TABLE tblUsuario
 ALTER TABLE tblAtaques
 	ADD poderAtaque int NOT NULL;
 	
-ALTER TABLE tblPokemon
+ALTER TABLE tblPokemons
 	ADD nivel INT DEFAULT 1;
 	
 ALTER TABLE tblPokemons
