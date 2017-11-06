@@ -23,8 +23,18 @@
                 </label>
             </li>
             <li>
-                <a href="Usuario.aspx">
+                <a href="Pokedex.aspx">
                     <span>Usuario</span>
+                </a>
+            </li>
+            <li>
+                <a href="InvitacionBatalla.aspx">
+                    <span>Pokedex</span>
+                </a>
+            </li>
+            <li>
+                <a href="Usuario.aspx">
+                    <span>Batallar</span>
                 </a>
             </li>
             <li>
