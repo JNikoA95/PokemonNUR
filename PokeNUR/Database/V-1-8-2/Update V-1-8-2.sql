@@ -121,5 +121,5 @@ INSERT INTO [PokeNUR_DB].[dbo].[tbl_Version]
      VALUES
            (1
            ,8
-           ,1)
+           ,2)
 GO
