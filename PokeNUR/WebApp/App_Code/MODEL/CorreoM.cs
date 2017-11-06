@@ -14,6 +14,7 @@ public class CorreoM
     public CorreoM(string destino, string asunto, string mensaje)
     {
         MailMessage mens = new MailMessage();
+        mens.IsBodyHtml = true;
         mens.From = new MailAddress("PokeNur2017@gmail.com");
         mens.To.Add(destino);
         mens.Subject = asunto;

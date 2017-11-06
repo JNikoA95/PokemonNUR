@@ -4,22 +4,22 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1 class="title">Invita a Batallar</h1>
+
     <div class="contenedor">
-        <div class="invitacion">
-            <img src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
-            <asp:Label ID="Nombre" runat="server" Text="Jugador"></asp:Label>
-            <asp:Button CssClass="boton" ID="Invitar" runat="server" Text="Invitar" />
-        </div>
-        <asp:Repeater ID="InvitacionesRep" runat="server">
+        
+        <asp:Repeater ID="InvitacionesRep" runat="server" DataSourceID="odsusuarios">
             <ItemTemplate>
-                <div class="invitacion">
+                <div class="invitacion" runat="server">
                     <img src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
-                    <asp:Label ID="Nombre" runat="server" Text="Jugador"></asp:Label>
-                    <asp:Label ID="Estado" runat="server" Text="Estado"></asp:Label>
+                    <asp:Label runat="server" ID="Nombre" Text='<%#Eval("nickName") %>'></asp:Label>
                     <asp:Button CssClass="boton" ID="Invitar" runat="server" Text="Invitar" />
+                    <asp:Label  ID="txtCorreo" runat="server" Visible="false" Text='<%#Eval("correo") %>'></asp:Label>
+                    <asp:Label  ID="txtId" runat="server" Visible="false" Text='<%#Eval("codigo_id") %>'></asp:Label>
                 </div>
             </ItemTemplate>
         </asp:Repeater>
+        <asp:ObjectDataSource ID="odsusuarios" runat="server" SelectMethod="GetUsuario" TypeName="UserDSTableAdapters.UsuariosTableAdapter" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" UpdateMethod="Update">
+        </asp:ObjectDataSource>
     </div>
 </asp:Content>
 

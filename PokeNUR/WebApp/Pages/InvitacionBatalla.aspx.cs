@@ -9,6 +9,12 @@ public partial class Pages_InvitacionBatalla : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+    
+    }
+
+    protected void Invitar_Click(object sender, EventArgs e)
+    {
+        InvitacionBRL.insertarBatalla("txtCorreo", "txtId", "Nombre");
 
     }
 }
