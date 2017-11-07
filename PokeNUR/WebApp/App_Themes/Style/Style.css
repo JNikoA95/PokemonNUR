@@ -333,6 +333,7 @@ input[value="Planta"]:checked, .img-huevo {
     position: fixed;
     margin: 5px;
     margin-top: 20px;
+    z-index: 1;
 }
 
     .main-menu li:hover {
