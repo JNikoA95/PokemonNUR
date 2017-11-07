@@ -20,4 +20,8 @@ public partial class Pages_Default : System.Web.UI.Page
         Seguridad.Logout();
         Response.Redirect("login.aspx");
     }
+    protected void BtnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Usuario.aspx");
+    }
 }

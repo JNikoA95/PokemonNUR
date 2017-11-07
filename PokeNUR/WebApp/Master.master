@@ -13,7 +13,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <nav>
+    <asp:ContentPlaceHolder ID="menu" runat="server">
         <input type="checkbox" id="menu-switch">
 
         <ul class="main-menu">
@@ -43,12 +43,12 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="Default.aspx">
                     <span>Salir</span>
                 </a>
             </li>
         </ul>
-    </nav>
+    </asp:ContentPlaceHolder>
     <form id="form1" runat="server">
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
