@@ -5,14 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="../App_Themes/Style/Style.css" rel="stylesheet" />
-    <title></title>
+    <link href="../App_Themes/Style/fonts.css" rel="stylesheet" />
+
+    <title>Login</title>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="container">
 
-
-            <h2 class="title">Login</h2>
+            <h2 class="title uppercase">Login</h2>
 
             <asp:TextBox runat="server" ID="txtUsuario" CssClass="imputs" placeholder="Nick" autofocus="autofocus"></asp:TextBox>
 
