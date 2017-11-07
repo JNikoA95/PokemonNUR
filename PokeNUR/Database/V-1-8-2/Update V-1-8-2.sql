@@ -8,7 +8,7 @@ GO
 USE [PokeNUR_DB]
 GO
 
-PRINT 'Actualizando a la version 1.7.0'
+PRINT 'Actualizando a la version 1.8.2'
 
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_VERSION_GetVersion]') AND type in (N'P', N'PC'))
 BEGIN
@@ -56,12 +56,9 @@ GO
 DBCC CHECKIDENT (tblPokemons, RESEED, 0)
 
 ALTER TABLE tblPokemons
-	ADD DEFAULT 0 FOR experiencia;
-	
-ALTER TABLE tblPokemons
 	ADD ant_Pokemon INT;
 
-DELETE FROM [PokeNUR_DB].[dbo].[tblPokemons]
+DELETE FROM [dbo].[tblPokemons]
 GO
 
 INSERT INTO [dbo].[tblPokemons]
@@ -99,7 +96,7 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    INSERT INTO [PokeNUR_DB].[dbo].[tblBatallas]
+    INSERT INTO [dbo].[tblBatallas]
            ([jugador_1]
            ,[jugador_2]
            ,[estado])
@@ -114,7 +111,7 @@ GO
 
 DELETE FROM tbl_Version
 
-INSERT INTO [PokeNUR_DB].[dbo].[tbl_Version]
+INSERT INTO [dbo].[tbl_Version]
            ([versionMayor]
            ,[versionMenor]
            ,[patch])

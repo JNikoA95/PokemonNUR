@@ -1,3 +1,6 @@
+USE [PokeNUR_DB]
+GO
+
 -- Inicialize Tipos
 
 INSERT INTO tbltipos VALUES ('Fuego');    
