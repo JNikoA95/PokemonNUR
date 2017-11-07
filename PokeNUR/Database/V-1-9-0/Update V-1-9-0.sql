@@ -100,5 +100,3 @@ INSERT INTO [dbo].[tbl_Version]
            ,0)
 GO
 
-
-alter table tblPokemonUsuario add idPkUser INT UNIQUE;
