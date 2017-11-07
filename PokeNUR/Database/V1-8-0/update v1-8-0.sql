@@ -57,13 +57,7 @@ ALTER TABLE tblUsuario
 	
 ALTER TABLE tblAtaques
 	ADD poderAtaque int NOT NULL;
-	
-ALTER TABLE tblPokemons
-	ADD nivel INT DEFAULT 1;
-	
-ALTER TABLE tblPokemons
-	ADD experiencia INT DEFAULT 0;
-	
+		
 USE [PokeNUR_DB]
 GO
 

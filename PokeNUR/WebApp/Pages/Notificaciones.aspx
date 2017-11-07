@@ -16,8 +16,8 @@
                 <div class="notificacion">
                     <img src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
                     <asp:Label ID="Nombre" runat="server" Text="Jugador"></asp:Label>
-                    <asp:Button CssClass="boton" ID="Aceptar" runat="server" Text="Aceptar" />
-                    <asp:Button CssClass="boton" ID="Rechazar" runat="server" Text="Rechazar" />
+                    <asp:Button CssClass="botonGreen" ID="Aceptar" runat="server" Text="Aceptar" />
+                    <asp:Button CssClass="botonRed" ID="Rechazar" runat="server" Text="Rechazar" />
                 </div>
             </ItemTemplate>
         </asp:Repeater>

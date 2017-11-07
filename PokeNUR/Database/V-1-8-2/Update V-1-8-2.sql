@@ -58,27 +58,6 @@ DBCC CHECKIDENT (tblPokemons, RESEED, 0)
 ALTER TABLE tblPokemons
 	ADD ant_Pokemon INT;
 
-DELETE FROM [dbo].[tblPokemons]
-GO
-
-INSERT INTO [dbo].[tblPokemons]
-           ([nombre])
-     VALUES
-           ('Charmander')
-GO
-
-INSERT INTO [dbo].[tblPokemons]
-           ([nombre])
-     VALUES
-           ('Bulbasaur')
-GO
-
-INSERT INTO [dbo].[tblPokemons]
-           ([nombre])
-     VALUES
-           ('Squirtle')
-GO
-
 
 -- =============================================
 -- Author:		Alejandra Sapiain
@@ -120,3 +99,6 @@ INSERT INTO [dbo].[tbl_Version]
            ,8
            ,2)
 GO
+
+
+alter table tblPokemonUsuario add idPkUser INT UNIQUE;
