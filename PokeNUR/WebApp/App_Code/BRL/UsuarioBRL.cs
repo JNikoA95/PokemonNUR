@@ -81,4 +81,32 @@ public class UsuarioBRL
 
         return user;
     }
+
+    public static Usuario getUsuarioNick(string nick)
+    {
+        if (string.IsNullOrEmpty(nick))
+        {
+            throw new ArgumentException("No puede existir campos nulos");
+
+        }
+        UserDSTableAdapters.UsuariosTableAdapter adapter = new UserDSTableAdapters.UsuariosTableAdapter();
+        UserDS.UsuariosDataTable table = adapter.GetUsuarioByNick(nick);
+
+        Usuario user = null;
+        //Deberia dar como resulado 1
+        if (table.Rows.Count == 1)
+        {
+            UserDS.UsuariosRow row = table[0];
+            user = new Usuario()
+            {
+                Codigo_id = row.codigo_id,
+                Nombre = row.nombre,
+                NickName = row.nickName,
+                Correo = row.correo,
+                Password = row.password
+            };
+        }
+        return user;
+    }
+
 }

@@ -7,20 +7,20 @@
 
     <div class="contenedor">
 
-        <asp:Repeater ID="InvitacionesRep" runat="server" DataSourceID="odsusuarios">
+        <asp:Repeater ID="InvitacionesRep" runat="server" DataSourceID="odsusuarios" OnItemCommand="InvitacionesRep_ItemCommand">
             <ItemTemplate>
                 <div class="notificacion" runat="server">
                     <img class="img-Notificacion" src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
                     <asp:Label CssClass="nombreJugador" runat="server" ID="Nombre" Text='<%#Eval("nickName") %>'></asp:Label>
                     <div class="contenedorInvitacion">
-                        <asp:Button CssClass="botonGreen" ID="Invitar" runat="server" Text="Invitar" OnClick="Invitar_Click" />
+                        <asp:Button CssClass="botonGreen" ID="Invitar" runat="server" Text="Invitar" CommandArgument='<%#Eval("nickName") %>' CommandName="Jugador"/>
                     </div>
-                    <asp:Label ID="txtCorreo" runat="server" Visible="false" CommandArgument='<%#Eval("correo") %>'></asp:Label>
-                    <asp:Label ID="txtId" runat="server" Visible="false" CommandArgument='<%#Eval("codigo_id") %>'></asp:Label>
-                </div>
+                    </div>
             </ItemTemplate>
         </asp:Repeater>
         <asp:ObjectDataSource ID="odsusuarios" runat="server" SelectMethod="GetUsuario" TypeName="UserDSTableAdapters.UsuariosTableAdapter" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" UpdateMethod="Update"></asp:ObjectDataSource>
     </div>
+
+
 </asp:Content>
 
