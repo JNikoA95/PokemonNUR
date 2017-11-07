@@ -11,10 +11,10 @@
             <ItemTemplate>
                 <div class="invitacion" runat="server">
                     <img src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
-                    <asp:Label runat="server" ID="Nombre" Text='<%#Eval("nickName") %>'></asp:Label>
-                    <asp:Button CssClass="boton" ID="Invitar" runat="server" Text="Invitar" />
-                    <asp:Label  ID="txtCorreo" runat="server" Visible="false" Text='<%#Eval("correo") %>'></asp:Label>
-                    <asp:Label  ID="txtId" runat="server" Visible="false" Text='<%#Eval("codigo_id") %>'></asp:Label>
+                    <asp:Label runat="server" ID="Nombre" CommandArgument='<%#Eval("nickName") %>'></asp:Label>
+                    <asp:Button CssClass="boton" ID="Invitar" runat="server" Text="Invitar" OnClick="Invitar_Click"/>
+                    <asp:Label  ID="txtCorreo" runat="server" Visible="false" CommandArgument='<%#Eval("correo") %>'></asp:Label>
+                    <asp:Label  ID="txtId" runat="server" Visible="false" CommandArgument='<%#Eval("codigo_id") %>'></asp:Label>
                 </div>
             </ItemTemplate>
         </asp:Repeater>
