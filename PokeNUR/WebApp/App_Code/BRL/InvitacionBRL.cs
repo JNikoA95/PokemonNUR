@@ -35,4 +35,13 @@ public class InvitacionBRL
         UserDSTableAdapters.UsuarioRegTableAdapter adap = new UserDSTableAdapters.UsuarioRegTableAdapter();
         adapter.mkBatallas(Seguridad.GetUserInSession().Codigo_id, UsuarioBRL.getUsuarioNick(nick).Codigo_id, ref salida);
     }
+
+    public void responderInvitacion(int id)
+    {
+        
+        BatallaDSTableAdapters.BatallasTableAdapter adapter = new BatallaDSTableAdapters.BatallasTableAdapter();
+        UserDSTableAdapters.UsuarioRegTableAdapter adap = new UserDSTableAdapters.UsuarioRegTableAdapter();
+        adapter.upd_getDatosBatalla(Seguridad.GetUserInSession().Codigo_id);
+    }
+
 }

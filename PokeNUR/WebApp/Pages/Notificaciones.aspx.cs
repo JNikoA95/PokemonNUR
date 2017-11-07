@@ -11,4 +11,9 @@ public partial class Pages_Notificaciones : System.Web.UI.Page
     {
 
     }
+
+    protected void NotificacionesRep_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+
+    }
 }
