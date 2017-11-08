@@ -522,9 +522,19 @@ input[value="Planta"]:checked, .img-huevo {
 }
 
 .usuario {
-
+    text-align: center;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .imgUsuario {
+    width: 300px;
 }
 
+.textUser {
+    display: block;
+    color: white;
+    font-family: conv_Pokemon;
+    font-size: 45px;
+}

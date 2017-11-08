@@ -6,10 +6,10 @@
     <h1 class="title">Mi Informacion</h1>
     <div class="contenedor"> 
         <div class="usuario">
+            <asp:Label CssClass="textUser" ID="Nombre" runat="server" Text="Nombre"></asp:Label>
             <img class="imgUsuario" src="../App_Themes/Style/img/people.png"/>
-            <asp:Label ID="Nombre" runat="server" Text="Nombre"></asp:Label>
-            <asp:Label ID="CantidadPokemons" runat="server" Text="CantidadPokemons"></asp:Label>
-            <asp:Label ID="Dinero" runat="server" Text="Dinero"></asp:Label>
+            <asp:Label CssClass="textUser" ID="CantidadPokemons" runat="server" Text="CantidadPokemons"></asp:Label>
+            <asp:Label CssClass="textUser" ID="Dinero" runat="server" Text="Dinero"></asp:Label>
         </div>
         <asp:Repeater ID="PokemonesRP" runat="server">
             <ItemTemplate>

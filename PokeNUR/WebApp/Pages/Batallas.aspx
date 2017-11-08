@@ -33,15 +33,15 @@
         <div class="opciones">
             <div class="ataquesBatalla">
                 Ataques<br>
-                <asp:Button CssClass="boton" ID="Ataque1" runat="server" Text="Ataque1" />
-                <asp:Button CssClass="boton" ID="Ataque2" runat="server" Text="Ataque2" />
-                <asp:Button CssClass="boton" ID="Ataque3" runat="server" Text="Ataque3" />
-                <asp:Button CssClass="boton" ID="Ataque4" runat="server" Text="Ataque4" />
+                <input class="boton" id="Ataque1" type="button" value="Ataque1" />
+                <input class="boton" id="Ataque2" type="button" value="Ataque2" />
+                <input class="boton" id="Ataque3" type="button" value="Ataque3" />
+                <input class="boton" id="Ataque4" type="button" value="Ataque4" />
             </div>
             <div class="menuBatalla">
                 Opciones<br>
-                <asp:Button CssClass="boton" ID="Item" runat="server" Text="Item" />
-                <asp:Button CssClass="boton" ID="Pokemon" runat="server" Text="Pokemon" />
+                <input class="boton" id="Item" type="button" value="Item" />
+                <input class="boton" id="Pokemon" type="button" value="Pokemon" />
                 <div class="detallesBatalla">
                     <asp:GridView ID="GridViewDatosBatalla" runat="server"></asp:GridView>
                 </div>
