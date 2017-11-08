@@ -9,6 +9,9 @@ public partial class Pages_login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority +
+        //Request.ApplicationPath.TrimEnd('/') + "/";
+        //url.Text = baseUrl;
         if (Seguridad.ThereAreUserInSession()) {
             if(PokemonUsuarioBRL.getUsuarioPokemon(Seguridad.GetUserInSession().NickName, Seguridad.GetUserInSession().Password) == 0) { 
                 Response.Redirect("Seleccion.aspx");

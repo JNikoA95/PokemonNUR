@@ -17,7 +17,7 @@ public partial class Pages_SeleccionAtaque : System.Web.UI.Page
         GridViewPokemones.DataSource = PokemonBRL.getPokemones(user.Codigo_id);
         GridViewPokemones.DataBind();
 
-        GridViewAtaques.DataSource = AtaquesBRL.getAtaquesByTipo(Convert.ToInt32(GridViewPokemones.Rows[1].Cells[1].Text));
+        GridViewAtaques.DataSource = AtaquesBRL.getAtaquesByTipo(Convert.ToInt32(GridViewPokemones.Rows[0].Cells[0].Text));
         GridViewAtaques.DataBind();
     }
 

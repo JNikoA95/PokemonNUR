@@ -14,7 +14,7 @@
         <div class="container">
 
             <h2 class="title uppercase">Login</h2>
-
+            <asp:Literal runat="server" ID="url"></asp:Literal>
             <asp:TextBox runat="server" ID="txtUsuario" CssClass="imputs" placeholder="Nick" autofocus="autofocus"></asp:TextBox>
 
 
