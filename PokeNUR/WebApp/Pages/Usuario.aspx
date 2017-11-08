@@ -6,7 +6,7 @@
     <h1 class="title">Mi Informacion</h1>
     <div class="contenedor"> 
         <div class="usuario">
-            <img src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
+            <img class="imgUsuario" src="../App_Themes/Style/img/people.png"/>
             <asp:Label ID="Nombre" runat="server" Text="Nombre"></asp:Label>
             <asp:Label ID="CantidadPokemons" runat="server" Text="CantidadPokemons"></asp:Label>
             <asp:Label ID="Dinero" runat="server" Text="Dinero"></asp:Label>
