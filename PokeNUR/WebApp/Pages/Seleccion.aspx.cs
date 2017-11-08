@@ -28,7 +28,7 @@ public partial class Pages_Seleccion : System.Web.UI.Page
         if (pokemon.Equals("Planta"))
             PokemonUsuarioBRL.insrtUsuarioPokemon(Seguridad.GetUserInSession().Codigo_id, 3);
 
-        Response.Redirect("Default.aspx");
+        Response.Redirect("SeleccionAtaque.aspx");
     }
 
     protected void BtnLogout_Click(object sender, EventArgs e)
