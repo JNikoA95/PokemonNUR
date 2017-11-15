@@ -9,7 +9,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>a7cb12d2-c294-4510-9d69-9ddc7f460e57</ProjectGuid>
+    <ProjectGuid>2c52e5f1-d82a-46bf-9ffc-3785446283bd</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>app.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>

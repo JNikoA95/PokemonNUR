@@ -4,7 +4,7 @@ var express = require('express')
     , http = require('http')
     , server = http.createServer(app)
     , io = require('socket.io').listen(server);
-//var Polling = require('polling');
+
 server.listen(61341);
 
 // routing
@@ -67,3 +67,4 @@ io.sockets.on('connection', function (socket) {
         socket.leave(socket.room);
     });
 });
+
