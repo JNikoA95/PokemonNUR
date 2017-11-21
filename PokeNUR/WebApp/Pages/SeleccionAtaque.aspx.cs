@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class Pages_SeleccionAtaque : System.Web.UI.Page
 {
-    List<Ataque> lista = new List<Ataque>();
+    List<PokemonAtaque> lista = new List<PokemonAtaque>();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack)
@@ -30,12 +30,20 @@ public partial class Pages_SeleccionAtaque : System.Web.UI.Page
             {
                 if (cb.Checked)
                 {
-                    lista.Add(new Ataque()
+                    lista.Add(new PokemonAtaque()
                     {
-                        Codigo_id = Convert.ToInt32(item.Cells[1].Text)
+                        Ataque_id = Convert.ToInt32(item.Cells[1].Text),
+                        Pokemon_id = Convert.ToInt32(GridViewPokemones.Rows[0].Cells[0].Text),
+                        Usuario_id = Seguridad.GetUserInSession().Codigo_id
                     });
                 }
             }
         }
+
+        foreach (PokemonAtaque obj in lista)
+        {
+            PokemonAtaqueBRL.insert(obj);
+        }
+
     }
 }

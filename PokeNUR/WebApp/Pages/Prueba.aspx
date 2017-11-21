@@ -12,7 +12,7 @@
     <script src="node_modules/socket.io/lib/socket.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script>
-        var socket = io.connect('http://localhost:61341');
+        var socket = io.connect('http://localhost:49281');
 
         // on connection to server, ask for user's name with an anonymous callback
         socket.on('connect', function () {
