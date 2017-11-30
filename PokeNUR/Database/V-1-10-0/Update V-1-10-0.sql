@@ -62,6 +62,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+DROP TABLE tblPokemonUsuario;
+
 CREATE TABLE [dbo].[tblPokemonUsuario](
 	[user_id] [int] NOT NULL,
 	[pokemon_id] [int] NOT NULL,
@@ -73,6 +75,7 @@ CREATE TABLE [dbo].[tblPokemonUsuario](
 ) ON [PRIMARY]
 
 GO
+
 
 SET ANSI_NULLS ON
 GO

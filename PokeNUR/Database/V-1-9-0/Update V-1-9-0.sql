@@ -59,6 +59,16 @@ ALTER TABLE tblPokemons
 	ADD ant_Pokemon INT;
 
 
+USE [PokeNUR_DB]
+GO
+
+/****** Object:  Table [dbo].[tblBatallas]    Script Date: 11/02/2017 21:34:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
 -- =============================================
 -- Author:		Alejandra Sapiain
 -- Create date: 10/09/2017
