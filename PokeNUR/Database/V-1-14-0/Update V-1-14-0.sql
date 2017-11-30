@@ -8,7 +8,7 @@ GO
 USE [PokeNUR_DB]
 GO
 
-PRINT 'Actualizando a la version 1.13.0'
+PRINT 'Actualizando a la version 1.14.0'
 
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_VERSION_GetVersion]') AND type in (N'P', N'PC'))
 BEGIN
@@ -37,10 +37,11 @@ BEGIN
 END
 
 
+
 IF @intVersionMayor IS NULL OR @intVersionMenor IS NULL OR NOT (@intVersionMayor = 1 AND @intVersionMenor = 13 AND @intPatch = 0)
 BEGIN
 	
-	RAISERROR('La base de datos no esta en la version 1.8.1. Este script solamente se aplica a la version 1.8.1',16,127)
+	RAISERROR('La base de datos no esta en la version 1.13.0. Este script solamente se aplica a la version 1.13.0',16,127)
 	RETURN;
 
 END
@@ -55,22 +56,54 @@ GO
 USE [PokeNUR_DB]
 GO
 
-ALTER TABLE tblPokemonAtaque
-	ADD codigo_id int NOT NULL;
+DROP TABLE tblPokemonAtaque;
 
 USE [PokeNUR_DB]
 GO
-/****** Object:  StoredProcedure [dbo].[mk_tblPokemonAtaque]    Script Date: 11/23/2017 19:54:50 ******/
+
+/****** Object:  Table [dbo].[TblPokemonAtaque]    Script Date: 11/30/2017 12:01:28 ******/
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
--- =============================================
--- Author:		Nicolas Andrade
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- =============================================
-ALTER PROCEDURE [dbo].[mk_tblPokemonAtaque]
+
+CREATE TABLE [dbo].[TblPokemonAtaque](
+	[codigo_id] [int] IDENTITY(1,1) NOT NULL,
+	[ataque_id] [int] NOT NULL,
+	[pokemon_id] [int] NOT NULL,
+	[usuario_id] [int] NOT NULL,
+ CONSTRAINT [PK_TblPokemonAtaque] PRIMARY KEY CLUSTERED 
+(
+	[codigo_id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[TblPokemonAtaque]  WITH CHECK ADD  CONSTRAINT [FK_TblPokemonAtaque_tblAtaques] FOREIGN KEY([ataque_id])
+REFERENCES [dbo].[tblAtaques] ([codigo_id])
+GO
+
+ALTER TABLE [dbo].[TblPokemonAtaque] CHECK CONSTRAINT [FK_TblPokemonAtaque_tblAtaques]
+GO
+
+ALTER TABLE [dbo].[TblPokemonAtaque]  WITH CHECK ADD  CONSTRAINT [FK_TblPokemonAtaque_tblPokemons] FOREIGN KEY([pokemon_id])
+REFERENCES [dbo].[tblPokemons] ([codigo_id])
+GO
+
+ALTER TABLE [dbo].[TblPokemonAtaque] CHECK CONSTRAINT [FK_TblPokemonAtaque_tblPokemons]
+GO
+
+ALTER TABLE [dbo].[TblPokemonAtaque]  WITH CHECK ADD  CONSTRAINT [FK_TblPokemonAtaque_tblUsuario] FOREIGN KEY([usuario_id])
+REFERENCES [dbo].[tblUsuario] ([codigo_id])
+GO
+
+ALTER TABLE [dbo].[TblPokemonAtaque] CHECK CONSTRAINT [FK_TblPokemonAtaque_tblUsuario]
+GO
+
+
+CREATE PROCEDURE [dbo].[mk_tblPokemonAtaque]
 	@prmPokemon_id int,
 	@ataque_id int,
 	@jugador_id int
@@ -92,8 +125,8 @@ BEGIN
 
 END
 
-DELETE FROM [dbo].[tbl_Version]
-GO
+
+DELETE FROM tbl_Version
 
 INSERT INTO [dbo].[tbl_Version]
            ([versionMayor]
@@ -103,4 +136,4 @@ INSERT INTO [dbo].[tbl_Version]
            (1
            ,14
            ,0)
-
+GO
