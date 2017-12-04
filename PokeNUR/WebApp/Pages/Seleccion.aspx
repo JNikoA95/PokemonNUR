@@ -24,9 +24,10 @@
         <asp:LinkButton CssClass="links" ID="BtnLogout" runat="server" OnClick="BtnLogout_Click">Salir</asp:LinkButton>
         <br><br>Elija un PokeHuevo
         <div class="huevo">
-            <img class="img-huevo" id="pokemon" src="" />
+            <img class="img-huevo" id="pokemon" src="../App_Themes/Style/img/1%20Charmander%20frente.gif" />
         </div>
-        <asp:RadioButtonList CssClass="cbox" ID="RadioButtonList1" runat="server" OnSelectedIndexChanged="cambia()">
+
+        <asp:RadioButtonList CssClass="cbox" ID="RadioButtonList1" runat="server" >
             <asp:ListItem class="rb1" Selected="True">Fuego</asp:ListItem>
             <asp:ListItem class="rb2">Agua</asp:ListItem>
             <asp:ListItem class="rb3">Planta</asp:ListItem>
