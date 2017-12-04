@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class Pages_Seleccion : System.Web.UI.Page
 {
+    
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -35,5 +36,19 @@ public partial class Pages_Seleccion : System.Web.UI.Page
     {
         Seguridad.Logout();
         Response.Redirect("login.aspx");
+    }
+
+    protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string poke = RadioButtonList1.SelectedValue;
+
+        string valor = "";
+        if (poke == "Fuego")
+            valor = "../App_Themes/Style/img/1%20Charmander%20frente.gif";
+        if (poke == "Agua")
+            valor = "../App_Themes/Style/img/4%20Squirtle%20frente.gif";
+        if (poke == "Planta")
+            valor = "../App_Themes/Style/img/7%20Bulbasaur%20frente.gif";
+        pokemonIMG.ImageUrl = valor;
     }
 }

@@ -94,30 +94,6 @@ body {
     margin-top: 20px;
 }
 
-input[value="Fuego"]:checked, .img-huevo {
-    background-color: rgba(245, 61, 61, 0.49);
-}
-
-input[value="Agua"]:checked, .img-huevo {
-    background-color: rgba(0, 89, 255, 0.23);
-}
-
-input[value="Planta"]:checked, .img-huevo {
-    background-color: rgba(0, 128, 0, 0.28);
-}
-
-/*#ContentPlaceHolder1_RadioButtonList1_0:checked, .img-huevo {
-    background-color: red;
-
-}
-#ContentPlaceHolder1_RadioButtonList1_1:checked, .img-huevo {
-    background-color: rgba(0, 89, 255, 0.23);
-}
-
-#ContentPlaceHolder1_RadioButtonList1_2:checked, .img-huevo {
-    background-color: rgba(0, 128, 0, 0.28);
-}*/
-
 .cbox {
     text-align: left;
     margin-left: auto;
@@ -126,10 +102,11 @@ input[value="Planta"]:checked, .img-huevo {
 }
 
 .img-huevo {
-    width: 100px;
+    width: 60px;
     margin: 20px;
-    padding: 10px;
+    padding: 30px;
     border-radius: 50%;
+    Background: #0000003b;
 }
 
 .boton {
@@ -538,3 +515,4 @@ input[value="Planta"]:checked, .img-huevo {
     font-family: conv_Pokemon;
     font-size: 45px;
 }
+
