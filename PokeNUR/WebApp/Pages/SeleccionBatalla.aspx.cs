@@ -40,9 +40,7 @@ public partial class Pages_SeleccionBatalla : System.Web.UI.Page
                 }
             }
         }
-
-        listaPoke.DataSource 
-
+        
     }
     
 }
