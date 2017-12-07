@@ -22,11 +22,11 @@
         </div>
         <div class="pokemonBatalla">
             <div class="pokemonLocal">
-                <img src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
+                <asp:Image CssClass="img-huevo" ID="pokemonLocal" runat="server"/>
             </div>
 
             <div class="pokemonVisita">
-                <img src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
+                <asp:Image CssClass="img-huevo" ID="pokemonVisita" runat="server"/>
             </div>
         </div>
 
