@@ -8,7 +8,7 @@ GO
 USE [PokeNUR_DB]
 GO
 
-PRINT 'Actualizando a la version 1.16.0'
+PRINT 'Actualizando a la version 1.18.0'
 
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_VERSION_GetVersion]') AND type in (N'P', N'PC'))
 BEGIN
@@ -37,7 +37,7 @@ BEGIN
 END
 
 
-IF @intVersionMayor IS NULL OR @intVersionMenor IS NULL OR NOT (@intVersionMayor = 1 AND @intVersionMenor = 18 AND @intPatch = 0)
+IF @intVersionMayor IS NULL OR @intVersionMenor IS NULL OR NOT (@intVersionMayor = 1 AND @intVersionMenor = 17 AND @intPatch = 0)
 BEGIN
 	
 	RAISERROR('La base de datos no esta en la version 1.18. Este script solamente se aplica a la version 1.18',16,127)
@@ -107,5 +107,5 @@ INSERT INTO [dbo].[tbl_Version]
      VALUES
            (1
            ,18
-           ,1)
+           ,0)
 GO
