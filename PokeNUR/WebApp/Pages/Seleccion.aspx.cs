@@ -44,11 +44,11 @@ public partial class Pages_Seleccion : System.Web.UI.Page
 
         string valor = "";
         if (poke == "Fuego")
-            valor = "../App_Themes/Style/img/1%20Charmander%20frente.gif";
+            valor = "../App_Themes/Style/img/Charmander%20frente.gif";
         if (poke == "Agua")
-            valor = "../App_Themes/Style/img/4%20Squirtle%20frente.gif";
+            valor = "../App_Themes/Style/img/Squirtle%20frente.gif";
         if (poke == "Planta")
-            valor = "../App_Themes/Style/img/7%20Bulbasaur%20frente.gif";
+            valor = "../App_Themes/Style/img/Bulbasaur%20frente.gif";
         pokemonIMG.ImageUrl = valor;
     }
 }
