@@ -40,4 +40,9 @@ public partial class Pages_InvitacionBatalla : System.Web.UI.Page
         }
     }
 
+
+    protected void Invitar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("SeleccionBatalla.aspx");
+    }
 }

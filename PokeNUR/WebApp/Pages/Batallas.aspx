@@ -33,10 +33,10 @@
         <div class="opciones">
             <div class="ataquesBatalla">
                 Ataques<br>
-                <input class="boton" id="Ataque1" type="button" value="Ataque1" />
-                <input class="boton" id="Ataque2" type="button" value="Ataque2" />
-                <input class="boton" id="Ataque3" type="button" value="Ataque3" />
-                <input class="boton" id="Ataque4" type="button" value="Ataque4" />
+                <input class="boton" id="Ataque1" type="button" value="Ataque1" runat="server"/>
+                <input class="boton" id="Ataque2" type="button" value="Ataque2" runat="server"/>
+                <input class="boton" id="Ataque3" type="button" value="Ataque3" runat="server"/>
+                <input class="boton" id="Ataque4" type="button" value="Ataque4" runat="server"/>
             </div>
             <div class="menuBatalla">
                 Opciones<br>
@@ -99,7 +99,7 @@
                                 msg: mensaje,
                                 sender: username
                             });
-                            $("#<%= MensajeTextBox.ClientID %>").val("");
+                            <%--$("#<%= MensajeTextBox.ClientID %>").val("");--%>
                         },
                         failure: function (response) {
                             console.log("Error al enviar datos al servidor");

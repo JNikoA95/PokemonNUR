@@ -12,9 +12,9 @@
                     <img class="img-Notificacion" src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
                     <asp:Label CssClass="nombreJugador" runat="server" ID="Nombre" Text='<%#Eval("nickName") %>'></asp:Label>
                     <div class="contenedorInvitacion">
-                        <asp:Button CssClass="botonGreen" ID="Invitar" runat="server" Text="Invitar" CommandArgument='<%#Eval("nickName") %>' CommandName="Jugador"/>
+                        <asp:Button CssClass="botonGreen" ID="Invitar" OnClick="Invitar_Click" runat="server" Text="Invitar" CommandArgument='<%#Eval("nickName") %>' CommandName="Jugador" />
                     </div>
-                    </div>
+                </div>
             </ItemTemplate>
         </asp:Repeater>
     </div>

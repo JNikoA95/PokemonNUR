@@ -8,8 +8,62 @@ using System.Web.UI.WebControls;
 
 public partial class Pages_Batallas : System.Web.UI.Page
 {
+    int pokemonActual_id = 3;
     protected void Page_Load(object sender, EventArgs e)
     {
+        List<Pokemon> listaPokemones = (List<Pokemon>)Session["pokemonesLista"];
+        List<Ataque> listaAtaques1 = new List<Ataque>();
+        List<Ataque> listaAtaques2 = new List<Ataque>();
+        List<Ataque> listaAtaques3 = new List<Ataque>();
+
+        if (listaPokemones.Count == 1)
+        {
+            listaAtaques1 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[0].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
+        }
+
+        if (listaPokemones.Count == 2)
+        {
+            listaAtaques1 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[0].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
+            listaAtaques2 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[1].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
+
+            if (listaPokemones[1].Codigo_id == pokemonActual_id)
+            {
+                Ataque1.Value = listaAtaques2[0].Nombre;
+                Ataque2.Value = listaAtaques2[1].Nombre;
+                Ataque3.Value = listaAtaques2[2].Nombre;
+                Ataque4.Value = listaAtaques2[3].Nombre;
+            }
+        }
+
+        if (listaPokemones.Count == 3)
+        {
+            listaAtaques1 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[0].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
+            listaAtaques2 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[1].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
+            listaAtaques3 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[2].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
+        }
+
+        if (listaPokemones[0].Codigo_id == pokemonActual_id)
+        {
+            Ataque1.Value = listaAtaques1[0].Nombre;
+            Ataque2.Value = listaAtaques1[1].Nombre;
+            Ataque3.Value = listaAtaques1[2].Nombre;
+            Ataque4.Value = listaAtaques1[3].Nombre;
+        }
+        if (listaPokemones.Count == 2)
+        {
+            
+        }
+
+        if (listaPokemones.Count == 3)
+        {
+            if (listaPokemones[2].Codigo_id == pokemonActual_id)
+            {
+                Ataque1.Value = listaAtaques3[0].Nombre;
+                Ataque2.Value = listaAtaques3[1].Nombre;
+                Ataque3.Value = listaAtaques3[2].Nombre;
+                Ataque4.Value = listaAtaques3[3].Nombre;
+            }
+        }
 
     }
 

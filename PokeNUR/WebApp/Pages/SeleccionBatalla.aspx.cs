@@ -19,11 +19,10 @@ public partial class Pages_SeleccionBatalla : System.Web.UI.Page
         GridViewPokemones.DataBind();
     }
 
+    public List<Pokemon> listaPokemones = new List<Pokemon>();
+
     protected void ButtonHecho_Click(object sender, EventArgs e)
     {
-        List<Pokemon> lista = new List<Pokemon>();
-        
-
         foreach (GridViewRow item in GridViewPokemones.Rows)
         {
             CheckBox cb = (CheckBox)item.FindControl("CheckBoxTonto");
@@ -31,16 +30,18 @@ public partial class Pages_SeleccionBatalla : System.Web.UI.Page
             {
                 if (cb.Checked)
                 {
-                    lista.Add(new Pokemon()
+                    listaPokemones.Add(new Pokemon()
                     {
                         Codigo_id = Convert.ToInt32(item.Cells[1].Text),
                         Nombre = item.Cells[2].Text
                     });
-                    
+
                 }
             }
         }
-        
+        Session["pokemonesLista"] = listaPokemones;
+        Response.Redirect("Batallas.aspx");
+
     }
-    
+
 }
