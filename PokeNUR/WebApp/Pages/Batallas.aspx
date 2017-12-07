@@ -22,21 +22,21 @@
         </div>
         <div class="pokemonBatalla">
             <div class="pokemonLocal">
-                <asp:Image CssClass="img-local" ID="pokemonLocal" runat="server"/>
+                <asp:Image CssClass="img-local" ID="pokemonLocal" runat="server" />
             </div>
 
             <div class="pokemonVisita">
-                <asp:Image CssClass="img-visita" ID="pokemonVisita" runat="server"/>
+                <asp:Image CssClass="img-visita" ID="pokemonVisita" runat="server" />
             </div>
         </div>
 
         <div class="opciones">
             <div class="ataquesBatalla">
                 Ataques<br>
-                <input class="boton" id="Ataque1" type="button" value="Ataque1" runat="server"/>
-                <input class="boton" id="Ataque2" type="button" value="Ataque2" runat="server"/>
-                <input class="boton" id="Ataque3" type="button" value="Ataque3" runat="server"/>
-                <input class="boton" id="Ataque4" type="button" value="Ataque4" runat="server"/>
+                <input class="boton" onclick="registrar()" id="Ataque1" type="button" value="Ataque1" runat="server" />
+                <input class="boton" onclick="registrar()" id="Ataque2" type="button" value="Ataque2" runat="server" />
+                <input class="boton" onclick="registrar()" id="Ataque3" type="button" value="Ataque3" runat="server" />
+                <input class="boton" onclick="registrar()" id="Ataque4" type="button" value="Ataque4" runat="server" />
             </div>
             <div class="menuBatalla">
                 Opciones<br>
@@ -54,62 +54,30 @@
         <asp:TextBox ID="txtAtaque2" runat="server" Visible="false"></asp:TextBox>
         <asp:TextBox ID="txtAtaque3" runat="server" Visible="false"></asp:TextBox>
         <asp:TextBox ID="txtAtaque4" runat="server" Visible="false"></asp:TextBox>
-        <asp:TextBox ID="txtBatalla_id" runat="server" Visible="false"></asp:TextBox>
+        <asp:HiddenField ID="txtBatalla_id" runat="server" ></asp:HiddenField>
         <asp:TextBox ID="SocketServer" runat="server" Visible="false"></asp:TextBox>
-        
+
         <asp:Literal ID="socketIoScript" runat="server"></asp:Literal>
         <script type="text/javascript">
 
-            $(document).ready(function () {
-                var socket = io($("#<%= SocketServer.ClientID %>").val() + "?batalaId=" + $("#<%= txtBatalla_id.ClientID %>").val());
-                socket.on('send', function (data) {
-                    console.log("llegando nuevo mensaje: " + data.msg);
-
-                    var username = $("#<%= User1.ClientID %>").val();
-                    var e = $('<div>').text(data.msg).addClass(username == data.sender ? "text-right" : "text-left");
-                    $('#Ataque1').append(e);
-                });
-
-
-                $("#Ataque1").click(function () {
-                    var usuario = $("#<%= User1.ClientID %>").val();
-                    var ataque = $("#<%= txtAtaque1.ClientID %>").val();
-                    var batalla = $("#<%= txtAtaque1.ClientID %>").val();
-                    if ($.trim(mensaje) == "")
-                        return;
-
-                    var conversacionId = $("#<%= txtBatalla_id.ClientID %>").val();
-                    //Llamar al webmethod
-                    var param = {
-                        
-                    };
-
-                    $.ajax({
-                        type: "POST",
-                        url: "Chat.aspx/GuardarMensaje",
-                        data: JSON.stringify(param),
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function (response) {
-                            if (!response || !response.d)
-                                return;
-
-                            socket.emit("msg", {
-                                conversacionId: conversacionId,
-                                msg: mensaje,
-                                sender: username
-                            });
-                            <%--$("#<%= MensajeTextBox.ClientID %>").val("");--%>
-                        },
-                        failure: function (response) {
-                            console.log("Error al enviar datos al servidor");
-                        }
-                    });
-
-
-                });
-
-            });
+            function registrar() {
+                var idBatalla = $("#<%= txtBatalla_id.ClientID %>").val();
+                var params = { batalla_id: 0, pokemon_id: 3, ataque_id: 1, daño: 50 };
+                
+               $.ajax({
+                   type: "POST",
+                   url: "Batallas.aspx/guardarDetalleBatalla",
+                   data: JSON.stringify(params),
+                   contentType: "application/json; charset=utf-8",
+                   dataType: "json",
+                   success: function (response) {
+                       alert('TE SACO TU PUTA');
+                   },
+                   failure: function (response) {
+                       alert("VALISTE VERGA :v");
+                   }
+               });
+            }
 
         </script>
 
