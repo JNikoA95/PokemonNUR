@@ -30,4 +30,16 @@ public class PokemonUsuarioBRL
 
         return total.Value;
     }
+
+    public static void update_dinero(int pokemonUserId, int cantExperiencia)
+    {
+        PokemonUsuarioTableAdapters.PokemonUsuarioTableAdapter adapter = new PokemonUsuarioTableAdapters.PokemonUsuarioTableAdapter();
+        adapter.update_dinero(pokemonUserId, cantExperiencia);
+    }
+
+    public static void update_experiencia(int pokemonUserId, int cantExperiencia)
+    {
+        PokemonUsuarioTableAdapters.PokemonUsuarioTableAdapter adapter = new PokemonUsuarioTableAdapters.PokemonUsuarioTableAdapter();
+        adapter.update_experiencia(pokemonUserId, cantExperiencia);
+    }
 }
