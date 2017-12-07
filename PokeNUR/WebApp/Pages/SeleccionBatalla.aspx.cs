@@ -42,6 +42,9 @@ public partial class Pages_SeleccionBatalla : System.Web.UI.Page
         Session["pokemonesLista"] = listaPokemones;
         Response.Redirect("Batallas.aspx");
 
+        int i = Convert.ToInt32( Session["id"] );
+        Response.Redirect("Batallas.aspx?id=" + i);
+
     }
 
 }
