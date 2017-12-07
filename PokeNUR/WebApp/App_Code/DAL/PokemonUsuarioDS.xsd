@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="PokemonUsuario" targetNamespace="http://tempuri.org/PokemonUsuario.xsd" xmlns:mstns="http://tempuri.org/PokemonUsuario.xsd" xmlns="http://tempuri.org/PokemonUsuario.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="PokemonUsuarioDS" targetNamespace="http://tempuri.org/PokemonUsuarioDS.xsd" xmlns:mstns="http://tempuri.org/PokemonUsuarioDS.xsd" xmlns="http://tempuri.org/PokemonUsuarioDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -43,10 +43,10 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="PokemonUsuario" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="PokemonUsuario" msprop:Generator_DataSetName="PokemonUsuario">
+  <xs:element name="PokemonUsuarioDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="PokemonUsuarioDS" msprop:Generator_DataSetName="PokemonUsuarioDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PokemonUsuario" msprop:Generator_TableClassName="PokemonUsuarioDataTable" msprop:Generator_TableVarName="tablePokemonUsuario" msprop:Generator_TablePropName="_PokemonUsuario" msprop:Generator_RowDeletingName="PokemonUsuarioRowDeleting" msprop:Generator_RowChangingName="PokemonUsuarioRowChanging" msprop:Generator_RowEvHandlerName="PokemonUsuarioRowChangeEventHandler" msprop:Generator_RowDeletedName="PokemonUsuarioRowDeleted" msprop:Generator_UserTableName="PokemonUsuario" msprop:Generator_RowChangedName="PokemonUsuarioRowChanged" msprop:Generator_RowEvArgName="PokemonUsuarioRowChangeEvent" msprop:Generator_RowClassName="PokemonUsuarioRow">
+        <xs:element name="PokemonUsuario" msprop:Generator_TableClassName="PokemonUsuarioDataTable" msprop:Generator_TableVarName="tablePokemonUsuario" msprop:Generator_TablePropName="PokemonUsuario" msprop:Generator_RowDeletingName="PokemonUsuarioRowDeleting" msprop:Generator_RowChangingName="PokemonUsuarioRowChanging" msprop:Generator_RowEvHandlerName="PokemonUsuarioRowChangeEventHandler" msprop:Generator_RowDeletedName="PokemonUsuarioRowDeleted" msprop:Generator_UserTableName="PokemonUsuario" msprop:Generator_RowChangedName="PokemonUsuarioRowChanged" msprop:Generator_RowEvArgName="PokemonUsuarioRowChangeEvent" msprop:Generator_RowClassName="PokemonUsuarioRow">
           <xs:complexType>
           </xs:complexType>
         </xs:element>

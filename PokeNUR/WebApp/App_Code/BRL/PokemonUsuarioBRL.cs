@@ -33,13 +33,13 @@ public class PokemonUsuarioBRL
 
     public static void update_dinero(int pokemonUserId, int cantExperiencia)
     {
-        PokemonUsuarioTableAdapters.PokemonUsuarioTableAdapter adapter = new PokemonUsuarioTableAdapters.PokemonUsuarioTableAdapter();
+        PokemonUsuarioDSTableAdapters.PokemonUsuarioTableAdapter adapter = new PokemonUsuarioDSTableAdapters.PokemonUsuarioTableAdapter();
         adapter.update_dinero(pokemonUserId, cantExperiencia);
     }
 
     public static void update_experiencia(int pokemonUserId, int cantExperiencia)
     {
-        PokemonUsuarioTableAdapters.PokemonUsuarioTableAdapter adapter = new PokemonUsuarioTableAdapters.PokemonUsuarioTableAdapter();
+        PokemonUsuarioDSTableAdapters.PokemonUsuarioTableAdapter adapter = new PokemonUsuarioDSTableAdapters.PokemonUsuarioTableAdapter();
         adapter.update_experiencia(pokemonUserId, cantExperiencia);
     }
 }
