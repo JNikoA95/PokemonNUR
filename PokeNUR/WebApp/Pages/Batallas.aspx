@@ -22,11 +22,11 @@
         </div>
         <div class="pokemonBatalla">
             <div class="pokemonLocal">
-                <asp:Image CssClass="img-huevo" ID="pokemonLocal" runat="server"/>
+                <asp:Image CssClass="img-local" ID="pokemonLocal" runat="server"/>
             </div>
 
             <div class="pokemonVisita">
-                <asp:Image CssClass="img-huevo" ID="pokemonVisita" runat="server"/>
+                <asp:Image CssClass="img-visita" ID="pokemonVisita" runat="server"/>
             </div>
         </div>
 
