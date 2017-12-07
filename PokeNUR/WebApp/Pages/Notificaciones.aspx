@@ -10,7 +10,7 @@
             <ItemTemplate>
                 <div class="notificacion">
                     <img class="img-Notificacion" src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
-                    <asp:Label CssClass="nombreJugador" ID="Nombre" runat="server" Text='<%#Eval ("nickname2")%>'></asp:Label>
+                    <asp:Label CssClass="nombreJugador" ID="Nombre" runat="server" Text='<%#Eval ("jugador_1")%>'></asp:Label>
                     <div class="contenedorBotones">
                         <asp:Button CssClass="botonGreen" ID="Aceptar" runat="server" Text="Aceptar" />
                         <asp:Button CssClass="botonRed" ID="Rechazar" runat="server" Text="Rechazar" />

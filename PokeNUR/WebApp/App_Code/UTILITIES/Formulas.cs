@@ -13,11 +13,12 @@ public class Formulas
 
     }
 
-    public static int NivelPokemon(int experiencia) {
+    public static int NivelPokemon(int experiencia)
+    {
         int nivelE = 50;
         int nivel = 1;
-        
-        while (experiencia >= nivelE+(nivelE*0.5))
+
+        while (experiencia >= nivelE + (nivelE * 0.5))
         {
             nivel++;
         }
@@ -27,7 +28,7 @@ public class Formulas
 
     public static int VidaPokemon(int experiencia, int cantVida)
     {
-        return cantVida + (int)(NivelPokemon(experiencia)*1.5);
+        return cantVida + (int)(NivelPokemon(experiencia) * 1.5);
     }
 
     public static int DefensaPokemon(int experiencia)
@@ -53,7 +54,8 @@ public class Formulas
         {
             bono = 1.5;
         }
-        else {
+        else
+        {
             bono = 1;
         }
         return bono;
@@ -62,23 +64,22 @@ public class Formulas
 
     public static Double PoderAtaque(int ataque, int experiencia)
     {
-        return ataque*1.5*NivelPokemon(experiencia);
+        return ataque * 1.5 * NivelPokemon(experiencia);
     }
 
     public static int DineroGanado(int CantDineroOponente)
     {
-        return (int)(CantDineroOponente*0.1);
+        return (int)(CantDineroOponente * 0.1);
     }
 
     public static int DañoAtaque(int experiencia, String pokeLocal, String pokeVisita, int ataquePoke)
     {
         int daño = 0;
-        daño = (int)(0.01 * BonoAtaque(pokeLocal, pokeVisita) * VariacionAtaque() * 
+        daño = (int)(0.01 * BonoAtaque(pokeLocal, pokeVisita) * VariacionAtaque() *
             (((0.2 * (NivelPokemon(experiencia) + 1) * ataquePoke * PoderAtaque(ataquePoke, experiencia)) /
-            (25 * DefensaPokemon(experiencia)))+2));
+            (25 * DefensaPokemon(experiencia))) + 2));
 
         return daño;
-
     }
 
 

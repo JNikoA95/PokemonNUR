@@ -14,14 +14,14 @@ public partial class Pages_Batallas : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static bool guardarDetalleBatalla(int batalla_id, int jugador_id, int pokemon_id, int ataque_id, int daño)
+    public static bool guardarDetalleBatalla(int batalla_id, int pokemon_id, int ataque_id, int daño)
     {
         DetalleBatalla obj = new DetalleBatalla
         {
             AtaqueID = ataque_id,
             BatallaID = batalla_id,
             Daño = daño,
-            JugadorID = jugador_id,
+            JugadorID = Seguridad.GetUserInSession().Codigo_id,
             PokemonID = pokemon_id
         };
 

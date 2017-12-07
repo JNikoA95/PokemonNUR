@@ -15,16 +15,16 @@
 
             <h2 class="title uppercase">Login</h2>
             <asp:Literal runat="server" ID="url"></asp:Literal>
-            <asp:TextBox runat="server" ID="txtUsuario" CssClass="imputs" placeholder="Nick" autofocus="autofocus"></asp:TextBox>
+            <asp:TextBox runat="server" ID="txtUsuario" CssClass="imputs" placeholder="NickName" autofocus="autofocus"></asp:TextBox>
             <div>
                 <asp:RequiredFieldValidator Style="color: red" ID="vlNick" runat="server" ErrorMessage="Ingrese su Nick" ControlToValidate="txtUsuario"></asp:RequiredFieldValidator>
             </div>
-            <asp:RegularExpressionValidator ID="revUsuario" runat="server" Style="color: red" ErrorMessage="Caracteres Invalidos" ValidationExpression="^[a-zA-Z ]*$" ControlToValidate="txtUsuario"></asp:RegularExpressionValidator>
-                <asp:TextBox runat="server" ID="txtPassword" CssClass="imputs" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
+
+            <asp:TextBox runat="server" ID="txtPassword" CssClass="imputs" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
             <div>
                 <asp:RequiredFieldValidator Style="color: red" ID="vlContraseña" runat="server" ErrorMessage="Ingrese su Contraseña" ControlToValidate="txtPassword"></asp:RequiredFieldValidator>
             </div>
-            
+
             <asp:Label ID="MsgLabel" runat="server" Visible="false" Text="El Nombre de Usuario y/o Contraseña son invalidos" ForeColor="Red"></asp:Label>
 
             <div class="boton-container">

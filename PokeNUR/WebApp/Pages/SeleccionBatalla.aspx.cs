@@ -12,11 +12,11 @@ public partial class Pages_SeleccionBatalla : System.Web.UI.Page
         if (IsPostBack)
             return;
 
-        Usuario user = Seguridad.GetUserInSession();
-        GridViewPokemones.DataSource = PokemonBRL.getPokemones(user.Codigo_id);
+        //Usuario user = Seguridad.GetUserInSession();
+        //GridViewPokemones.DataSource = PokemonBRL.getPokemones(user.Codigo_id);
+        //GridViewPokemones.DataBind();
+        GridViewPokemones.DataSource = PokemonBRL.getPokemones(Seguridad.GetUserInSession().Codigo_id);
         GridViewPokemones.DataBind();
-        
-        
     }
 
     protected void ButtonHecho_Click(object sender, EventArgs e)

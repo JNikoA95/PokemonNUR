@@ -48,28 +48,70 @@
             </div>
         </div>
 
-        <%--<script type="text/javascript">
-            function registrarAtaque() {
-                var name = document.getElementById('<%=txtNombre.ClientID%>').value;
-                var username = document.getElementById('<%=txtUsuario.ClientID%>').value;
-                var pass = document.getElementById('<%=txtPassword.ClientID%>').value;
-                var params = { nombre: name, pass: pass, username: username };
-                $.ajax({
-                    type: "POST",
-                    url: "Batalla.aspx/guardarDetalleBatalla",
-                    data: JSON.stringify(params),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (response) {
-                        alert('Registro Correcto!! :D');
-                        window.location.href = "Login.aspx";
-                    },
-                    failure: function (response) {
-                        alert("algo salio mal");
-                    }
+        <asp:TextBox ID="txtPokemon_id" runat="server" Visible="false"></asp:TextBox>
+        <asp:TextBox ID="User1" runat="server" Visible="false"></asp:TextBox>
+        <asp:TextBox ID="txtAtaque1" runat="server" Visible="false"></asp:TextBox>
+        <asp:TextBox ID="txtAtaque2" runat="server" Visible="false"></asp:TextBox>
+        <asp:TextBox ID="txtAtaque3" runat="server" Visible="false"></asp:TextBox>
+        <asp:TextBox ID="txtAtaque4" runat="server" Visible="false"></asp:TextBox>
+        <asp:TextBox ID="txtBatalla_id" runat="server" Visible="false"></asp:TextBox>
+        <asp:TextBox ID="SocketServer" runat="server" Visible="false"></asp:TextBox>
+        
+        <asp:Literal ID="socketIoScript" runat="server"></asp:Literal>
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                var socket = io($("#<%= SocketServer.ClientID %>").val() + "?batalaId=" + $("#<%= txtBatalla_id.ClientID %>").val());
+                socket.on('send', function (data) {
+                    console.log("llegando nuevo mensaje: " + data.msg);
+
+                    var username = $("#<%= User1.ClientID %>").val();
+                    var e = $('<div>').text(data.msg).addClass(username == data.sender ? "text-right" : "text-left");
+                    $('#Ataque1').append(e);
                 });
-            }
-        </script>--%>
+
+
+                $("#Ataque1").click(function () {
+                    var usuario = $("#<%= User1.ClientID %>").val();
+                    var ataque = $("#<%= txtAtaque1.ClientID %>").val();
+                    var batalla = $("#<%= txtAtaque1.ClientID %>").val();
+                    if ($.trim(mensaje) == "")
+                        return;
+
+                    var conversacionId = $("#<%= txtBatalla_id.ClientID %>").val();
+                    //Llamar al webmethod
+                    var param = {
+                        
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "Chat.aspx/GuardarMensaje",
+                        data: JSON.stringify(param),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            if (!response || !response.d)
+                                return;
+
+                            socket.emit("msg", {
+                                conversacionId: conversacionId,
+                                msg: mensaje,
+                                sender: username
+                            });
+                            $("#<%= MensajeTextBox.ClientID %>").val("");
+                        },
+                        failure: function (response) {
+                            console.log("Error al enviar datos al servidor");
+                        }
+                    });
+
+
+                });
+
+            });
+
+        </script>
 
     </div>
 </asp:Content>

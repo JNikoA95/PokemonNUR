@@ -23,19 +23,29 @@ public partial class Pages_SeleccionAtaque : System.Web.UI.Page
 
     protected void ButtonHecho_Click(object sender, EventArgs e)
     {
+        int cantidadAtaques = 0;
         foreach (GridViewRow item in GridViewAtaques.Rows)
         {
             CheckBox cb = (CheckBox)item.FindControl("CheckBoxTonto");
             if (cb != null)
             {
+
                 if (cb.Checked)
                 {
+                    if (cantidadAtaques >= 4)
+                    {
+                        return;
+                    }
+
+
                     lista.Add(new PokemonAtaque()
                     {
                         Ataque_id = Convert.ToInt32(item.Cells[1].Text),
                         Pokemon_id = Convert.ToInt32(GridViewPokemones.Rows[0].Cells[0].Text),
                         Usuario_id = Seguridad.GetUserInSession().Codigo_id
                     });
+                    cantidadAtaques++;
+
                 }
             }
         }
