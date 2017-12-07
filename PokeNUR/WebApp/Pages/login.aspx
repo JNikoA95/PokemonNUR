@@ -20,11 +20,11 @@
                 <asp:RequiredFieldValidator Style="color: red" ID="vlNick" runat="server" ErrorMessage="Ingrese su Nick" ControlToValidate="txtUsuario"></asp:RequiredFieldValidator>
             </div>
             <asp:RegularExpressionValidator ID="revUsuario" runat="server" Style="color: red" ErrorMessage="Caracteres Invalidos" ValidationExpression="^[a-zA-Z ]*$" ControlToValidate="txtUsuario"></asp:RegularExpressionValidator>
-            <asp:TextBox runat="server" ID="txtPassword" CssClass="imputs" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtPassword" CssClass="imputs" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
             <div>
                 <asp:RequiredFieldValidator Style="color: red" ID="vlContraseña" runat="server" ErrorMessage="Ingrese su Contraseña" ControlToValidate="txtPassword"></asp:RequiredFieldValidator>
             </div>
-            <asp:RegularExpressionValidator ID="rvmPassword" runat="server" Style="color: red" ErrorMessage="Caracteres Invalidos" ValidationExpression="^[a-zA-Z ]*$" ControlToValidate="txtPassword"></asp:RegularExpressionValidator>
+            
             <asp:Label ID="MsgLabel" runat="server" Visible="false" Text="El Nombre de Usuario y/o Contraseña son invalidos" ForeColor="Red"></asp:Label>
 
             <div class="boton-container">
