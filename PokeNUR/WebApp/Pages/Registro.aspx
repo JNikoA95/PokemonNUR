@@ -31,7 +31,6 @@
             <div>
                 <asp:RequiredFieldValidator Style="color: red" ID="vlCorreo" runat="server" ErrorMessage="Ingrese su Correo" ControlToValidate="txtCorreo"></asp:RequiredFieldValidator>
             </div>
-            <asp:RegularExpressionValidator ID="rvmCorreo" runat="server" Style="color: red" ErrorMessage="Caracteres Invalidos" ValidationExpression="^[a-zA-Z ]*$" ControlToValidate="txtCorreo"></asp:RegularExpressionValidator>
             <asp:Label ID="lbMensajeCorreo" runat="server" Text="El ya esta registrado" Visible="false" ForeColor="Red"></asp:Label>
             <br />
             <asp:Label ID="lbPassword" runat="server" Text="Password"></asp:Label>
@@ -40,7 +39,6 @@
             <div>
                 <asp:RequiredFieldValidator Style="color: red" ID="vlPassword" runat="server" ErrorMessage="Ingrese su Contraseña" ControlToValidate="txtPassword"></asp:RequiredFieldValidator>
             </div>
-            <asp:RegularExpressionValidator ID="revPassword" runat="server" Style="color: red" ErrorMessage="Caracteres Invalidos" ValidationExpression="^[a-zA-Z ]*$" ControlToValidate="txtPassword"></asp:RegularExpressionValidator>
             <br />
             <br />
             <asp:Button CssClass="boton" ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click" />
