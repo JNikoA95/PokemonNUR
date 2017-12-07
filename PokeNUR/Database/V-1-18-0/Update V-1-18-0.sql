@@ -68,7 +68,7 @@ BEGIN
 	 WHERE codigo_id = @Jugador_id
 
 END
-
+GO
 -- Update experiencia --
 
 CREATE PROCEDURE upd_experiencia
@@ -85,6 +85,7 @@ BEGIN
 	 WHERE idPkUser = @PokemonUserId
 
 END
+GO
 
 CREATE PROCEDURE get_tblUsuariosSinElLocal
 	@idUsuario int
