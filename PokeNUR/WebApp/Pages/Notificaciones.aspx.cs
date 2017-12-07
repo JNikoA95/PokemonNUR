@@ -18,6 +18,12 @@ public partial class Pages_Notificaciones : System.Web.UI.Page
 
     protected void NotificacionesRep_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
+        if (e.CommandName.Equals("Batalla"))
+        {
+            int i = Convert.ToInt32(e.CommandArgument);
+            Session["id"] = i;
 
+            Response.Redirect("SeleccionBatalla.aspx?id=" + i);
+        }
     }
 }
