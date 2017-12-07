@@ -103,40 +103,13 @@ BEGIN
 END
 GO
 --
--- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	Obtiene el id y el nombre del ataque del pokemon que tiene cada usuario
--- =============================================
-ALTER PROCEDURE [dbo].[get_pokemonAtaqueByUsuario] 
-	-- Add the parameters for the stored procedure here
-	@idUsuario int,
-	@idPokemon int
-AS
-BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
-
-    -- Insert statements for procedure here
-	SELECT A.nombre, A.codigo_id
-	FROM tblUsuario U, tblPokemonAtaque PA, tblPokemons P, tblAtaques A, tblPokemonUsuario PU
-	WHERE	@idUsuario = U.codigo_id
-	AND		U.codigo_id = PA.usuario_id
-	AND     A.codigo_id = PA.ataque_id
-	AND		@idPokemon = PA.pokemon_id
-	AND		U.codigo_id = PU.user_id
-	AND     PU.pokemon_id = P.codigo_id;	
-END
-
-GO
 --
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	Obtiene el id y el nombre del ataque del pokemon que tiene cada usuario
 -- =============================================
-ALTER PROCEDURE [dbo].[get_pokemonAtaqueByUsuario] 
+CREATE PROCEDURE [dbo].[get_pokemonAtaqueByUsuario] 
 	-- Add the parameters for the stored procedure here
 	@idUsuario int,
 	@idPokemon int
