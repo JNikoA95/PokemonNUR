@@ -3,28 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-/// <summary>
-/// Descripción breve de UsuarioBRL
-/// </summary>
 public class UsuarioBRL
 {
     public UsuarioBRL()
     {
-        //
-        // TODO: Agregar aquí la lógica del constructor
-        //
+    }
+
+    public static List<Usuario> getUsuarios(int id)
+    {
+        List<Usuario> lista = new List<Usuario>();
+        UserDSTableAdapters.UsuariosTableAdapter adapter = new UserDSTableAdapters.UsuariosTableAdapter();
+        UserDS.UsuariosDataTable table = adapter.GetUsuarioSinLocal(id);
+
+        foreach (UserDS.UsuariosRow row in table)
+        {
+            Usuario obj = new Usuario
+            {
+                Codigo_id = row.codigo_id,
+                Nombre = row.nombre,
+                Correo = row.correo,
+                Dinero = row.dinero,
+                NickName = row.nickName,
+                Password = row.password
+            };
+            lista.Add(obj);
+        }
+        return lista;
     }
 
     public static void insrtUsuario(Usuario obj)
     {
         UserDSTableAdapters.UsuariosTableAdapter adapter = new UserDSTableAdapters.UsuariosTableAdapter();
-        adapter.Insert(obj.Nombre, obj.NickName, obj.Correo, obj.Password);
+        adapter.Insert(obj.Nombre, obj.NickName, obj.Correo, obj.Password, obj.Dinero);
     }
 
     public static void updateUsuario(Usuario obj)
     {
         UserDSTableAdapters.UsuariosTableAdapter adapter = new UserDSTableAdapters.UsuariosTableAdapter();
-        adapter.Update(obj.Codigo_id, obj.Nombre, obj.NickName, obj.Correo, obj.Password);
+        adapter.Update(obj.Codigo_id, obj.Nombre, obj.NickName, obj.Correo, obj.Password, obj.Dinero);
     }
 
     public static void deleteUsuario(int codigo_id)
@@ -53,7 +69,7 @@ public class UsuarioBRL
                 Nombre = row.nombre,
                 NickName = row.nickName,
                 Correo = row.correo,
-                Password = row.password
+                Password = row.password,
             };
         }
         return user;
@@ -75,7 +91,8 @@ public class UsuarioBRL
                 Nombre = row.nombre,
                 NickName = row.nickName,
                 Correo = row.correo,
-                Password = row.password
+                Password = row.password,
+                Dinero = row.dinero
             };
         }
 
@@ -103,7 +120,8 @@ public class UsuarioBRL
                 Nombre = row.nombre,
                 NickName = row.nickName,
                 Correo = row.correo,
-                Password = row.password
+                Password = row.password,
+                Dinero = row.dinero
             };
         }
         return user;

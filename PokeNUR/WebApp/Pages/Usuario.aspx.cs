@@ -9,6 +9,10 @@ public partial class Pages_Usuario : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Usuario user = Seguridad.GetUserInSession();
 
+        Nombre.Text += ": " + user.NickName;
+        Dinero.Text += ": " + user.Dinero.ToString();
+        CantidadPokemons.Text += ": 0";
     }
 }

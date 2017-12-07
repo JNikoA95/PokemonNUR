@@ -45,5 +45,6 @@ public partial class Pages_SeleccionAtaque : System.Web.UI.Page
             PokemonAtaqueBRL.insert(obj);
         }
 
+        Response.Redirect("InvitacionBatalla.aspx");
     }
 }

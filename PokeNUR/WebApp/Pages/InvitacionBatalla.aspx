@@ -6,8 +6,7 @@
     <h1 class="title">Invita a Batallar</h1>
 
     <div class="contenedor">
-
-        <asp:Repeater ID="InvitacionesRep" runat="server" DataSourceID="odsusuarios" OnItemCommand="InvitacionesRep_ItemCommand">
+        <asp:Repeater ID="InvitacionesRep" runat="server" OnItemCommand="InvitacionesRep_ItemCommand">
             <ItemTemplate>
                 <div class="notificacion" runat="server">
                     <img class="img-Notificacion" src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
@@ -18,7 +17,6 @@
                     </div>
             </ItemTemplate>
         </asp:Repeater>
-        <asp:ObjectDataSource ID="odsusuarios" runat="server" SelectMethod="GetUsuario" TypeName="UserDSTableAdapters.UsuariosTableAdapter" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" UpdateMethod="Update"></asp:ObjectDataSource>
     </div>
 
 

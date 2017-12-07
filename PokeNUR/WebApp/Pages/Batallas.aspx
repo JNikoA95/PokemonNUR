@@ -46,8 +46,30 @@
                     <asp:GridView ID="GridViewDatosBatalla" runat="server"></asp:GridView>
                 </div>
             </div>
+        </div>
 
-        </div> 
+        <%--<script type="text/javascript">
+            function registrarAtaque() {
+                var name = document.getElementById('<%=txtNombre.ClientID%>').value;
+                var username = document.getElementById('<%=txtUsuario.ClientID%>').value;
+                var pass = document.getElementById('<%=txtPassword.ClientID%>').value;
+                var params = { nombre: name, pass: pass, username: username };
+                $.ajax({
+                    type: "POST",
+                    url: "Batalla.aspx/guardarDetalleBatalla",
+                    data: JSON.stringify(params),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        alert('Registro Correcto!! :D');
+                        window.location.href = "Login.aspx";
+                    },
+                    failure: function (response) {
+                        alert("algo salio mal");
+                    }
+                });
+            }
+        </script>--%>
 
     </div>
 </asp:Content>

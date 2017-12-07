@@ -9,7 +9,8 @@ public partial class Pages_InvitacionBatalla : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-    
+        InvitacionesRep.DataSource = UsuarioBRL.getUsuarios(Seguridad.GetUserInSession().Codigo_id);
+        InvitacionesRep.DataBind();
     }
 
     //protected void Invitar_Click(object sender, EventArgs e)

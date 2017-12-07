@@ -26,7 +26,8 @@ public partial class Pages_Registro : System.Web.UI.Page
                 Nombre = txtNombre.Text,
                 NickName = txtNickName.Text,
                 Correo = txtCorreo.Text,
-                Password = txtPassword.Text
+                Password = txtPassword.Text,
+                Dinero = 50
             };
 
             UsuarioBRL.insrtUsuario(nuevo);
