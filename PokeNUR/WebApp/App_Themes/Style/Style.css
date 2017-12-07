@@ -516,3 +516,78 @@ body {
     font-size: 45px;
 }
 
+
+.misPokemones {
+    width: 45%;
+}
+
+.ataques {
+    width: 45%;
+}
+
+.mGrid {
+    width: 600px;
+    background-color: rgba(226, 251, 27, 0.54);
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-collapse: collapse;
+    text-shadow: -2px -1px 0 #000000, 2px -1px 0 #000000, -2px 1px 0 #000000, 2px 1px 0 #000000;
+    font-family: Conv_Pokemon;
+    text-transform: capitalize;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+    .mGrid td {
+        padding: 2px;
+        color: white;
+        border: none;
+        border-collapse: collapse;
+    }
+
+    .mGrid th {
+        padding: 4px 2px;
+        color: #fff;
+        background: #960303 url(grd_head.png) repeat-x top;
+        font-size: 0.9em;
+        border: none;
+        border-collapse: collapse;
+    }
+
+    .mGrid .alt {
+        background: #fcfcfc url(grd_alt.png) repeat-x top;
+    }
+
+    .mGrid .pgr {
+        background: #424242 url(grd_pgr.png) repeat-x top;
+    }
+
+        .mGrid .pgr table {
+            margin: 5px 0;
+            border: none;
+            border-collapse: collapse;
+        }
+
+        .mGrid .pgr td {
+            padding: 0 6px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .mGrid .pgr a {
+            color: #666;
+            text-decoration: none;
+        }
+
+            .mGrid .pgr a:hover {
+                background-color: #e52626;
+                color: white;
+                text-decoration: none;
+            }
+
+    .mGrid tr:hover {
+        background-color: #f91414d4;
+        color: white;
+        text-decoration: none;
+    }

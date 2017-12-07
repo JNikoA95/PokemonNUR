@@ -10,7 +10,7 @@
             <asp:ObjectDataSource runat="server" ID="odsPokemonByUser"></asp:ObjectDataSource>
         </div>
         <div class="ataques">
-            <asp:GridView CssClass="listaAtaques" ID="GridViewAtaques" runat="server">
+            <asp:GridView CssClass="mGrid" ID="GridViewAtaques" runat="server">
                 <columns>
                     <asp:TemplateField>
                         <ItemTemplate>
