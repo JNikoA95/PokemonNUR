@@ -33,7 +33,7 @@ public class UsuarioBRL
 
     public static List<Batalla> getBatallasUsuario(int id)
     {
-        List<Batalla> lista = new List<Batalla>();
+        List<Batalla> listaBatallas = new List<Batalla>();
         BatallaDSTableAdapters.BatallasTableAdapter adapter = new BatallaDSTableAdapters.BatallasTableAdapter();
         BatallaDS.BatallasDataTable table = adapter.upd_getDatosBatalla(id);
 
@@ -45,8 +45,9 @@ public class UsuarioBRL
                 Jugador_1 = row.jugador1,
                 jugador_2 = row.jugador2
             };
+            listaBatallas.Add(obj);
         }
-        return lista;
+        return listaBatallas;
     }
 
 
