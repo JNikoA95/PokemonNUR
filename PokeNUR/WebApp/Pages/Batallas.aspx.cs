@@ -81,6 +81,10 @@ public partial class Pages_Batallas : System.Web.UI.Page
     {
         string id = HttpContext.Current.Session["id"].ToString();
         batalla_id = Convert.ToInt32(id);
+
+        string pokemonid = HttpContext.Current.Session["pokemon_id"].ToString();
+        pokemon_id = Convert.ToInt32(pokemonid);
+
         DetalleBatalla obj = new DetalleBatalla
         {
             BatallaID = batalla_id,

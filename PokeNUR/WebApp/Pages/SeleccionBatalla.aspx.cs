@@ -23,6 +23,7 @@ public partial class Pages_SeleccionBatalla : System.Web.UI.Page
 
     protected void ButtonHecho_Click(object sender, EventArgs e)
     {
+        int pokemonID = 0;
         foreach (GridViewRow item in GridViewPokemones.Rows)
         {
             CheckBox cb = (CheckBox)item.FindControl("CheckBoxTonto");
@@ -30,18 +31,20 @@ public partial class Pages_SeleccionBatalla : System.Web.UI.Page
             {
                 if (cb.Checked)
                 {
-                    listaPokemones.Add(new Pokemon()
+                    Pokemon obj = new Pokemon()
                     {
                         Codigo_id = Convert.ToInt32(item.Cells[1].Text),
                         Nombre = item.Cells[2].Text
-                    });
-
+                    };
+                    listaPokemones.Add(obj);
+                    pokemonID = obj.Codigo_id;
                 }
             }
         }
         Session["pokemonesLista"] = listaPokemones;
-        int i = Convert.ToInt32( Session["id"] );
-        Response.Redirect("Batallas.aspx?id=" + i);
+        int i = Convert.ToInt32(Session["id"]);
+        Session["pokemon_id"] = pokemonID;
+        Response.Redirect("Batallas.aspx?id=" + i + "&pokemon_id=" + pokemonID);
     }
 
 }

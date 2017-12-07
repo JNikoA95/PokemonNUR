@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <asp:TextBox ID="txtPokemon_id" runat="server" Visible="false"></asp:TextBox>
+        <asp:HiddenField ID="txtPokemon_id" runat="server"></asp:HiddenField>
         <asp:TextBox ID="User1" runat="server" Visible="false"></asp:TextBox>
         <asp:TextBox ID="txtAtaque1" runat="server" Visible="false"></asp:TextBox>
         <asp:TextBox ID="txtAtaque2" runat="server" Visible="false"></asp:TextBox>
@@ -62,7 +62,8 @@
 
             function registrar() {
                 var idBatalla = $("#<%= txtBatalla_id.ClientID %>").val();
-                var params = { batalla_id: 0, pokemon_id: 3, ataque_id: 1, daño: 50 };
+                var idPokemon = $("#<%= txtPokemon_id.ClientID %>").val();
+                var params = { batalla_id: 0, pokemon_id: 0, ataque_id: 2, daño: 50 };
                 
                $.ajax({
                    type: "POST",
