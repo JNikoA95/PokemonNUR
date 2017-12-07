@@ -3,22 +3,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <h1 class="titleRed">Pokedex</h1> 
-    <div class="contenedor">
-        <div class="pokemon">
-            <img src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
-            <asp:Label ID="Pokemon" runat="server" Text="Pokemon"></asp:Label>
-            <asp:Label ID="Tipo" runat="server" Text="Tipo"></asp:Label>
-            <asp:Label ID="Evoluciones" runat="server" Text="Evoluciones"></asp:Label>
-        </div>
-        <asp:Repeater ID="InvitacionesRep" runat="server">
+    <h1 class="titleRed">Pokedex</h1>
+       <div class="contenedor">
+        <asp:Repeater ID="InvitacionesRep" runat="server" DataSourceID="SqlDataSource1">
             <ItemTemplate>
-                <div class="invitacion">
-                    <img src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
-                    <asp:Label ID="Pokemon" runat="server" Text="Pokemon"></asp:Label>
-                </div>
+                <div class="pokemon" runat="server">
+                    <img class="img-Pokemon" src="../App_Themes/Style/img/<%#Eval("nombre")%>%20frente.gif" />
+                    <asp:Label CssClass="nombreJugador" runat="server" ID="Nombre" Text='<%#Eval("nombre") %>'></asp:Label>
+                    <asp:Label CssClass="pokemonTipo" runat="server" ID="Label1" Text='<%#Eval("tipo") %>'></asp:Label>
+                    </div>
             </ItemTemplate>
         </asp:Repeater>
+           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:PokeNUR_DBConnectionString %>" SelectCommand="get_PokemonYtipo" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     </div>
 </asp:Content>
 
