@@ -8,9 +8,11 @@ using System.Web.UI.WebControls;
 
 public partial class Pages_Batallas : System.Web.UI.Page
 {
-    int pokemonActual_id = 1;
+    int pokemonActual_id = 3;
+    
     protected void Page_Load(object sender, EventArgs e)
     {
+        //txtBatalla_id.Value = Session["id"].ToString();
         List<Pokemon> listaPokemones = (List<Pokemon>)Session["pokemonesLista"];
         List<Ataque> listaAtaques1 = new List<Ataque>();
         List<Ataque> listaAtaques2 = new List<Ataque>();
@@ -77,11 +79,13 @@ public partial class Pages_Batallas : System.Web.UI.Page
     [WebMethod]
     public static bool guardarDetalleBatalla(int batalla_id, int pokemon_id, int ataque_id, int daño)
     {
+        string id = HttpContext.Current.Session["id"].ToString();
+        batalla_id = Convert.ToInt32(id);
         DetalleBatalla obj = new DetalleBatalla
         {
-            AtaqueID = ataque_id,
             BatallaID = batalla_id,
-            Daño = daño,
+            AtaqueID = ataque_id,
+            Daño = 60,
             JugadorID = Seguridad.GetUserInSession().Codigo_id,
             PokemonID = pokemon_id
         };
