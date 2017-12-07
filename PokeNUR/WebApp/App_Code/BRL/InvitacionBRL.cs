@@ -15,7 +15,7 @@ public class InvitacionBRL
         //
     }
 
-    public static void insertarBatalla(string nick)
+    public static int insertarBatalla(string nick)
     {
         int? salida = 0;
 
@@ -34,6 +34,8 @@ public class InvitacionBRL
             Console.Write("ERROR");
 
         }
+
+        return salida.Value;
     }
 
     public static void responderInvitacion()

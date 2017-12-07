@@ -29,20 +29,19 @@ public partial class Pages_InvitacionBatalla : System.Web.UI.Page
     //}
 
 
-
+    
     protected void InvitacionesRep_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         if (e.CommandName == "Jugador")
         {
             string nick = e.CommandArgument == null ? "" : e.CommandArgument.ToString();
-            InvitacionBRL.insertarBatalla(nick);
+            int idBatalla = InvitacionBRL.insertarBatalla(nick);
 
+            Session["id"] = idBatalla;
+            Response.Redirect("SeleccionBatalla.aspx?id=" + idBatalla);
         }
     }
 
 
-    protected void Invitar_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("SeleccionBatalla.aspx");
-    }
+    
 }
