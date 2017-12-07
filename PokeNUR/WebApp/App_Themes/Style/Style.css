@@ -637,3 +637,23 @@ body {
     height: 110px;
     width: 100px;
 }
+
+.img-local {
+    width: 100px;
+    margin: 20px;
+    padding: 30px;
+}
+
+.img-visita {
+    width: 80px;
+    margin: 20px;
+    padding: 30px;
+}
+
+.pokemonLocal {
+
+}
+
+.pokemonVisita {
+ 
+}
