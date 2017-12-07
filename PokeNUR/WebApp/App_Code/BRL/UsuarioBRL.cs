@@ -31,6 +31,25 @@ public class UsuarioBRL
         return lista;
     }
 
+    public static List<Batalla> getBatallasUsuario(int id)
+    {
+        List<Batalla> lista = new List<Batalla>();
+        BatallaDSTableAdapters.BatallasTableAdapter adapter = new BatallaDSTableAdapters.BatallasTableAdapter();
+        BatallaDS.BatallasDataTable table = adapter.upd_getDatosBatalla(id);
+
+        foreach (BatallaDS.BatallasRow row in table)
+        {
+            Batalla obj = new Batalla
+            {
+                Codigo_id = row.idBatalla,
+                Jugador_1 = row.jugador1,
+                jugador_2 = row.jugador2
+            };
+        }
+        return lista;
+    }
+
+
     public static void insrtUsuario(Usuario obj)
     {
         UserDSTableAdapters.UsuariosTableAdapter adapter = new UserDSTableAdapters.UsuariosTableAdapter();

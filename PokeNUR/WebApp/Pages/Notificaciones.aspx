@@ -6,7 +6,7 @@
     <h1 class="title">Notificaciones</h1>
 
     <div class="contenedor">
-        <asp:Repeater ID="NotificacionesRep" runat="server" DataSourceID="ObjectDataSource1" OnItemCommand="NotificacionesRep_ItemCommand">
+        <asp:Repeater ID="NotificacionesRep" runat="server" OnItemCommand="NotificacionesRep_ItemCommand">
             <ItemTemplate>
                 <div class="notificacion">
                     <img class="img-Notificacion" src="../App_Themes/Style/img/people.png" style="height: 147px; width: 148px" />
@@ -18,11 +18,7 @@
                     </div>
             </ItemTemplate>
         </asp:Repeater>
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="upd_getDatosBatalla" TypeName="BatallaDSTableAdapters.BatallasTableAdapter">
-            <SelectParameters>
-                <asp:QueryStringParameter runat="server" QueryStringField="ID" Name="idJugador" Type="Int32" DefaultValue="0"></asp:QueryStringParameter>
-            </SelectParameters>
-        </asp:ObjectDataSource>
+        
     </div>
 </asp:Content>
 

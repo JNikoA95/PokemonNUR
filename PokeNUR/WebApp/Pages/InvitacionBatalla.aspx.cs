@@ -9,6 +9,9 @@ public partial class Pages_InvitacionBatalla : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (IsPostBack)
+            return;
+
         InvitacionesRep.DataSource = UsuarioBRL.getUsuarios(Seguridad.GetUserInSession().Codigo_id);
         InvitacionesRep.DataBind();
     }

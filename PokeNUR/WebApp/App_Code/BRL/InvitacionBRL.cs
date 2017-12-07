@@ -36,7 +36,7 @@ public class InvitacionBRL
         }
     }
 
-    public void responderInvitacion(int id)
+    public static void responderInvitacion()
     {
         
         BatallaDSTableAdapters.BatallasTableAdapter adapter = new BatallaDSTableAdapters.BatallasTableAdapter();

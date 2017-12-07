@@ -78,7 +78,7 @@ BEGIN
            ,@prmPassword
            ,@prmDinero)
 END
-
+GO
 
 ALTER PROCEDURE [dbo].[upd_tblUsuarios]
   @prmCodigo_id int,
