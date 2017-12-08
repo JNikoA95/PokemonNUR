@@ -1,5 +1,6 @@
-﻿using System;
+﻿using System;       
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -8,12 +9,18 @@ using System.Web.UI.WebControls;
 
 public partial class Pages_Batallas : System.Web.UI.Page
 {
-    int pokemonActual_id = 3;
-    
+    //int pokemonActual_id = 3;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        //txtBatalla_id.Value = Session["id"].ToString();
+        if (IsPostBack)
+        {
+            return;
+        }
+
+        txtBatalla_id.Value = Session["id"].ToString();
         List<Pokemon> listaPokemones = (List<Pokemon>)Session["pokemonesLista"];
+        int pokemonActual_id = listaPokemones[0].Codigo_id;
         List<Ataque> listaAtaques1 = new List<Ataque>();
         List<Ataque> listaAtaques2 = new List<Ataque>();
         List<Ataque> listaAtaques3 = new List<Ataque>();
@@ -21,7 +28,7 @@ public partial class Pages_Batallas : System.Web.UI.Page
         if (listaPokemones.Count == 1)
         {
             listaAtaques1 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[0].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
-            
+
         }
 
         if (listaPokemones.Count == 2)
@@ -29,7 +36,7 @@ public partial class Pages_Batallas : System.Web.UI.Page
             listaAtaques1 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[0].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
             listaAtaques2 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[1].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
 
-            
+
         }
 
         if (listaPokemones.Count == 3)
@@ -73,7 +80,28 @@ public partial class Pages_Batallas : System.Web.UI.Page
         }
         pokemonVisita.ImageUrl = "../App_Themes/Style/img/Machoke%20frente.gif";
 
+        string strConversacionId = Session["id"].ToString();
+        if (string.IsNullOrEmpty(strConversacionId))
+        {
+            return;
+        }
+        try
+        {
+            txtBatalla_id.Value = strConversacionId;
+            int conversacionId = Convert.ToInt32(strConversacionId);
 
+            GridViewDatosBatalla.DataSource = DetalleBatallaBRL.getDetalleBatalla(Seguridad.GetUserInSession().Codigo_id);
+
+            string socketServer = ConfigurationManager.AppSettings["SocketServer"];
+            socketIoScript.Text = @"<script type=""text/javascript"" src=""" + socketServer + @"socket.io/socket.io.js""></script>";
+            SocketServer.Value = socketServer;
+
+            return;
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
 
     [WebMethod]
@@ -83,7 +111,7 @@ public partial class Pages_Batallas : System.Web.UI.Page
         batalla_id = Convert.ToInt32(id);
 
         string pokemonid = HttpContext.Current.Session["pokemon_id"].ToString();
-        pokemon_id = Convert.ToInt32(pokemonid);
+        pokemon_id = Convert.ToInt32(id);
 
         DetalleBatalla obj = new DetalleBatalla
         {

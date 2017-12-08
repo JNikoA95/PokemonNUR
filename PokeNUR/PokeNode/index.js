@@ -23,10 +23,10 @@ io.on('connection', function(socket){
 	socket.on('msg', function (data) {
 
 	    var room = 'batalla-' + data.batallaId
-	    /* data = {
-	        batallaId : 1,
-            msg : "Hola"
-	    }*/
+	    //  data = {
+	    //     batallaId : room,
+     //        msg : "Hola"
+	    // }
 
 	    console.log("enviando mensaje en el Room : " + room);
 	    io.to(room).emit('send', { msg: data.msg, sender: data.sender });

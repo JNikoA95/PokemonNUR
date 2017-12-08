@@ -48,37 +48,65 @@
             </div>
         </div>
 
-        <asp:HiddenField ID="txtPokemon_id" runat="server"></asp:HiddenField>
+        <asp:HiddenField ID="txtPokemon_id" runat="server" />
         <asp:TextBox ID="User1" runat="server" Visible="false"></asp:TextBox>
         <asp:TextBox ID="txtAtaque1" runat="server" Visible="false"></asp:TextBox>
         <asp:TextBox ID="txtAtaque2" runat="server" Visible="false"></asp:TextBox>
         <asp:TextBox ID="txtAtaque3" runat="server" Visible="false"></asp:TextBox>
         <asp:TextBox ID="txtAtaque4" runat="server" Visible="false"></asp:TextBox>
-        <asp:HiddenField ID="txtBatalla_id" runat="server" ></asp:HiddenField>
-        <asp:TextBox ID="SocketServer" runat="server" Visible="false"></asp:TextBox>
+        <asp:HiddenField ID="txtBatalla_id" runat="server" />
+        <asp:HiddenField ID="SocketServer" runat="server" />
 
         <asp:Literal ID="socketIoScript" runat="server"></asp:Literal>
         <script type="text/javascript">
 
+
             function registrar() {
-                var idBatalla = $("#<%= txtBatalla_id.ClientID %>").val();
-                var idPokemon = $("#<%= txtPokemon_id.ClientID %>").val();
-                var params = { batalla_id: 0, pokemon_id: 0, ataque_id: 2, daño: 50 };
-                
-               $.ajax({
-                   type: "POST",
-                   url: "Batallas.aspx/guardarDetalleBatalla",
-                   data: JSON.stringify(params),
-                   contentType: "application/json; charset=utf-8",
-                   dataType: "json",
-                   success: function (response) {
-                       alert('TE SACO TU PUTA');
-                   },
-                   failure: function (response) {
-                       alert("VALISTE VERGA :v");
-                   }
+                var socket = io($("#<%= SocketServer.ClientID %>").val() + "?batallaId=" + $("#<%= txtBatalla_id.ClientID %>").val());
+                socket.on('send', function (data) {
+                    console.log("llegando nuevo mensaje: " + data.msg);
+
+                    var username = $("#<%= User1.ClientID %>").val();
+                        var e = $('<div>').text(data.msg).addClass(username == data.sender ? "text-right" : "text-left");
+                        $('#mensajes').append(e);
                });
+
+               var idBatalla = $("#<%= txtBatalla_id.ClientID %>").val();
+                    var idPokemon = $("#<%= txtPokemon_id.ClientID %>").val();
+                    var params = { batalla_id: 0, pokemon_id: 0, ataque_id: 2, daño: 50 };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "Batallas.aspx/guardarDetalleBatalla",
+                        data: JSON.stringify(params),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            if (!response || !response.d)
+                                return;
+                            socket.emit("msg", {
+                                batalla_id: idBatalla,
+                                pokemon_id: idPokemon,
+                                ataque_id: 2,
+                                daño: 50,
+                                sender: $("#<%= User1.ClientID %>").val(),
+                                success: function () {
+                                    alert("belleza!!");
+                                },
+                                failure: function () {
+                                    alert("no belleza");
+                                }
+                            });
+                        },
+                        failure: function (response) {
+                            alert("VALISTE VERGA :v");
+                        }
+                    });
             }
+
+
+
+
 
         </script>
 

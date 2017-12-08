@@ -11,10 +11,8 @@ public class PokemonUsuario
     public string nick { get; set; }
     public string Correo { get; set; }
     public string nombre { get; set; }
+
     public PokemonUsuario()
-    {
-        //
-        // TODO: Agregar aquí la lógica del constructor
-        //
+    {   
     }
 }
