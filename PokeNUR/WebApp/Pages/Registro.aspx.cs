@@ -17,6 +17,7 @@ public partial class Pages_Registro : System.Web.UI.Page
 
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
+
         if (Convert.ToInt32(txtPassword.Text.Trim().Length) < 6)
         {
             return;
@@ -24,19 +25,12 @@ public partial class Pages_Registro : System.Web.UI.Page
 
         Usuario userData = UsuarioBRL.getUserData(txtCorreo.Text, txtNickName.Text);
 
-        if (!existeCorreo(txtCorreo.Text))
-        {
-            lbMensajeCorreo.Visible = true;
-        }
-
-        if (!existeNick(txtNickName.Text))
-        {
-            lbMensajeNickName.Visible = true;
-        }
-
         if (userData == null)
         {
             if (!existeCorreo(txtCorreo.Text) && !existeNick(txtNickName.Text))
+
+            Usuario nuevo = new Usuario()
+
             {
                 Usuario nuevo = new Usuario()
                 {
@@ -59,6 +53,7 @@ public partial class Pages_Registro : System.Web.UI.Page
             lbMensajeCorreo.Visible = true;
         }
     }
+
     public bool existeNick(String nick)
     {
         Usuario userNick = UsuarioBRL.getUsuarioNick(nick);
