@@ -23,7 +23,7 @@
             <div>
                 <asp:RequiredFieldValidator Style="color: red" ID="vlNick" runat="server" ErrorMessage="Ingrese su Nick" ControlToValidate="txtNickName"></asp:RequiredFieldValidator>
             </div>
-            <asp:RegularExpressionValidator ID="revNick" runat="server" Style="color: red" ErrorMessage="Caracteres Invalidos" ValidationExpression="^[a-zA-Z ]*$" ControlToValidate="txtNickName"></asp:RegularExpressionValidator>
+            <asp:RegularExpressionValidator ID="revNick" runat="server" Style="color: red" ErrorMessage="Caracteres Invalidos" ValidationExpression="^[a-zA-Z0-9 ]*$" ControlToValidate="txtNickName"></asp:RegularExpressionValidator>
             <asp:Label ID="lbMensajeNickName" runat="server" Text="El nombre de usuario ya esta ocupado" Visible="false" ForeColor="Red"></asp:Label>
             <br />
             <asp:Label ID="lbCorreo" runat="server" Text="Correo Electronico"></asp:Label>
@@ -31,10 +31,11 @@
             <div>
                 <asp:RequiredFieldValidator Style="color: red" ID="vlCorreo" runat="server" ErrorMessage="Ingrese su Correo" ControlToValidate="txtCorreo"></asp:RequiredFieldValidator>
             </div>
+            <asp:RegularExpressionValidator ID="revCorreo" runat="server" Style="color: red" ErrorMessage="Caracteres Invalidos" ValidationExpression="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" ControlToValidate="txtCorreo"></asp:RegularExpressionValidator>
             <asp:Label ID="lbMensajeCorreo" runat="server" Text="El ya esta registrado" Visible="false" ForeColor="Red"></asp:Label>
             <br />
             <asp:Label ID="lbPassword" runat="server" Text="Password"></asp:Label>
-
+            <asp:Label ID="lbPass" runat="server" Style="color: red" Text="Su contraseña debe tener 6 o mas caracteres" Visible="false"></asp:Label>
             <asp:TextBox CssClass="imputs" ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
             <div>
                 <asp:RequiredFieldValidator Style="color: red" ID="vlPassword" runat="server" ErrorMessage="Ingrese su Contraseña" ControlToValidate="txtPassword"></asp:RequiredFieldValidator>
@@ -42,7 +43,7 @@
             <br />
             <br />
             <asp:Button CssClass="boton" ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click" />
-            <asp:Button CssClass="boton" ID="Cancelar" runat="server" Text="Cancelar" />
+            <asp:Button CssClass="boton" ID="Cancelar" runat="server" Text="Cancelar" OnClick="Cancelar_Click"/>
             <br />
             <br />
 

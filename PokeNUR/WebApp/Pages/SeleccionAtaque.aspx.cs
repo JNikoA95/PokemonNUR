@@ -10,6 +10,10 @@ public partial class Pages_SeleccionAtaque : System.Web.UI.Page
     List<PokemonAtaque> lista = new List<PokemonAtaque>();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Seguridad.ThereAreUserInSession())
+        {
+            Response.Redirect("login.aspx");
+        }
         if (IsPostBack)
             return;
 

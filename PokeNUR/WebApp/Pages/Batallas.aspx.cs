@@ -18,6 +18,10 @@ public partial class Pages_Batallas : System.Web.UI.Page
             return;
         }
 
+        if (!Seguridad.ThereAreUserInSession())
+        {
+            Response.Redirect("login.aspx");
+        }
         txtBatalla_id.Value = Session["id"].ToString();
         List<Pokemon> listaPokemones = (List<Pokemon>)Session["pokemonesLista"];
         int pokemonActual_id = listaPokemones[0].Codigo_id;

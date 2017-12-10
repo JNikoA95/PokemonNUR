@@ -7,8 +7,13 @@ using System.Web.UI.WebControls;
 
 public partial class Pages_Notificaciones : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Seguridad.ThereAreUserInSession())
+        {
+            Response.Redirect("login.aspx");
+        }
         if (IsPostBack)
             return;
 
