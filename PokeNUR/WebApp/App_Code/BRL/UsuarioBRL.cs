@@ -69,7 +69,8 @@ public class UsuarioBRL
         adapter.Delete(codigo_id);
     }
 
-    public static Usuario getUsuarioByNick(string nick, string pass) {
+    public static Usuario getUsuarioByNick(string nick, string pass)
+    {
         if (string.IsNullOrEmpty(nick) || string.IsNullOrEmpty(pass))
         {
             throw new ArgumentException("No puede existir campos nulo");
@@ -145,6 +146,28 @@ public class UsuarioBRL
             };
         }
         return user;
+    }
+
+    public static List<Usuario> getAllUsers()
+    {
+        List<Usuario> lista = new List<Usuario>();
+        UserDSTableAdapters.UsuariosTableAdapter adapter = new UserDSTableAdapters.UsuariosTableAdapter();
+        UserDS.UsuariosDataTable table = adapter.GetUsuario();
+
+        foreach (UserDS.UsuariosRow row in table)
+        {
+            Usuario obj = new Usuario
+            {
+                Codigo_id = row.codigo_id,
+                Nombre = row.nombre,
+                Correo = row.correo,
+                Dinero = row.dinero,
+                NickName = row.nickName,
+                Password = row.password
+            };
+            lista.Add(obj);
+        }
+        return lista;
     }
 
 }

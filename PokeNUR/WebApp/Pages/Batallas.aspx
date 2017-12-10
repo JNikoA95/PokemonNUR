@@ -7,6 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1 class="title">Batalla</h1>
     <div class="contenedor">
+
         <div class="barras">
             <div class="local">
                 <asp:Label ID="NombreLocal" runat="server" Text="Local"></asp:Label>
@@ -37,6 +38,8 @@
                 <input class="boton" onclick="registrar()" id="Ataque2" type="button" value="Ataque2" runat="server" />
                 <input class="boton" onclick="registrar()" id="Ataque3" type="button" value="Ataque3" runat="server" />
                 <input class="boton" onclick="registrar()" id="Ataque4" type="button" value="Ataque4" runat="server" />
+               
+
             </div>
             <div class="menuBatalla">
                 Opciones<br>
@@ -58,16 +61,18 @@
         <asp:HiddenField ID="SocketServer" runat="server" />
 
         <asp:Literal ID="socketIoScript" runat="server"></asp:Literal>
+        <script =""></script>
         <script type="text/javascript">
 
-
+            function a() { console.log("Holi"); }
             function registrar() {
+               
                 var socket = io($("#<%= SocketServer.ClientID %>").val() + "?batallaId=" + $("#<%= txtBatalla_id.ClientID %>").val());
                 socket.on('send', function (data) {
                     console.log("llegando nuevo mensaje: " + data.msg);
 
                     var username = $("#<%= User1.ClientID %>").val();
-                        var e = $('<div>').text(data.msg).addClass(username == data.sender ? "text-right" : "text-left");
+                    var e = $('<div>').text(data.msg).addClass(username == data.sender ? "text-right" : "text-left");
                         $('#mensajes').append(e);
                });
 
@@ -82,6 +87,7 @@
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function (response) {
+                            alert("entra al succes");
                             if (!response || !response.d)
                                 return;
                             socket.emit("msg", {

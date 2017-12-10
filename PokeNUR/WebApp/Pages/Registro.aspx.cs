@@ -28,9 +28,6 @@ public partial class Pages_Registro : System.Web.UI.Page
         if (userData == null)
         {
             if (!existeCorreo(txtCorreo.Text) && !existeNick(txtNickName.Text))
-
-            Usuario nuevo = new Usuario()
-
             {
                 Usuario nuevo = new Usuario()
                 {
@@ -42,7 +39,6 @@ public partial class Pages_Registro : System.Web.UI.Page
                 };
 
                 UsuarioBRL.insrtUsuario(nuevo);
-
                 Response.Redirect("login.aspx");
             }
         }
@@ -54,10 +50,12 @@ public partial class Pages_Registro : System.Web.UI.Page
         }
     }
 
+
+
     public bool existeNick(String nick)
     {
         Usuario userNick = UsuarioBRL.getUsuarioNick(nick);
-        if(userNick == null)
+        if (userNick == null)
         {
             return false;
         }
@@ -83,5 +81,10 @@ public partial class Pages_Registro : System.Web.UI.Page
 
         return exist;
 
+    }
+
+    protected void Cancelar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("login.aspx");
     }
 }
