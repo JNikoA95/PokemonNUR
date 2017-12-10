@@ -17,22 +17,10 @@ public partial class Pages_Registro : System.Web.UI.Page
 
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
-
         Usuario userData = UsuarioBRL.getUserData(txtCorreo.Text, txtNickName.Text);
-
-        if (!existeCorreo(txtCorreo.Text))
-        {
-            lbMensajeCorreo.Visible = true;
-        }
-
-        if (!existeNick(txtNickName.Text))
-        {
-            lbMensajeNickName.Visible = true;
-        }
 
         if (userData == null)
         {
-            if (!existeCorreo(txtCorreo.Text) && !existeNick(txtNickName.Text)) { 
             Usuario nuevo = new Usuario()
             {
                 Nombre = txtNombre.Text,
@@ -46,7 +34,6 @@ public partial class Pages_Registro : System.Web.UI.Page
 
             Response.Redirect("login.aspx");
         }
-    }
         else
         {
             lbMensajeNickName.Visible = true;
@@ -54,29 +41,4 @@ public partial class Pages_Registro : System.Web.UI.Page
             lbMensajeCorreo.Visible = true;
         }
     }
-    public bool existeNick(String nick)
-{
-    string userNick = UsuarioBRL.getUsuarioNick(nick).NickName;
-    if (userNick != null)
-    {
-        return true;
-    }
-    return false;
-}
-
-public bool existeCorreo(String correo)
-{
-    List<Usuario> userNick = UsuarioBRL.getAllUsers();
-    Boolean exist = false;
-    foreach (Usuario item in userNick)
-    {
-        if (item.Correo.Equals(correo))
-        {
-            exist = true;
-        }
-    }
-
-    return exist;
-
-}
 }
