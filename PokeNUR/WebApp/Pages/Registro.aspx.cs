@@ -17,6 +17,10 @@ public partial class Pages_Registro : System.Web.UI.Page
 
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
+        if (Convert.ToInt32(txtPassword.Text.Trim().Length) < 6)
+        {
+            return;
+        }
 
         Usuario userData = UsuarioBRL.getUserData(txtCorreo.Text, txtNickName.Text);
 
@@ -32,21 +36,22 @@ public partial class Pages_Registro : System.Web.UI.Page
 
         if (userData == null)
         {
-            if (!existeCorreo(txtCorreo.Text) && !existeNick(txtNickName.Text)) { 
-            Usuario nuevo = new Usuario()
+            if (!existeCorreo(txtCorreo.Text) && !existeNick(txtNickName.Text))
             {
-                Nombre = txtNombre.Text,
-                NickName = txtNickName.Text,
-                Correo = txtCorreo.Text,
-                Password = txtPassword.Text,
-                Dinero = 50
-            };
+                Usuario nuevo = new Usuario()
+                {
+                    Nombre = txtNombre.Text,
+                    NickName = txtNickName.Text,
+                    Correo = txtCorreo.Text,
+                    Password = txtPassword.Text,
+                    Dinero = 50
+                };
 
-            UsuarioBRL.insrtUsuario(nuevo);
+                UsuarioBRL.insrtUsuario(nuevo);
 
-            Response.Redirect("login.aspx");
+                Response.Redirect("login.aspx");
+            }
         }
-    }
         else
         {
             lbMensajeNickName.Visible = true;
@@ -55,28 +60,33 @@ public partial class Pages_Registro : System.Web.UI.Page
         }
     }
     public bool existeNick(String nick)
-{
-    string userNick = UsuarioBRL.getUsuarioNick(nick).NickName;
-    if (userNick != null)
     {
-        return true;
-    }
-    return false;
-}
-
-public bool existeCorreo(String correo)
-{
-    List<Usuario> userNick = UsuarioBRL.getAllUsers();
-    Boolean exist = false;
-    foreach (Usuario item in userNick)
-    {
-        if (item.Correo.Equals(correo))
+        Usuario userNick = UsuarioBRL.getUsuarioNick(nick);
+        if(userNick == null)
         {
-            exist = true;
+            return false;
         }
+        string nickName = userNick.NickName;
+        if (nickName != null)
+        {
+            return true;
+        }
+        return false;
     }
 
-    return exist;
+    public bool existeCorreo(String correo)
+    {
+        List<Usuario> userNick = UsuarioBRL.getAllUsers();
+        Boolean exist = false;
+        foreach (Usuario item in userNick)
+        {
+            if (item.Correo.Equals(correo))
+            {
+                exist = true;
+            }
+        }
 
-}
+        return exist;
+
+    }
 }
