@@ -86,8 +86,7 @@ END
 
 GO
 
---
-[03:59, 7/12/2017] Marcelo Arrázola: CREATE PROCEDURE get_PokemonYtipo 
+CREATE PROCEDURE get_PokemonYtipo 
 
 AS
 BEGIN
