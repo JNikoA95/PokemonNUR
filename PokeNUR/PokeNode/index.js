@@ -12,7 +12,7 @@ io.on('connection', function(socket){
 	
 	var query = socket.handshake.query;
 	var batallaId = query.batallaId;
-	console.log(batallaId);
+
 	/*Para el room*/
 	batallaId = 'batalla-' + batallaId
 	socket.join(batallaId);

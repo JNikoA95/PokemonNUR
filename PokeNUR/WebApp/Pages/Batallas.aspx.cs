@@ -23,12 +23,13 @@ public partial class Pages_Batallas : System.Web.UI.Page
         }
 
         txtBatalla_id.Value = Session["id"].ToString();
-        User1.Value = Session["Usuario"].ToString();
+        User1.Value = Seguridad.GetUserInSession().NickName;
         List<Pokemon> listaPokemones = (List<Pokemon>)Session["pokemonesLista"];
         int pokemonActual_id = listaPokemones[0].Codigo_id;
         List<Ataque> listaAtaques1 = new List<Ataque>();
         List<Ataque> listaAtaques2 = new List<Ataque>();
         List<Ataque> listaAtaques3 = new List<Ataque>();
+        txtPokemon_id.Value = pokemonActual_id.ToString();
 
         if (listaPokemones.Count == 1)
         {
@@ -51,9 +52,14 @@ public partial class Pages_Batallas : System.Web.UI.Page
         if (listaPokemones[0].Codigo_id == pokemonActual_id)
         {
             Ataque1.Value = listaAtaques1[0].Nombre;
+            txtAtaque1.Value = listaAtaques1[0].Codigo_id.ToString();
             Ataque2.Value = listaAtaques1[1].Nombre;
+            txtAtaque1.Value = listaAtaques1[1].Codigo_id.ToString();
             Ataque3.Value = listaAtaques1[2].Nombre;
+            txtAtaque1.Value = listaAtaques1[2].Codigo_id.ToString();
             Ataque4.Value = listaAtaques1[3].Nombre;
+            txtAtaque1.Value = listaAtaques1[3].Codigo_id.ToString();
+            
             pokemonLocal.ImageUrl = "../App_Themes/Style/img/" + listaPokemones[0].Nombre + "%20espalda.gif";
         }
 
@@ -62,9 +68,14 @@ public partial class Pages_Batallas : System.Web.UI.Page
             if (listaPokemones[1].Codigo_id == pokemonActual_id)
             {
                 Ataque1.Value = listaAtaques2[0].Nombre;
+                txtAtaque1.Value = listaAtaques2[0].Codigo_id.ToString();
                 Ataque2.Value = listaAtaques2[1].Nombre;
+                txtAtaque1.Value = listaAtaques2[1].Codigo_id.ToString();
                 Ataque3.Value = listaAtaques2[2].Nombre;
+                txtAtaque1.Value = listaAtaques2[2].Codigo_id.ToString();
                 Ataque4.Value = listaAtaques2[3].Nombre;
+                txtAtaque1.Value = listaAtaques2[3].Codigo_id.ToString();
+
                 pokemonLocal.ImageUrl = "../App_Themes/Style/img/" + listaPokemones[1].Nombre + "%20espalda.gif";
             }
         }
@@ -74,9 +85,13 @@ public partial class Pages_Batallas : System.Web.UI.Page
             if (listaPokemones[2].Codigo_id == pokemonActual_id)
             {
                 Ataque1.Value = listaAtaques3[0].Nombre;
+                txtAtaque1.Value = listaAtaques3[0].Codigo_id.ToString();
                 Ataque2.Value = listaAtaques3[1].Nombre;
+                txtAtaque1.Value = listaAtaques3[1].Codigo_id.ToString();
                 Ataque3.Value = listaAtaques3[2].Nombre;
+                txtAtaque1.Value = listaAtaques3[2].Codigo_id.ToString();
                 Ataque4.Value = listaAtaques3[3].Nombre;
+                txtAtaque1.Value = listaAtaques3[3].Codigo_id.ToString();
                 pokemonLocal.ImageUrl = "../App_Themes/Style/img/" + listaPokemones[2].Nombre + "%20espalda.gif";
             }
         }
