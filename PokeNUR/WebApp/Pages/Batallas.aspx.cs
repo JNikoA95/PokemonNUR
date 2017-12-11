@@ -10,6 +10,8 @@ using System.Web.UI.WebControls;
 public partial class Pages_Batallas : System.Web.UI.Page
 {
     //int pokemonActual_id = 3;
+    List<int[]> playerLocal = new List<int[]>();
+    List<int[]> playerVisitante = new List<int[]>();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -41,12 +43,15 @@ public partial class Pages_Batallas : System.Web.UI.Page
         if (listaPokemones.Count == 1)
         {
             listaAtaques1 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[0].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
+            playerLocal.Add(PokemonDetalles(listaPokemones[0].Codigo_id, Seguridad.GetUserInSession().Codigo_id));
         }
 
         if (listaPokemones.Count == 2)
         {
             listaAtaques1 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[0].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
             listaAtaques2 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[1].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
+            playerLocal.Add(PokemonDetalles(listaPokemones[0].Codigo_id, Seguridad.GetUserInSession().Codigo_id));
+            playerLocal.Add(PokemonDetalles(listaPokemones[1].Codigo_id, Seguridad.GetUserInSession().Codigo_id));
         }
 
         if (listaPokemones.Count == 3)
@@ -54,6 +59,9 @@ public partial class Pages_Batallas : System.Web.UI.Page
             listaAtaques1 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[0].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
             listaAtaques2 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[1].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
             listaAtaques3 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[2].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
+            playerLocal.Add(PokemonDetalles(listaPokemones[0].Codigo_id, Seguridad.GetUserInSession().Codigo_id));
+            playerLocal.Add(PokemonDetalles(listaPokemones[1].Codigo_id, Seguridad.GetUserInSession().Codigo_id));
+            playerLocal.Add(PokemonDetalles(listaPokemones[2].Codigo_id, Seguridad.GetUserInSession().Codigo_id));
         }
 
         if (listaPokemones[0].Codigo_id == pokemonActual_id)
@@ -66,7 +74,7 @@ public partial class Pages_Batallas : System.Web.UI.Page
             txtAtaque1.Value = listaAtaques1[2].Codigo_id.ToString();
             Ataque4.Value = listaAtaques1[3].Nombre;
             txtAtaque1.Value = listaAtaques1[3].Codigo_id.ToString();
-            
+
             pokemonLocal.ImageUrl = "../App_Themes/Style/img/" + listaPokemones[0].Nombre + "%20espalda.gif";
         }
 
@@ -127,6 +135,30 @@ public partial class Pages_Batallas : System.Web.UI.Page
 
         }
     }
+
+    public int[] PokemonDetalles(int codigo_pokemon, int codigo_usuario)
+    {
+        PokemonUsuario pokePlayer = PokemonUsuarioBRL.getPokemonUsuarioByID(codigo_pokemon, codigo_usuario);
+
+        int nivelPoke;
+        int defensaPoke;
+        int vidaPoke;
+
+        nivelPoke = Formulas.NivelPokemon(pokePlayer.experiencia);
+        defensaPoke = Formulas.DefensaPokemon(pokePlayer.experiencia);
+        vidaPoke = Formulas.VidaPokemon(pokePlayer.experiencia, pokePlayer.vida);
+
+        int[] poke = { nivelPoke, defensaPoke, vidaPoke };
+
+        return poke;
+    }
+
+    public int Daño(int codigo_pokemon, int codigo_usuario, int ataqueDaño)
+    {
+        PokemonUsuario pokePlayer = PokemonUsuarioBRL.getPokemonUsuarioByID(codigo_pokemon, codigo_usuario);
+        return Formulas.DañoAtaque(pokePlayer.experiencia, "normal", "normal", ataqueDaño);
+    }
+
 
     [WebMethod]
     public static bool guardarDetalleBatalla(int batalla_id, int pokemon_id, int ataque_id, int daño)

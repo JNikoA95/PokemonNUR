@@ -95,7 +95,7 @@
                             return;
                         socket.emit("msg", {
                             batalla_id: idBatalla,
-                            msg: { "batalla_id": idBatalla, "usuario": username, "pokemon_id": idPokemon, "ataque_id": 2, "daño": 50 }, 
+                            msg: { "batalla_id": idBatalla, "usuario": username, "pokemon_id": idPokemon, "ataque_id": 2, "daño": 50 },
                             sender: username,
                             success: function () {
 

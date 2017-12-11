@@ -18,14 +18,14 @@ public class PokemonUsuarioBRL
     public static void insrtUsuarioPokemon(int idUsuario, int idPokemon)
     {
         UserDSTableAdapters.UsuariosTableAdapter adapter = new UserDSTableAdapters.UsuariosTableAdapter();
-        adapter.mk_tblPokemonUsuario(idUsuario, idPokemon);
+        adapter.mk_tblPokemonUsuario(idUsuario, idPokemon, 0, 50);
     }
 
     public static int getUsuarioPokemon(string nick, string pass)
     {
         UserDSTableAdapters.PokemonByUserTableAdapter adapter = new UserDSTableAdapters.PokemonByUserTableAdapter();
         UserDS.PokemonByUserDataTable table = adapter.GetDataPokemonUser(nick, pass);
-        
+
         int? total = table.Rows.Count;
 
         return total.Value;
@@ -55,11 +55,12 @@ public class PokemonUsuarioBRL
 
         PokemonAtaqueDSTableAdapters.pokemonAtaqueByUsuarioTableAdapter adap = new PokemonAtaqueDSTableAdapters.pokemonAtaqueByUsuarioTableAdapter();
         PokemonAtaqueDS.pokemonAtaqueByUsuarioDataTable tabla = adap.GetAtaquesByPokemonUsuario(Seguridad.GetUserInSession().Codigo_id, idPoke);
-        
-        
-            int? total = 0;
-        
-        if(tabla.Rows.Count > 0) {
+
+
+        int? total = 0;
+
+        if (tabla.Rows.Count > 0)
+        {
             total = idPoke;
         }
 
@@ -83,25 +84,22 @@ public class PokemonUsuarioBRL
         PokemonUsuarioDSTableAdapters.PokemonUsuarioTableAdapter adapter = new PokemonUsuarioDSTableAdapters.PokemonUsuarioTableAdapter();
         PokemonUsuarioDS.PokemonUsuarioDataTable table = adapter.get_pokemonByUsuario(pokemon_id, user_id);
 
-        List<PokemonUsuario> poke = new List<PokemonUsuario>();
-
-        foreach (PokemonUsuarioDS.PokemonUsuarioRow row in table)
+        PokemonUsuario objPokeUser = null;
+        if(table.Rows.Count == 1)
         {
-            PokemonUsuario obj = new PokemonUsuario
+            PokemonUsuarioDS.PokemonUsuarioRow row = table[0];
+
+            objPokeUser = new PokemonUsuario
             {
                 usuario_id = row.user_id,
                 pokemon_id = row.pokemon_id,
                 idPokeUser = row.idPkUser,
                 experiencia = row.experiencia,
                 vida = row.vida
-                
             };
-            poke.Add(obj);
         }
 
-        PokemonUsuario pokemon = poke[0];
-
-        return pokemon;
+        return objPokeUser;
     }
 
 }
