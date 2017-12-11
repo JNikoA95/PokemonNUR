@@ -12,7 +12,7 @@ io.on('connection', function(socket){
 	
 	var query = socket.handshake.query;
 	var batallaId = query.batallaId;
-
+	console.log(batallaId);
 	/*Para el room*/
 	batallaId = 'batalla-' + batallaId
 	socket.join(batallaId);
@@ -22,11 +22,11 @@ io.on('connection', function(socket){
 	
 	socket.on('msg', function (data) {
 
-	    var room = 'batalla-' + data.batallaId
-	    //  data = {
-	    //     batallaId : room,
-     //        msg : "Hola"
-	    // }
+	    var room = 'batalla-' + data.batalla_id
+	    /*data = {
+	        batallaId : room,
+            msg : "Hola"
+	    }*/
 
 	    console.log("enviando mensaje en el Room : " + room);
 	    io.to(room).emit('send', { msg: data.msg, sender: data.sender });
