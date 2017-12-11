@@ -41,6 +41,11 @@ public partial class Pages_SeleccionAtaque : System.Web.UI.Page
                         return;
                     }
 
+                    if (cantidadAtaques <= 2)
+                    {
+                        return;
+                    }
+
 
                     lista.Add(new PokemonAtaque()
                     {
