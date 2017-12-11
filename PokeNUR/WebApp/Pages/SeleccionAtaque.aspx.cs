@@ -14,12 +14,18 @@ public partial class Pages_SeleccionAtaque : System.Web.UI.Page
         {
             Response.Redirect("login.aspx");
         }
+
         if (IsPostBack)
             return;
 
         Usuario user = Seguridad.GetUserInSession();
         GridViewPokemones.DataSource = PokemonBRL.getPokemones(user.Codigo_id);
         GridViewPokemones.DataBind();
+
+        if(GridViewPokemones.Rows.Count <= 0)
+        {
+            Response.Redirect("Seleccion.aspx");
+        }
 
         GridViewAtaques.DataSource = AtaquesBRL.getAtaquesByTipo(Convert.ToInt32(GridViewPokemones.Rows[0].Cells[0].Text));
         GridViewAtaques.DataBind();
@@ -37,11 +43,6 @@ public partial class Pages_SeleccionAtaque : System.Web.UI.Page
                 if (cb.Checked)
                 {
                     if (cantidadAtaques >= 4)
-                    {
-                        return;
-                    }
-
-                    if (cantidadAtaques <= 2)
                     {
                         return;
                     }

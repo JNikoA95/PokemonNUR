@@ -13,6 +13,11 @@ public partial class Pages_SeleccionBatalla : System.Web.UI.Page
         {
             Response.Redirect("login.aspx");
         }
+        string id = Request["id"];
+
+        if (id == null)
+            Response.Redirect("Usuario.aspx");
+
         if (IsPostBack)
             return;
 
@@ -45,10 +50,16 @@ public partial class Pages_SeleccionBatalla : System.Web.UI.Page
                 }
             }
         }
+
+        if (listaPokemones.Count <= 0)
+            return;
+
         Session["pokemonesLista"] = listaPokemones;
         int i = Convert.ToInt32(Session["id"]);
         Session["pokemon_id"] = pokemonID;
         Response.Redirect("Batallas.aspx?id=" + i + "&pokemon_id=" + pokemonID);
+
+
     }
 
 }
