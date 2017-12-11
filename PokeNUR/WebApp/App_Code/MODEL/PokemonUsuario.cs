@@ -8,10 +8,11 @@ using System.Web;
 /// </summary>
 public class PokemonUsuario
 {
-    public string nick { get; set; }
-    public string Correo { get; set; }
-    public string nombre { get; set; }
-
+    public int usuario_id { get; set; }
+    public int pokemon_id { get; set; }
+    public int idPokeUser { get; set; }
+    public int experiencia { get; set; }
+    public int vida { get; set; }
     public PokemonUsuario()
     {   
     }
