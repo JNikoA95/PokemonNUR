@@ -1,4 +1,4 @@
-Use [Master]
+Use [Master] 
 GO 
 
 IF  NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'PokeNUR_DB')
