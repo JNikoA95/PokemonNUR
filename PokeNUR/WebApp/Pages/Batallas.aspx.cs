@@ -22,6 +22,13 @@ public partial class Pages_Batallas : System.Web.UI.Page
             return;
         }
 
+
+        string id = Request["id"];
+        string pokemon_id = Request["pokemon_id"];
+
+        if (id == null || pokemon_id == null)
+            Response.Redirect("Usuario.aspx");
+
         txtBatalla_id.Value = Session["id"].ToString();
         User1.Value = Seguridad.GetUserInSession().NickName;
         List<Pokemon> listaPokemones = (List<Pokemon>)Session["pokemonesLista"];
