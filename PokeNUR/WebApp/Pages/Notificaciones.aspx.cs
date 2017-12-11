@@ -26,6 +26,7 @@ public partial class Pages_Notificaciones : System.Web.UI.Page
         if (e.CommandName.Equals("Batalla"))
         {
             int i = Convert.ToInt32(e.CommandArgument);
+            DetalleBatallaBRL.updateEstadoBatalla(i);
             Session["id"] = i;
 
             Response.Redirect("SeleccionBatalla.aspx?id=" + i);

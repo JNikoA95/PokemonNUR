@@ -36,4 +36,10 @@ public class DetalleBatallaBRL
         DetalleBatallaDSTableAdapters.tblDetalleBatallaTableAdapter adapter = new DetalleBatallaDSTableAdapters.tblDetalleBatallaTableAdapter();
         adapter.Insert(objDetalleBatalla.BatallaID, objDetalleBatalla.JugadorID, objDetalleBatalla.AtaqueID, objDetalleBatalla.PokemonID, objDetalleBatalla.Daño);
     }
+
+    public static void updateEstadoBatalla(int id)
+    {
+        BatallaDSTableAdapters.BatallasTableAdapter adapter = new BatallaDSTableAdapters.BatallasTableAdapter();
+        adapter.upd_tblBatallaEstado(id);
+    }
 }

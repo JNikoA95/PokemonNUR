@@ -34,6 +34,11 @@
                 </a>
             </li>
             <li>
+                <a href="NotificacionesBatalla.aspx">
+                    <span>En Curso</span>
+                </a>
+            </li>
+            <li>
                 <a href="Usuario.aspx">
                     <span>Usuario</span>
                 </a>

@@ -9,10 +9,14 @@ public partial class Pages_Notificaciones : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Seguridad.ThereAreUserInSession())
+        {
+            Response.Redirect("login.aspx");
+        }
         if (IsPostBack)
             return;
 
-        NotificacionesRep.DataSource = UsuarioBRL.getBatallasUsuario(Seguridad.GetUserInSession().Codigo_id);
+        NotificacionesRep.DataSource = UsuarioBRL.getBatallasEnCursoUsuario(Seguridad.GetUserInSession().Codigo_id);
         NotificacionesRep.DataBind();
     }
 

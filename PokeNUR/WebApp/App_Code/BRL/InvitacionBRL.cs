@@ -43,7 +43,7 @@ public class InvitacionBRL
         
         BatallaDSTableAdapters.BatallasTableAdapter adapter = new BatallaDSTableAdapters.BatallasTableAdapter();
         UserDSTableAdapters.UsuarioRegTableAdapter adap = new UserDSTableAdapters.UsuarioRegTableAdapter();
-        adapter.upd_getDatosBatalla(Seguridad.GetUserInSession().Codigo_id);
+        adapter.upd_getDatosBatalla(Seguridad.GetUserInSession().Codigo_id, "False", 0);
     }
 
 }
