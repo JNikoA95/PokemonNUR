@@ -1,4 +1,4 @@
-﻿using System;       
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -14,15 +14,16 @@ public partial class Pages_Batallas : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack)
-        {
             return;
-        }
 
         if (!Seguridad.ThereAreUserInSession())
         {
             Response.Redirect("login.aspx");
+            return;
         }
+
         txtBatalla_id.Value = Session["id"].ToString();
+        User1.Value = Session["Usuario"].ToString();
         List<Pokemon> listaPokemones = (List<Pokemon>)Session["pokemonesLista"];
         int pokemonActual_id = listaPokemones[0].Codigo_id;
         List<Ataque> listaAtaques1 = new List<Ataque>();
@@ -32,15 +33,12 @@ public partial class Pages_Batallas : System.Web.UI.Page
         if (listaPokemones.Count == 1)
         {
             listaAtaques1 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[0].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
-
         }
 
         if (listaPokemones.Count == 2)
         {
             listaAtaques1 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[0].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
             listaAtaques2 = PokemonAtaqueBRL.getAtaquesByPokemon(listaPokemones[1].Codigo_id, Seguridad.GetUserInSession().Codigo_id);
-
-
         }
 
         if (listaPokemones.Count == 3)
@@ -102,7 +100,7 @@ public partial class Pages_Batallas : System.Web.UI.Page
 
             return;
         }
-        catch (Exception ex)
+        catch
         {
 
         }
