@@ -75,6 +75,33 @@ public class PokemonUsuarioBRL
     public static void update_experiencia(int pokemonUserId, int cantExperiencia)
     {
         PokemonUsuarioDSTableAdapters.PokemonUsuarioTableAdapter adapter = new PokemonUsuarioDSTableAdapters.PokemonUsuarioTableAdapter();
-        adapter.update_experiencia(pokemonUserId, cantExperiencia);
+        adapter.upd_experiencia(pokemonUserId, cantExperiencia);
     }
+
+    public static PokemonUsuario getPokemonUsuarioByID(int pokemon_id, int user_id)
+    {
+        PokemonUsuarioDSTableAdapters.PokemonUsuarioTableAdapter adapter = new PokemonUsuarioDSTableAdapters.PokemonUsuarioTableAdapter();
+        PokemonUsuarioDS.PokemonUsuarioDataTable table = adapter.get_pokemonByUsuario(pokemon_id, user_id);
+
+        List<PokemonUsuario> poke = new List<PokemonUsuario>();
+
+        foreach (PokemonUsuarioDS.PokemonUsuarioRow row in table)
+        {
+            PokemonUsuario obj = new PokemonUsuario
+            {
+                usuario_id = row.user_id,
+                pokemon_id = row.pokemon_id,
+                idPokeUser = row.idPkUser,
+                experiencia = row.experiencia,
+                vida = row.vida
+                
+            };
+            poke.Add(obj);
+        }
+
+        PokemonUsuario pokemon = poke[0];
+
+        return pokemon;
+    }
+
 }
