@@ -1,4 +1,4 @@
-Use [Master]
+Use [Master] 
 GO 
 
 IF  NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'PokeNUR_DB')
@@ -8,11 +8,7 @@ GO
 USE [PokeNUR_DB]
 GO
 
-<<<<<<< HEAD
-PRINT 'Actualizando a la version 1.24.0'
-=======
-PRINT 'Actualizando a la version 1.1.0'
->>>>>>> origin/master
+PRINT 'Actualizando a la version 1.25.0'
 
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_VERSION_GetVersion]') AND type in (N'P', N'PC'))
 BEGIN
@@ -33,7 +29,6 @@ EXECUTE [dbo].[usp_VERSION_GetVersion]
   ,@intPatch OUTPUT
 
 IF @intVersionMayor IS NULL OR @intVersionMenor IS NULL OR @intPatch IS NULL
-
 BEGIN
 	
 	RAISERROR('La base de datos no esta inicializada',16,127)
@@ -46,7 +41,6 @@ IF @intVersionMayor IS NULL OR @intVersionMenor IS NULL OR NOT (@intVersionMayor
 BEGIN
 	
 	RAISERROR('La base de datos no esta en la version 1.24.0. Este script solamente se aplica a la version 1.24.0',16,127)
-
 	RETURN;
 
 END
@@ -58,7 +52,6 @@ BEGIN
 END
 GO
 
-<<<<<<< HEAD
 
 
 ALTER TABLE tblBatallas ADD acabo INT NULL;
@@ -114,17 +107,6 @@ ALTER PROCEDURE [dbo].[upd_getDatosUsBatalla]
 	@acabo int
 	
 	
-=======
--- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- =============================================
-Create PROCEDURE get_pokemonByUsuario
-	-- Add the parameters for the stored procedure here
-	@idUsuario int,
-	@idPokemon int
->>>>>>> origin/master
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -132,7 +114,6 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-<<<<<<< HEAD
     
 	
 	
@@ -148,17 +129,6 @@ END
 
 
 DELETE FROM tbl_Version
-=======
-	SELECT *
-	FROM tblPokemonUsuario
-	where user_id = @idUsuario and pokemon_id = @idPokemon
-		
-END
-
-
-DELETE FROM [dbo].[tbl_Version]
-GO
->>>>>>> origin/master
 
 INSERT INTO [dbo].[tbl_Version]
            ([versionMayor]
@@ -167,6 +137,6 @@ INSERT INTO [dbo].[tbl_Version]
      VALUES
            (1
            ,25
-           ,0);
-
+           ,0)
 GO
+
