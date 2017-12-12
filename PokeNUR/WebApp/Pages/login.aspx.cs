@@ -17,6 +17,14 @@ public partial class Pages_login : System.Web.UI.Page
             if (PokemonUsuarioBRL.getUsuarioPokemon(Seguridad.GetUserInSession().NickName, Seguridad.GetUserInSession().Password) == 0) { 
                 Response.Redirect("Seleccion.aspx");
             }
+
+            if ((PokemonUsuarioBRL.getUsuarioPokemon(Seguridad.GetUserInSession().NickName, Seguridad.GetUserInSession().Password) == 1 )&&
+            (PokemonUsuarioBRL.getUsuarioPokemonAtaque(Seguridad.GetUserInSession().Codigo_id, PokemonBRL.getPokemones(Seguridad.GetUserInSession().Codigo_id).ElementAt(0).Codigo_id) <= 0))
+        {
+            int idPokemon = PokemonBRL.getPokemones(Seguridad.GetUserInSession().Codigo_id).ElementAt(0).Codigo_id;
+            Session["idPokemon"] = idPokemon;
+            Response.Redirect("SeleccionAtaque.aspx?idPokemon=" + idPokemon);
+        }
             
             else
             {

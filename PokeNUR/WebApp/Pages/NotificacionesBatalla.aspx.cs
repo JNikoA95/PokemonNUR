@@ -16,6 +16,11 @@ public partial class Pages_Notificaciones : System.Web.UI.Page
         if (IsPostBack)
             return;
 
+        if (PokemonUsuarioBRL.getUsuarioPokemon(Seguridad.GetUserInSession().NickName, Seguridad.GetUserInSession().Password) == 0)
+        {
+            Response.Redirect("Seleccion.aspx");
+        }
+
         NotificacionesRep.DataSource = UsuarioBRL.getBatallasEnCursoUsuario(Seguridad.GetUserInSession().Codigo_id);
         NotificacionesRep.DataBind();
     }

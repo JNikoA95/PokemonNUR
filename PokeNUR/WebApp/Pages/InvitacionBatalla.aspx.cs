@@ -16,6 +16,11 @@ public partial class Pages_InvitacionBatalla : System.Web.UI.Page
         if (IsPostBack)
             return;
 
+        if (PokemonUsuarioBRL.getUsuarioPokemon(Seguridad.GetUserInSession().NickName, Seguridad.GetUserInSession().Password) == 0)
+        {
+            Response.Redirect("Seleccion.aspx");
+        }
+
         InvitacionesRep.DataSource = UsuarioBRL.getUsuarios(Seguridad.GetUserInSession().Codigo_id);
         InvitacionesRep.DataBind();
     }

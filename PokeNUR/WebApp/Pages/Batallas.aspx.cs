@@ -24,6 +24,18 @@ public partial class Pages_Batallas : System.Web.UI.Page
             return;
         }
 
+        if (PokemonUsuarioBRL.getUsuarioPokemon(Seguridad.GetUserInSession().NickName, Seguridad.GetUserInSession().Password) == 0)
+        {
+            Response.Redirect("Seleccion.aspx");
+        }
+
+        if ((PokemonUsuarioBRL.getUsuarioPokemon(Seguridad.GetUserInSession().NickName, Seguridad.GetUserInSession().Password) > 0 )&&
+            (PokemonUsuarioBRL.getUsuarioPokemonAtaque(Seguridad.GetUserInSession().Codigo_id, PokemonBRL.getPokemones(Seguridad.GetUserInSession().Codigo_id).ElementAt(0).Codigo_id) <= 0))
+        {
+            int idPokemon = PokemonBRL.getPokemones(Seguridad.GetUserInSession().Codigo_id).ElementAt(0).Codigo_id;
+            Session["idPokemon"] = idPokemon;
+            Response.Redirect("SeleccionAtaque.aspx?idPokemon=" + idPokemon);
+        }
 
         string id = Request["id"];
         string pokemon_id = Request["pokemon_id"];
