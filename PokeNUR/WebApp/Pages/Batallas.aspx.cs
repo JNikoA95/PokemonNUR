@@ -68,12 +68,21 @@ public partial class Pages_Batallas : System.Web.UI.Page
         {
             Ataque1.Value = listaAtaques1[0].Nombre;
             txtAtaque1.Value = listaAtaques1[0].Codigo_id.ToString();
+
             Ataque2.Value = listaAtaques1[1].Nombre;
-            txtAtaque1.Value = listaAtaques1[1].Codigo_id.ToString();
+            txtAtaque2.Value = listaAtaques1[1].Codigo_id.ToString();
+
             Ataque3.Value = listaAtaques1[2].Nombre;
-            txtAtaque1.Value = listaAtaques1[2].Codigo_id.ToString();
+            txtAtaque3.Value = listaAtaques1[2].Codigo_id.ToString();
+
             Ataque4.Value = listaAtaques1[3].Nombre;
-            txtAtaque1.Value = listaAtaques1[3].Codigo_id.ToString();
+            txtAtaque4.Value = listaAtaques1[3].Codigo_id.ToString();
+
+
+            Ataque1.Attributes["onclick"] = "registrar(" + listaAtaques1[0].Codigo_id + "," + Daño(pokemonActual_id, Seguridad.GetUserInSession().Codigo_id, listaAtaques1[0].PoderAtaque) + ")";
+            Ataque2.Attributes["onclick"] = "registrar(" + listaAtaques1[1].Codigo_id + "," + Daño(pokemonActual_id, Seguridad.GetUserInSession().Codigo_id, listaAtaques1[1].PoderAtaque) + ")";
+            Ataque3.Attributes["onclick"] = "registrar(" + listaAtaques1[2].Codigo_id + "," + Daño(pokemonActual_id, Seguridad.GetUserInSession().Codigo_id, listaAtaques1[2].PoderAtaque) + ")";
+            Ataque4.Attributes["onclick"] = "registrar(" + listaAtaques1[3].Codigo_id + "," + Daño(pokemonActual_id, Seguridad.GetUserInSession().Codigo_id, listaAtaques1[3].PoderAtaque) + ")";
 
             pokemonLocal.ImageUrl = "../App_Themes/Style/img/" + listaPokemones[0].Nombre + "%20espalda.gif";
         }
@@ -84,13 +93,21 @@ public partial class Pages_Batallas : System.Web.UI.Page
             {
                 Ataque1.Value = listaAtaques2[0].Nombre;
                 txtAtaque1.Value = listaAtaques2[0].Codigo_id.ToString();
-                Ataque2.Value = listaAtaques2[1].Nombre;
-                txtAtaque1.Value = listaAtaques2[1].Codigo_id.ToString();
-                Ataque3.Value = listaAtaques2[2].Nombre;
-                txtAtaque1.Value = listaAtaques2[2].Codigo_id.ToString();
-                Ataque4.Value = listaAtaques2[3].Nombre;
-                txtAtaque1.Value = listaAtaques2[3].Codigo_id.ToString();
 
+                Ataque2.Value = listaAtaques2[1].Nombre;
+                txtAtaque2.Value = listaAtaques2[1].Codigo_id.ToString();
+
+                Ataque3.Value = listaAtaques2[2].Nombre;
+                txtAtaque3.Value = listaAtaques2[2].Codigo_id.ToString();
+
+                Ataque4.Value = listaAtaques2[3].Nombre;
+                txtAtaque4.Value = listaAtaques2[3].Codigo_id.ToString();
+
+
+                Ataque1.Attributes["onclick"] = "registrar(" + listaAtaques2[0].Codigo_id + "," + Daño(pokemonActual_id, Seguridad.GetUserInSession().Codigo_id, listaAtaques2[0].PoderAtaque) + ")";
+                Ataque2.Attributes["onclick"] = "registrar(" + listaAtaques2[1].Codigo_id + "," + Daño(pokemonActual_id, Seguridad.GetUserInSession().Codigo_id, listaAtaques2[1].PoderAtaque) + ")";
+                Ataque3.Attributes["onclick"] = "registrar(" + listaAtaques2[2].Codigo_id + "," + Daño(pokemonActual_id, Seguridad.GetUserInSession().Codigo_id, listaAtaques2[2].PoderAtaque) + ")";
+                Ataque4.Attributes["onclick"] = "registrar(" + listaAtaques2[3].Codigo_id + "," + Daño(pokemonActual_id, Seguridad.GetUserInSession().Codigo_id, listaAtaques2[3].PoderAtaque) + ")";
                 pokemonLocal.ImageUrl = "../App_Themes/Style/img/" + listaPokemones[1].Nombre + "%20espalda.gif";
             }
         }
@@ -101,13 +118,22 @@ public partial class Pages_Batallas : System.Web.UI.Page
             {
                 Ataque1.Value = listaAtaques3[0].Nombre;
                 txtAtaque1.Value = listaAtaques3[0].Codigo_id.ToString();
+
                 Ataque2.Value = listaAtaques3[1].Nombre;
-                txtAtaque1.Value = listaAtaques3[1].Codigo_id.ToString();
+                txtAtaque2.Value = listaAtaques3[1].Codigo_id.ToString();
+
                 Ataque3.Value = listaAtaques3[2].Nombre;
-                txtAtaque1.Value = listaAtaques3[2].Codigo_id.ToString();
+                txtAtaque3.Value = listaAtaques3[2].Codigo_id.ToString();
+
                 Ataque4.Value = listaAtaques3[3].Nombre;
-                txtAtaque1.Value = listaAtaques3[3].Codigo_id.ToString();
+                txtAtaque4.Value = listaAtaques3[3].Codigo_id.ToString();
                 pokemonLocal.ImageUrl = "../App_Themes/Style/img/" + listaPokemones[2].Nombre + "%20espalda.gif";
+
+                Ataque1.Attributes["onclick"] = "registrar(" + listaAtaques3[0].Codigo_id + "," + Daño(pokemonActual_id, Seguridad.GetUserInSession().Codigo_id, listaAtaques3[0].PoderAtaque) + ")";
+                Ataque2.Attributes["onclick"] = "registrar(" + listaAtaques3[1].Codigo_id + "," + Daño(pokemonActual_id, Seguridad.GetUserInSession().Codigo_id, listaAtaques3[1].PoderAtaque) + ")";
+                Ataque3.Attributes["onclick"] = "registrar(" + listaAtaques3[2].Codigo_id + "," + Daño(pokemonActual_id, Seguridad.GetUserInSession().Codigo_id, listaAtaques3[2].PoderAtaque) + ")";
+                Ataque4.Attributes["onclick"] = "registrar(" + listaAtaques3[3].Codigo_id + "," + Daño(pokemonActual_id, Seguridad.GetUserInSession().Codigo_id, listaAtaques3[3].PoderAtaque) + ")";
+
             }
         }
         pokemonVisita.ImageUrl = "../App_Themes/Style/img/Machoke%20frente.gif";
@@ -173,7 +199,7 @@ public partial class Pages_Batallas : System.Web.UI.Page
         {
             BatallaID = batalla_id,
             AtaqueID = ataque_id,
-            Daño = 60,
+            Daño = daño,
             JugadorID = Seguridad.GetUserInSession().Codigo_id,
             PokemonID = pokemon_id
         };

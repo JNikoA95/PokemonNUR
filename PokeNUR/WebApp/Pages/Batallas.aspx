@@ -34,10 +34,10 @@
         <div class="opciones">
             <div class="ataquesBatalla">
                 Ataques<br>
-                <input class="boton" onclick="registrar()" id="Ataque1" type="button" value="Ataque1" runat="server" />
-                <input class="boton" onclick="registrar()" id="Ataque2" type="button" value="Ataque2" runat="server" />
-                <input class="boton" onclick="registrar()" id="Ataque3" type="button" value="Ataque3" runat="server" />
-                <input class="boton" onclick="registrar()" id="Ataque4" type="button" value="Ataque4" runat="server" />
+                <input class="boton" id="Ataque1" type="button" value="Ataque1" runat="server" />
+                <input class="boton" id="Ataque2" type="button" value="Ataque2" runat="server" />
+                <input class="boton" id="Ataque3" type="button" value="Ataque3" runat="server" />
+                <input class="boton" id="Ataque4" type="button" value="Ataque4" runat="server" />
 
 
             </div>
@@ -50,7 +50,15 @@
                 </div>
             </div>
         </div>
-
+        <div style="color: white; text-align: left" id="mensajes">
+            <asp:Repeater ID="ChatsRepeater" runat="server">
+                <ItemTemplate>
+                    <asp:Panel ID="MsgPanel" runat="server" CssClass='<%# Eval("jugador_id").ToString() == User1.Value ? "text-right" : "text-left" %>'>
+                        <asp:Literal ID="MsgLiteral" runat="server">'></asp:Literal>
+                    </asp:Panel>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
         <asp:HiddenField ID="txtPokemon_id" runat="server" />
         <asp:HiddenField ID="User1" runat="server"></asp:HiddenField>
         <asp:HiddenField ID="txtAtaque1" runat="server"></asp:HiddenField>
@@ -60,28 +68,35 @@
         <asp:HiddenField ID="txtBatalla_id" runat="server" />
         <asp:HiddenField ID="SocketServer" runat="server" />
 
+        <asp:HiddenField ID="OponeneID" runat="server" />
+        <asp:HiddenField ID="AtaqueOponenteID" runat="server"></asp:HiddenField>
+        <asp:HiddenField ID="PokemonOponenteID" runat="server"></asp:HiddenField>
+
         <asp:Literal ID="socketIoScript" runat="server"></asp:Literal>
 
         <script type="text/javascript">
             var socket = io($("#<%= SocketServer.ClientID %>").val() + "?batallaId=" + $("#<%= txtBatalla_id.ClientID %>").val());
+            var ataque = $("#<%= Ataque2.ClientID %>").val();
             $(document).ready(function () {
                 socket.on('send', function (data) {
                     console.log("llegando nuevo mensaje: " + JSON.stringify(data.msg));
+                    console.log("pokemon: " + data.msg.pokemon_id);
+                    if ($("#<%= User1.ClientID %>").val() != data.msg.usuario)
+                        $("#<%= OponeneID.ClientID %>").val(data.msg.usuario);
 
+                    console.log("usr: " + $("#<%= OponeneID.ClientID %>").val());
                     var username = $("#<%= User1.ClientID %>").val();
-                    var e = $('<div>').text(data.msg).addClass(username == data.sender ? "text-right" : "text-left");
+                    var e = $('<div>').text(JSON.stringify(data.msg.ataque_id)).addClass(username == data.sender ? "text-right" : "text-left");
                     $('#mensajes').append(e);
                 });
             });
 
-            function registrar() {
-                console.log("entra al metodo del boton");
+            function registrar(idAtaque, danho) {
+
                 var idBatalla = $("#<%= txtBatalla_id.ClientID %>").val();
                 var idPokemon = $("#<%= txtPokemon_id.ClientID %>").val();
                 var username = $("#<%= User1.ClientID %>").val();
-                var params = { batalla_id: 0, usuario: username, pokemon_id: 0, ataque_id: 2, daño: 50 };
-
-                console.log(idBatalla, idPokemon, username);
+                var params = { batalla_id: 0, usuario: username, pokemon_id: 0, ataque_id: idAtaque, daño: danho };
 
                 $.ajax({
                     type: "POST",
@@ -90,16 +105,12 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (response) {
-                        alert("entra al succes");
                         if (!response || !response.d)
                             return;
                         socket.emit("msg", {
                             batalla_id: idBatalla,
-                            msg: { "batalla_id": idBatalla, "usuario": username, "pokemon_id": idPokemon, "ataque_id": 2, "daño": 50 },
-                            sender: username,
-                            success: function () {
-
-                            }
+                            msg: { "batalla_id": idBatalla, "usuario": username, "pokemon_id": idPokemon, "ataque_id": idAtaque, "daño": danho },
+                            sender: username
                         });
                     },
                     failure: function (response) {

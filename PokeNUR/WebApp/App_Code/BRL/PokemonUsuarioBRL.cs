@@ -82,7 +82,7 @@ public class PokemonUsuarioBRL
     public static PokemonUsuario getPokemonUsuarioByID(int pokemon_id, int user_id)
     {
         PokemonUsuarioDSTableAdapters.PokemonUsuarioTableAdapter adapter = new PokemonUsuarioDSTableAdapters.PokemonUsuarioTableAdapter();
-        PokemonUsuarioDS.PokemonUsuarioDataTable table = adapter.get_pokemonByUsuario(pokemon_id, user_id);
+        PokemonUsuarioDS.PokemonUsuarioDataTable table = adapter.get_pokemonByUsuario(user_id, pokemon_id);
 
         PokemonUsuario objPokeUser = null;
         if(table.Rows.Count == 1)
