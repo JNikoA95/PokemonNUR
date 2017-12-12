@@ -15,6 +15,11 @@ public partial class Pages_SeleccionAtaque : System.Web.UI.Page
             Response.Redirect("login.aspx");
         }
 
+        string idPokemon = Request["idPokemon"];
+
+        if (idPokemon == null)
+            Response.Redirect("Usuario.aspx");
+
         if (IsPostBack)
             return;
 
@@ -25,6 +30,16 @@ public partial class Pages_SeleccionAtaque : System.Web.UI.Page
         if(GridViewPokemones.Rows.Count <= 0)
         {
             Response.Redirect("Seleccion.aspx");
+        }
+
+        if (PokemonUsuarioBRL.getUsuarioPokemon(Seguridad.GetUserInSession().NickName, Seguridad.GetUserInSession().Password) == 0)
+        {
+            Response.Redirect("Seleccion.aspx");
+        }
+
+        if (PokemonUsuarioBRL.getUsuarioPokemonAtaque(Seguridad.GetUserInSession().Codigo_id, Convert.ToInt32(idPokemon)) > 0)
+        {
+            Response.Redirect("Usuario.aspx");
         }
 
         GridViewAtaques.DataSource = AtaquesBRL.getAtaquesByTipo(Convert.ToInt32(GridViewPokemones.Rows[0].Cells[0].Text));

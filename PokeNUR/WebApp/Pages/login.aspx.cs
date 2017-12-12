@@ -13,11 +13,7 @@ public partial class Pages_login : System.Web.UI.Page
         //Request.ApplicationPath.TrimEnd('/') + "/";
         //url.Text = baseUrl;
         if (Seguridad.ThereAreUserInSession()) {
-            if (PokemonUsuarioBRL.getUsuarioPokemonAtaque(Seguridad.GetUserInSession().NickName, Seguridad.GetUserInSession().Password) != 0)
-            {
-                Response.Redirect("SeleccionAtaque.aspx");
-            }
-
+            
             if (PokemonUsuarioBRL.getUsuarioPokemon(Seguridad.GetUserInSession().NickName, Seguridad.GetUserInSession().Password) == 0) { 
                 Response.Redirect("Seleccion.aspx");
             }

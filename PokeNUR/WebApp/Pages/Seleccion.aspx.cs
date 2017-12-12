@@ -10,26 +10,32 @@ public partial class Pages_Seleccion : System.Web.UI.Page
     
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (PokemonUsuarioBRL.getUsuarioPokemon(Seguridad.GetUserInSession().NickName, Seguridad.GetUserInSession().Password) > 0)
+        {
+            Response.Redirect("Usuario.aspx");
+        }
     }
 
     protected void Button1_Click(object sender, EventArgs e)
     {
         // fuego agua planta
         string pokemon = RadioButtonList1.SelectedValue;
+        int idPoke = 0;
 
         if (pokemon.Equals("Fuego"))
-            PokemonUsuarioBRL.insrtUsuarioPokemon(Seguridad.GetUserInSession().Codigo_id, 1);
+            idPoke = 1;
 
 
         if (pokemon.Equals("Agua"))
-            PokemonUsuarioBRL.insrtUsuarioPokemon(Seguridad.GetUserInSession().Codigo_id, 2);
-
+            idPoke = 2;
 
         if (pokemon.Equals("Planta"))
-            PokemonUsuarioBRL.insrtUsuarioPokemon(Seguridad.GetUserInSession().Codigo_id, 3);
+            idPoke = 3;
 
-        Response.Redirect("SeleccionAtaque.aspx");
+            PokemonUsuarioBRL.insrtUsuarioPokemon(Seguridad.GetUserInSession().Codigo_id, idPoke);
+
+        Session["idPokemon"] = idPoke;
+        Response.Redirect("SeleccionAtaque.aspx?idPokemon=" + idPoke);
     }
 
     protected void BtnLogout_Click(object sender, EventArgs e)
