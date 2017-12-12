@@ -10,15 +10,15 @@
 
         <div class="barras">
             <div class="local">
-                <asp:Label ID="NombreLocal" runat="server" Text="Local"></asp:Label>
-                <div class="LifeBar"></div>
-                <div class="ExperienceBar"></div>
+                <asp:Label CssClass="nombres" ID="NombreLocal" runat="server" Text="Local"></asp:Label>
+                <progress class="LifeBar"></progress>
+                <progress class="ExperienceBar"></progress>
             </div>
             <h1 class="vs">Vs</h1>
             <div class="visita">
-                <asp:Label ID="NombreVisita" runat="server" Text="Visita"></asp:Label>
-                <div class="LifeBar" style="background-color: green;"></div>
-                <div class="ExperienceBar" style="background-color: Blue;"></div>
+                <asp:Label CssClass="nombres" ID="NombreVisita" runat="server" Text="Visita"></asp:Label>
+                <progress class="LifeBar" style="background-color: green;"></progress>
+                <progress class="ExperienceBar" style="background-color: Blue;"></progress>
             </div>
         </div>
         <div class="pokemonBatalla">
@@ -81,9 +81,11 @@
                 socket.on('send', function (data) {
                     console.log("llegando nuevo mensaje: " + JSON.stringify(data.msg));
                     console.log("pokemon: " + data.msg.pokemon_id);
-                    if ($("#<%= User1.ClientID %>").val() != data.msg.usuario)
+                    if ($("#<%= User1.ClientID %>").val() != data.msg.usuario) {
                         $("#<%= OponeneID.ClientID %>").val(data.msg.usuario);
-
+                        $("#<%= PokemonOponenteID.ClientID %>").val(data.msg.pokemon_id);
+                        $("#<%= AtaqueOponenteID.ClientID %>").val(data.msg.ataque_id);
+                    }
                     console.log("usr: " + $("#<%= OponeneID.ClientID %>").val());
                     var username = $("#<%= User1.ClientID %>").val();
                     var e = $('<div>').text(JSON.stringify(data.msg.ataque_id)).addClass(username == data.sender ? "text-right" : "text-left");
@@ -118,6 +120,35 @@
                     }
                 });
             }
+
+
+            function pokemonJugador() {
+
+                var idPokemon = $("#<%= txtPokemon_id.ClientID %>").val();
+                var username = $("#<%= User1.ClientID %>").val();
+                var params = { batalla_id: 0, usuario: username, pokemon_id: 0};
+
+                $.ajax({
+                    type: "POST",
+                    url: "Batallas.aspx/guardarDetalleBatalla",
+                    data: JSON.stringify(params),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        if (!response || !response.d)
+                            return;
+                        socket.emit("msg", {
+                            batalla_id: idBatalla,
+                            msg: { "batalla_id": idBatalla, "usuario": username, "pokemon_id": idPokemon},
+                            sender: username
+                        });
+                    },
+                    failure: function (response) {
+                        alert("FALLO");
+                    }
+                });
+            }
+
         </script>
     </div>
 </asp:Content>

@@ -657,3 +657,10 @@ body {
 .pokemonVisita {
  
 }
+
+.nombres {
+    color: white;
+    text-shadow: -2px -1px 0 #000000, 2px -1px 0 #000000, -2px 1px 0 #000000, 2px 1px 0 #000000;
+    font-family: Conv_Pokemon;
+    text-transform: capitalize;
+}
