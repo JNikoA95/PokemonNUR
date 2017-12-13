@@ -228,11 +228,12 @@ public partial class Pages_Batallas : System.Web.UI.Page
         int usuario2 = 0;
         int pokeId = 0;
 
-        if (PokemonOponenteID.Value.Equals(null)) {
+        if (PokemonOponenteID.Value.Equals(null))
+        {
             pokeId = Convert.ToInt32(PokemonOponenteID.Value);
         }
 
-        
+
         for (int i = 0; i < batallas.Count; i++)
         {
             if (batallas[i].Codigo_id == Convert.ToInt32(Session["id"].ToString()))
@@ -255,9 +256,14 @@ public partial class Pages_Batallas : System.Web.UI.Page
                 visita = users[i];
             }
         }
-        
-        NombreVisita.Text = visita.NickName;
-
+        if (visita.NickName == null)
+        {
+            NombreVisita.Text = "visita";
+        }
+        else
+        {
+            NombreVisita.Text = visita.NickName;
+        }
         showPokemonVisit(pokeId, visita.Codigo_id);
 
         string strConversacionId = Session["id"].ToString();
@@ -288,12 +294,20 @@ public partial class Pages_Batallas : System.Web.UI.Page
 
     public void showPokemonVisit(int codigo_pokemon, int codigo_usuario)
     {
+
         List<Pokemon> poke = PokemonBRL.getPokemones(codigo_usuario);
-        for (int i = 0; i < poke.Count; i++)
+        if (poke.Count == 0)
         {
-            if (poke[i].Codigo_id == codigo_pokemon)
+            pokemonVisita.ImageUrl = "../App_Themes/Style/img/Charmander%20frente.gif";
+        }
+        else
+        {
+            for (int i = 0; i < poke.Count; i++)
             {
-                pokemonVisita.ImageUrl = "../App_Themes/Style/img/" + poke[i].Nombre + "%20frente.gif";
+                if (poke[i].Codigo_id == codigo_pokemon)
+                {
+                    pokemonVisita.ImageUrl = "../App_Themes/Style/img/" + poke[i].Nombre + "%20frente.gif";
+                }
             }
         }
     }

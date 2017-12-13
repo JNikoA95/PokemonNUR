@@ -11,14 +11,15 @@
         <div class="barras">
             <div class="local">
                 <asp:Label CssClass="nombres" ID="NombreLocal" runat="server" Text="Local"></asp:Label>
-                <progress class="LifeBar"></progress>
-                <progress class="ExperienceBar"></progress>
+                <div class="LifeBar"></div>
+                <div class="ExperienceBar"></div>
+                
             </div>
             <h1 class="vs">Vs</h1>
             <div class="visita">
                 <asp:Label CssClass="nombres" ID="NombreVisita" runat="server" Text="Visita"></asp:Label>
-                <progress class="LifeBar" style="background-color: green;"></progress>
-                <progress class="ExperienceBar" style="background-color: Blue;"></progress>
+                <div class="LifeBar" style="background-color: green;"></div>
+                <div class="ExperienceBar" style="background-color: Blue;"></div>
             </div>
         </div>
         <div class="pokemonBatalla">
